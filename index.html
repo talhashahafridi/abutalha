@@ -1,10 +1,11 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Talha Afridi — Flutter & Fullstack Developer</title>
+  <title>Talha Afridi — Cyber Security & Fullstack Terminal</title>
 
   <meta name="description" content="Talha Afridi — Flutter, FastAPI, Firebase & Python Developer. Production-ready apps with clean architecture and cybersecurity mindset." />
   <meta name="robots" content="index, follow">
@@ -13,51 +14,62 @@
   <meta property="og:description" content="Flutter, FastAPI & Python developer building scalable and secure applications">
   <meta property="og:type" content="website">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;600;700;800&family=Share+Tech+Mono&family=Orbitron:wght@500;700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ================= ROOT ================= */
+/* ================= ROOT & CYBER VARIABLES ================= */
 :root {
-  --bg: #02040a;
-  --bg2: #060b16;
-  --card: rgba(5, 10, 22, 0.92);
-  --card-hover: rgba(8, 14, 30, 0.96);
-  --text: #e0eaf5;
-  --muted: #6a7d96;
-  --accent: #00f0ff;
-  --accent2: #00b8d9;
-  --accent3: #00ff9d;
-  --accent4: #b14aff;
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.7);
-  --border: 1px solid rgba(0, 240, 255, 0.28);
-  --glow: 0 0 32px rgba(0, 240, 255, 0.55), 0 0 12px rgba(0, 240, 255, 0.35);
-  --glow-g: 0 0 28px rgba(0, 255, 157, 0.45), 0 0 10px rgba(0, 255, 157, 0.3);
-  --glow-p: 0 0 30px rgba(177, 74, 255, 0.4);
+  --bg: #03070d;
+  --bg2: #070e18;
+  --card: rgba(6, 14, 26, 0.93);
+  --card-hover: rgba(10, 22, 40, 0.97);
+  --text: #e2f1ff;
+  --muted: #5c7b99;
+  --accent: #00f0ff;      /* Cyan Neon */
+  --accent2: #00b8d9;     /* Deep Cyan */
+  --accent3: #00ff9d;     /* Hacker Green */
+  --accent4: #b14aff;     /* Neon Purple */
+  --alert: #ff0055;       /* Red Alert */
+  --warning: #ffb700;     /* Security Warning Amber */
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.85);
+  --border: 1px solid rgba(0, 240, 255, 0.35);
+  --border-glow: 0 0 15px rgba(0, 240, 255, 0.3);
+  --glow: 0 0 30px rgba(0, 240, 255, 0.6), 0 0 10px rgba(0, 240, 255, 0.4);
+  --glow-g: 0 0 25px rgba(0, 255, 157, 0.5), 0 0 8px rgba(0, 255, 157, 0.3);
+  --glow-p: 0 0 28px rgba(177, 74, 255, 0.45);
+  --glow-alert: 0 0 25px rgba(255, 0, 85, 0.5);
+  --crt-opacity: 0.35;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Share Tech Mono', monospace;
+  --font-cyber: 'Orbitron', 'Poppins', sans-serif;
 }
 
 body.light-theme {
-  --bg: #eef2f7;
-  --bg2: #e0e7ef;
-  --card: rgba(255, 255, 255, 0.96);
+  --bg: #e4ebf3;
+  --bg2: #d3deea;
+  --card: rgba(240, 245, 252, 0.95);
   --card-hover: #ffffff;
-  --text: #0f172a;
-  --muted: #475569;
-  --accent: #0284c7;
-  --accent2: #0369a1;
-  --accent3: #059669;
-  --accent4: #7c3aed;
-  --shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
-  --border: 1px solid rgba(2, 132, 199, 0.28);
-  --glow: 0 0 22px rgba(2, 132, 199, 0.25);
-  --glow-g: 0 0 18px rgba(5, 150, 105, 0.2);
+  --text: #061220;
+  --muted: #3a526b;
+  --accent: #0066cc;
+  --accent2: #004499;
+  --accent3: #008844;
+  --accent4: #6b21a8;
+  --alert: #dc2626;
+  --warning: #d97706;
+  --shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+  --border: 1px solid rgba(0, 102, 204, 0.3);
+  --border-glow: 0 0 10px rgba(0, 102, 204, 0.2);
+  --glow: 0 0 20px rgba(0, 102, 204, 0.25);
+  --glow-g: 0 0 18px rgba(0, 136, 68, 0.2);
+  --crt-opacity: 0.05;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   background: var(--bg);
   color: var(--text);
   transition: background 0.45s, color 0.45s;
@@ -65,114 +77,179 @@ body {
   line-height: 1.65;
   min-height: 100vh;
   position: relative;
+  cursor: default;
 }
 
-/* Matrix rain – stronger cyberpunk */
+/* Custom Cyber Selection */
+::selection {
+  background: var(--accent);
+  color: #000;
+  text-shadow: none;
+}
+
+/* Background Canvas Matrix */
 #matrix {
   position: fixed; inset: 0; z-index: -4;
-  opacity: 0.52; pointer-events: none;
+  opacity: 0.65; pointer-events: none;
 }
-body.light-theme #matrix { opacity: 0.28; }
+body.light-theme #matrix { opacity: 0.25; }
 
-/* Scanlines */
-body::before {
-  content: "";
+/* Grid Line Canvas Overlay */
+#cyber-grid {
+  position: fixed; inset: 0; z-index: -3;
+  pointer-events: none; opacity: 0.18;
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* CRT Screen Scanlines & Flicker */
+.crt-overlay {
   position: fixed; inset: 0;
   background: repeating-linear-gradient(
     0deg, transparent, transparent 2px,
-    rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px
+    rgba(0, 0, 0, 0.25) 2px, rgba(0, 0, 0, 0.25) 4px
   );
-  z-index: 9998; pointer-events: none; opacity: 0.3;
+  z-index: 9998; pointer-events: none; opacity: var(--crt-opacity);
 }
-body.light-theme::before { opacity: 0.04; }
+body.crt-off .crt-overlay { display: none; }
 
-/* Vignette + soft cyber glow edges */
+/* Vignette + Cyber Radial Lighting */
 body::after {
   content: "";
   position: fixed; inset: 0;
   background: 
-    radial-gradient(ellipse at 50% 20%, transparent 30%, rgba(0,0,0,0.75) 100%),
-    radial-gradient(ellipse at 0% 50%, rgba(0, 240, 255, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 100% 50%, rgba(177, 74, 255, 0.04) 0%, transparent 50%);
+    radial-gradient(ellipse at 50% 10%, transparent 20%, rgba(0,0,0,0.85) 100%),
+    radial-gradient(circle at 10% 40%, rgba(0, 240, 255, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 90% 60%, rgba(177, 74, 255, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(0, 255, 157, 0.05) 0%, transparent 50%);
   z-index: -1; pointer-events: none;
 }
 body.light-theme::after {
-  background: radial-gradient(ellipse at 50% 30%, transparent 50%, rgba(0,0,0,0.05) 100%);
+  background: radial-gradient(ellipse at 50% 30%, transparent 40%, rgba(0,0,0,0.06) 100%);
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-cyber);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+}
+
+/* ================= CYBER HUD TOP BAR ================= */
+.cyber-hud {
+  background: rgba(2, 6, 14, 0.95);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 4px 20px;
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--accent3);
+  font-family: 'Share Tech Mono', monospace;
+  position: relative;
+  z-index: 101;
+  box-shadow: 0 2px 10px rgba(0, 240, 255, 0.1);
+}
+body.light-theme .cyber-hud {
+  background: rgba(220, 230, 242, 0.95);
+}
+.hud-item { display: flex; align-items: center; gap: 8px; }
+.hud-tag { color: var(--muted); }
+.hud-value { color: var(--accent); font-weight: 600; }
+.blink-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent3);
+  box-shadow: 0 0 8px var(--accent3);
+  animation: blink 1.2s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+.hud-actions { display: flex; gap: 12px; }
+.hud-btn {
+  background: transparent; border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--text); padding: 2px 8px; border-radius: 3px;
+  font-size: 10px; cursor: pointer; transition: all 0.2s;
+  font-family: 'Share Tech Mono', monospace;
+}
+.hud-btn:hover {
+  background: var(--accent); color: #000; box-shadow: var(--glow);
 }
 
 /* ================= HEADER ================= */
 header {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 18px 36px; max-width: 1200px; margin: 0 auto;
+  padding: 16px 36px; max-width: 1240px; margin: 0 auto;
   flex-wrap: wrap; position: relative; z-index: 100;
-  border-bottom: 1px solid rgba(0, 229, 255, 0.07);
-  background: rgba(3, 6, 12, 0.85);
-  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+  background: rgba(3, 8, 18, 0.88);
+  backdrop-filter: blur(16px);
 }
-body.light-theme header { background: rgba(238, 242, 247, 0.9); }
+body.light-theme header { background: rgba(238, 242, 247, 0.92); }
 
-.brand { display: flex; align-items: center; gap: 13px; }
+.brand { display: flex; align-items: center; gap: 14px; }
 
+/* Hacker Cyberpunk Logo Badge */
 .logo {
-  width: 48px; height: 48px; border-radius: 11px;
+  width: 48px; height: 48px; border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, #00f0ff 0%, #00b8d9 40%, #b14aff 100%);
-  font-weight: 700; color: #02040a; font-size: 16px;
-  font-family: 'JetBrains Mono', monospace;
-  box-shadow: var(--glow), 0 0 0 1px rgba(0, 240, 255, 0.3), 0 4px 18px rgba(0,0,0,0.55);
-  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s;
-  transform-style: preserve-3d; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #00f0ff 0%, #00b8d9 45%, #b14aff 100%);
+  font-weight: 900; color: #02040a; font-size: 17px;
+  font-family: 'Orbitron', monospace;
+  box-shadow: var(--glow), inset 0 0 10px rgba(255,255,255,0.4);
+  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  position: relative; overflow: hidden;
+  clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
 }
 .logo::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(135deg, transparent 25%, rgba(255,255,255,0.35) 50%, transparent 75%);
+  background: linear-gradient(135deg, transparent 25%, rgba(255,255,255,0.5) 50%, transparent 75%);
   transform: translateX(-120%); transition: transform 0.65s;
 }
 .logo:hover::after { transform: translateX(120%); }
 .logo:hover {
-  transform: translateY(-5px) rotateY(22deg) scale(1.07);
-  box-shadow: 0 0 50px rgba(0, 240, 255, 0.7), 0 0 20px rgba(177, 74, 255, 0.4);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.85), 0 0 20px rgba(177, 74, 255, 0.6);
 }
 
-.brand h1 { font-size: 18px; letter-spacing: 0.6px; }
-.brand p { font-size: 11px; color: var(--muted); margin-top: 1px; letter-spacing: 0.8px; }
+.brand h1 { font-size: 19px; letter-spacing: 0.8px; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 12px rgba(0, 240, 255, 0.4); }
+.brand p { font-size: 11px; color: var(--accent3); margin-top: 1px; letter-spacing: 0.8px; font-family: 'Share Tech Mono', monospace; }
 
-.desktop-nav { display: flex; align-items: center; gap: 5px; }
+.desktop-nav { display: flex; align-items: center; gap: 8px; }
 
 .desktop-nav .nav-btn {
-  text-decoration: none; font-weight: 600; font-size: 12px;
-  padding: 8px 14px; border-radius: 7px;
-  background: rgba(0, 240, 255, 0.06); color: var(--text);
-  border: 1px solid rgba(0, 240, 255, 0.25);
-  box-shadow: 0 0 12px rgba(0, 240, 255, 0.08);
-  transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+  text-decoration: none; font-weight: 600; font-size: 11.5px;
+  padding: 8px 15px; border-radius: 4px;
+  background: rgba(0, 240, 255, 0.05); color: var(--text);
+  border: 1px solid rgba(0, 240, 255, 0.28);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.06);
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
   cursor: pointer; font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.5px; position: relative; overflow: hidden;
+}
+.desktop-nav .nav-btn::before {
+  content: ">"; position: absolute; left: 5px; opacity: 0; transition: all 0.2s; color: var(--accent3);
 }
 .desktop-nav .nav-btn:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(135deg, #00f0ff, #00b8d9);
-  color: #02040a; box-shadow: var(--glow); border-color: transparent;
+  padding-left: 18px;
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--accent); border-color: var(--accent);
+  box-shadow: var(--glow);
 }
+.desktop-nav .nav-btn:hover::before { opacity: 1; left: 7px; }
 
 .mobile-menu-btn {
   display: none; background: linear-gradient(135deg, #00f0ff, #00b8d9);
-  color: #02040a; border: none; padding: 9px 12px; border-radius: 7px;
+  color: #02040a; border: none; padding: 9px 12px; border-radius: 6px;
   font-size: 16px; cursor: pointer; box-shadow: var(--glow);
 }
 .mobile-menu-btn:hover { transform: scale(1.08); }
 
 #mobile-menu {
-  position: fixed; top: 72px; right: 16px; width: 240px;
+  position: fixed; top: 96px; right: 16px; width: 250px;
   background: var(--card); backdrop-filter: blur(28px);
-  display: none; flex-direction: column; gap: 5px; padding: 12px;
-  border-radius: 12px; box-shadow: var(--shadow); border: var(--border);
+  display: none; flex-direction: column; gap: 6px; padding: 14px;
+  border-radius: 8px; box-shadow: var(--shadow); border: var(--border);
   z-index: 999; animation: menuIn 0.2s ease;
 }
 #mobile-menu.show { display: flex; }
@@ -181,11 +258,11 @@ body.light-theme header { background: rgba(238, 242, 247, 0.9); }
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 .mobile-nav-btn {
-  padding: 10px 13px; font-size: 12.5px; border-radius: 7px;
-  background: rgba(0, 229, 255, 0.05); color: var(--text);
+  padding: 11px 14px; font-size: 12px; border-radius: 4px;
+  background: rgba(0, 229, 255, 0.06); color: var(--text);
   text-decoration: none; text-align: left; font-weight: 600;
-  border: 1px solid rgba(0, 229, 255, 0.14); transition: all 0.2s;
-  font-family: 'JetBrains Mono', monospace; cursor: pointer;
+  border: 1px solid rgba(0, 229, 255, 0.18); transition: all 0.2s;
+  font-family: var(--font-mono); cursor: pointer;
 }
 .mobile-nav-btn:hover {
   background: linear-gradient(90deg, #00e5ff, #00a8cc);
@@ -193,69 +270,81 @@ body.light-theme header { background: rgba(238, 242, 247, 0.9); }
 }
 
 /* ================= MAIN ================= */
-main { max-width: 1200px; margin: 0 auto; padding: 18px; position: relative; z-index: 1; }
+main { max-width: 1240px; margin: 0 auto; padding: 22px; position: relative; z-index: 1; }
 
 /* ================= HERO ================= */
 .hero {
   display: grid; grid-template-columns: 1fr 340px;
-  gap: 44px; align-items: center; margin-top: 32px;
+  gap: 40px; align-items: center; margin-top: 24px;
 }
 
-/* Terminal window frame – cyberpunk */
+/* Terminal Window Box */
 .intro {
   background: var(--card);
-  border-radius: 12px;
-  box-shadow: var(--shadow), 0 0 0 1px rgba(0, 240, 255, 0.12), inset 0 1px 0 rgba(0, 240, 255, 0.08);
+  border-radius: 8px;
+  box-shadow: var(--shadow), 0 0 25px rgba(0, 240, 255, 0.15);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 240, 255, 0.3);
+  border: 1px solid rgba(0, 240, 255, 0.35);
   position: relative;
   overflow: hidden;
   transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s, border-color 0.3s;
-  transform-style: preserve-3d;
 }
 .intro:hover {
-  transform: translateY(-10px) rotateX(2.5deg);
-  box-shadow: var(--shadow), var(--glow), 0 0 60px rgba(0, 240, 255, 0.15);
-  border-color: rgba(0, 240, 255, 0.55);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow), var(--glow), 0 0 60px rgba(0, 240, 255, 0.2);
+  border-color: rgba(0, 240, 255, 0.65);
 }
 
-/* Terminal top bar */
+/* Corner Cyber Decors */
+.corner-border {
+  position: absolute; width: 8px; height: 8px; border-color: var(--accent); pointer-events: none; z-index: 10;
+}
+.corner-tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
+.corner-tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
+.corner-bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
+.corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
+
+/* Terminal Header Bar */
 .term-bar {
-  display: flex; align-items: center; gap: 7px;
+  display: flex; align-items: center; justify-content: space-between;
   padding: 10px 16px;
-  background: rgba(0, 0, 0, 0.35);
-  border-bottom: 1px solid rgba(0, 229, 255, 0.12);
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.18);
 }
-body.light-theme .term-bar { background: rgba(0,0,0,0.06); }
+body.light-theme .term-bar { background: rgba(0,0,0,0.08); }
 
-.term-dot {
-  width: 11px; height: 11px; border-radius: 50%;
-}
-.term-dot.r { background: #ff5f56; }
-.term-dot.y { background: #ffbd2e; }
-.term-dot.g { background: #27c93f; }
+.term-dots { display: flex; align-items: center; gap: 7px; }
+.term-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.term-dot.r { background: #ff5f56; box-shadow: 0 0 6px rgba(255,95,86,0.6); }
+.term-dot.y { background: #ffbd2e; box-shadow: 0 0 6px rgba(255,189,46,0.6); }
+.term-dot.g { background: #27c93f; box-shadow: 0 0 6px rgba(39,201,63,0.6); }
 
 .term-title {
-  margin-left: 10px; font-size: 11px; color: var(--muted);
-  letter-spacing: 0.5px;
+  font-size: 11px; color: var(--accent);
+  letter-spacing: 0.8px; font-family: 'Share Tech Mono', monospace;
 }
 
-.intro-body { padding: 26px 28px 30px; }
+.intro-body { padding: 28px 30px 32px; }
 
 .intro h2 {
-  font-size: 24px; line-height: 1.4; margin-bottom: 12px;
-  min-height: 68px;
+  font-size: 23px; line-height: 1.45; margin-bottom: 14px;
+  min-height: 72px; color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.01em;
 }
-.intro p { margin-top: 10px; color: var(--muted); font-size: 13.5px; }
+body.light-theme .intro h2 { color: #051224; }
+
+.intro p { margin-top: 12px; color: var(--muted); font-size: 13.5px; }
 .intro p b { color: var(--accent3); font-weight: 600; }
 
-/* Typing cursor */
+/* Typing Cursor */
 .typed-cursor {
   display: inline-block;
-  width: 2px; height: 1.1em;
+  width: 9px; height: 1.1em;
   background: var(--accent3);
-  margin-left: 2px;
+  margin-left: 4px;
   vertical-align: text-bottom;
+  box-shadow: 0 0 8px var(--accent3);
   animation: blinkCursor 0.85s step-end infinite;
 }
 @keyframes blinkCursor {
@@ -263,95 +352,102 @@ body.light-theme .term-bar { background: rgba(0,0,0,0.06); }
 }
 
 .chips {
-  margin-top: 20px; display: flex; flex-wrap: wrap; gap: 7px;
+  margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px;
 }
 .chip {
-  padding: 4px 11px; border-radius: 5px;
+  padding: 4px 12px; border-radius: 3px;
   border: 1px solid rgba(0, 240, 255, 0.35);
-  font-size: 11px; background: rgba(0, 240, 255, 0.08);
+  font-size: 11px; background: rgba(0, 240, 255, 0.07);
   color: var(--accent); transition: all 0.25s;
-  font-weight: 500; letter-spacing: 0.3px;
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+  font-weight: 600; letter-spacing: 0.4px;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.1);
+  font-family: 'Share Tech Mono', monospace;
 }
+.chip::before { content: "#"; color: var(--accent3); margin-right: 3px; }
 .chip:hover {
-  background: rgba(0, 240, 255, 0.2);
+  background: rgba(0, 240, 255, 0.22);
   transform: translateY(-2px);
-  box-shadow: 0 0 18px rgba(0, 240, 255, 0.45);
-  border-color: #00f0ff;
+  box-shadow: var(--glow);
+  border-color: #00f0ff; color: #fff;
 }
 
 .cta {
-  display: inline-block; margin-top: 24px;
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 26px;
   background: linear-gradient(90deg, #00f0ff, #00b8d9);
-  color: #02040a; padding: 12px 24px; border-radius: 8px;
-  font-weight: 700; text-decoration: none;
-  font-family: 'Poppins', sans-serif; font-size: 13.5px;
-  box-shadow: 0 4px 24px rgba(0, 240, 255, 0.5), 0 0 0 1px rgba(0, 240, 255, 0.3);
+  color: #02040a; padding: 13px 26px; border-radius: 5px;
+  font-weight: 800; text-decoration: none;
+  font-family: 'Orbitron', sans-serif; font-size: 13px;
+  box-shadow: 0 4px 24px rgba(0, 240, 255, 0.45), 0 0 0 1px rgba(0, 240, 255, 0.3);
   transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-  letter-spacing: 0.4px; position: relative; overflow: hidden;
+  letter-spacing: 0.6px; position: relative; overflow: hidden;
+  clip-path: polygon(0 0, 92% 0, 100% 30%, 100% 100%, 8% 100%, 0 70%);
 }
 .cta::before {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
   transform: translateX(-100%); transition: transform 0.5s;
 }
 .cta:hover::before { transform: translateX(100%); }
 .cta:hover {
-  transform: translateY(-4px) scale(1.04);
-  box-shadow: 0 8px 36px rgba(0, 240, 255, 0.65), 0 0 20px rgba(0, 240, 255, 0.3);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 36px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.4);
 }
 
-/* ================= PROFILE ================= */
+/* ================= PROFILE CYBER CARD ================= */
 .profile-container { text-align: center; perspective: 1400px; }
 
 .profile {
-  position: relative; width: 280px; height: 280px; margin: 0 auto;
+  position: relative; width: 270px; height: 270px; margin: 0 auto;
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
   animation: float 7s ease-in-out infinite; transform-style: preserve-3d;
 }
 @keyframes float {
   0%, 100% { transform: translateY(0) rotateY(0deg); }
-  50% { transform: translateY(-14px) rotateY(12deg); }
+  50% { transform: translateY(-12px) rotateY(10deg); }
 }
 
 .profile-img {
   width: 88%; height: 88%; border-radius: 50%; object-fit: cover;
-  border: 3px solid rgba(0, 240, 255, 0.55);
+  border: 3px solid rgba(0, 240, 255, 0.65);
   z-index: 2; transition: all 0.5s ease;
-  box-shadow: 0 0 50px rgba(0,0,0,0.65), 0 0 40px rgba(0, 240, 255, 0.25);
+  box-shadow: 0 0 45px rgba(0,0,0,0.7), 0 0 35px rgba(0, 240, 255, 0.3);
+  background: var(--card);
 }
 .profile-glow {
-  position: absolute; inset: -28px; border-radius: 50%;
-  background: conic-gradient(from 0deg, #00f0ff, #00b8d9, #b14aff, #00ff9d, #00f0ff);
-  filter: blur(22px); animation: rotate 7s linear infinite;
-  opacity: 0.9; z-index: 1;
-  box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+  position: absolute; inset: -24px; border-radius: 50%;
+  background: conic-gradient(from 0deg, #00f0ff, #00b8d9, #b14aff, #00ff9d, #ff0055, #00f0ff);
+  filter: blur(20px); animation: rotate 8s linear infinite;
+  opacity: 0.85; z-index: 1;
 }
 @keyframes rotate { to { transform: rotate(360deg); } }
 
 .profile:hover .profile-img {
-  transform: scale(1.08);
+  transform: scale(1.06);
   border-color: #00f0ff;
-  box-shadow: 0 0 80px rgba(0, 240, 255, 0.55), 0 0 30px rgba(177, 74, 255, 0.25);
+  box-shadow: 0 0 70px rgba(0, 240, 255, 0.6), 0 0 30px rgba(177, 74, 255, 0.3);
 }
 
 .profile-container h2 {
-  margin-top: 20px; font-size: 22px; color: var(--text); letter-spacing: 1.2px;
+  margin-top: 22px; font-size: 22px; color: var(--text); letter-spacing: 1.5px;
+  font-family: 'Orbitron', sans-serif;
 }
 .profile-container > p {
-  color: var(--muted); margin-top: 3px; font-size: 12.5px; letter-spacing: 0.6px;
+  color: var(--accent); margin-top: 4px; font-size: 12px; letter-spacing: 0.8px;
+  font-family: 'Share Tech Mono', monospace;
 }
 
 .status-bar {
   display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 12px; padding: 5px 13px;
+  margin-top: 14px; padding: 6px 14px;
   background: rgba(0, 255, 157, 0.08);
-  border: 1px solid rgba(0, 255, 157, 0.35);
-  border-radius: 6px; font-size: 11px; color: var(--accent3);
-  box-shadow: 0 0 15px rgba(0, 255, 157, 0.15);
+  border: 1px solid rgba(0, 255, 157, 0.4);
+  border-radius: 4px; font-size: 11px; color: var(--accent3);
+  box-shadow: 0 0 16px rgba(0, 255, 157, 0.2);
+  font-family: 'Share Tech Mono', monospace;
 }
 .status-dot {
-  width: 7px; height: 7px; border-radius: 50%;
+  width: 8px; height: 8px; border-radius: 50%;
   background: var(--accent3); box-shadow: 0 0 12px var(--accent3), 0 0 4px #fff;
   animation: pulse 1.8s ease-in-out infinite;
 }
@@ -360,244 +456,340 @@ body.light-theme .term-bar { background: rgba(0,0,0,0.06); }
   50% { opacity: 0.35; transform: scale(0.85); }
 }
 
-/* ================= SECTIONS ================= */
+/* ================= SECTION HEADERS ================= */
 .section-title {
-  margin: 68px 0 24px; font-size: 18px; color: var(--accent);
+  margin: 68px 0 24px; font-size: 19px; color: var(--accent);
   display: flex; align-items: center; gap: 12px;
-  font-family: 'JetBrains Mono', monospace; letter-spacing: 0.6px;
-  font-weight: 600;
-  text-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+  font-family: 'Orbitron', sans-serif; letter-spacing: 1px;
+  font-weight: 700; text-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
 }
 .section-title::before {
-  content: "$"; color: var(--accent3); font-weight: 700;
-  text-shadow: 0 0 12px rgba(0, 255, 157, 0.5);
+  content: "[SYS::CMD]"; color: var(--accent3); font-weight: 700;
+  font-size: 13px; font-family: 'Share Tech Mono', monospace;
+  text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
 }
 .section-title::after {
   content: ""; flex: 1; height: 1px;
-  background: linear-gradient(90deg, rgba(0, 240, 255, 0.5), transparent);
+  background: linear-gradient(90deg, rgba(0, 240, 255, 0.6), rgba(0, 240, 255, 0.05));
 }
 
+/* ================= PROJECTS GRID ================= */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
 }
 
 .project {
   background: var(--card); padding: 0;
-  border-radius: 12px;
-  box-shadow: var(--shadow), 0 0 0 1px rgba(0, 240, 255, 0.1);
-  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 8px;
+  box-shadow: var(--shadow), 0 0 0 1px rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.28);
   transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
-  transform-style: preserve-3d; position: relative; overflow: hidden;
+  position: relative; overflow: hidden;
 }
 .project .term-bar {
   padding: 8px 14px;
-  background: rgba(0,0,0,0.35);
-  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+  background: rgba(0,0,0,0.45);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.18);
 }
-.project .proj-body { padding: 18px 20px 20px; }
+.project .proj-body { padding: 20px 22px 22px; }
 
 .project::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.06), transparent 55%);
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.08), transparent 60%);
   opacity: 0; transition: opacity 0.3s; pointer-events: none;
 }
 .project:hover {
-  transform: translateY(-11px) rotateX(3deg);
-  box-shadow: var(--shadow), var(--glow), 0 0 50px rgba(0, 240, 255, 0.18);
-  border-color: rgba(0, 240, 255, 0.55);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow), var(--glow), 0 0 40px rgba(0, 240, 255, 0.2);
+  border-color: rgba(0, 240, 255, 0.65);
   background: var(--card-hover);
 }
 .project:hover::after { opacity: 1; }
 
 .project h3 {
-  font-size: 15px; margin-bottom: 7px; color: var(--text);
-  font-family: 'Poppins', sans-serif;
+  font-size: 16px; margin-bottom: 8px; color: #fff;
+  font-family: 'Orbitron', sans-serif; letter-spacing: 0.5px;
 }
+body.light-theme .project h3 { color: #04101e; }
+
 .project p { color: var(--muted); font-size: 12.5px; }
 .project ul {
-  margin-top: 11px; font-size: 12px; color: var(--muted); list-style: none;
+  margin-top: 12px; font-size: 12px; color: var(--muted); list-style: none;
 }
-.project ul li { margin-bottom: 4px; }
+.project ul li { margin-bottom: 5px; }
 .project ul li::before {
-  content: "› "; color: var(--accent3); font-weight: 700;
+  content: "⚡ "; color: var(--accent3); font-weight: 700;
 }
 
-.flex { display: flex; gap: 14px; margin-top: 14px; }
+.flex { display: flex; gap: 14px; margin-top: 16px; }
 .flex a {
   color: var(--accent); font-weight: 600; text-decoration: none;
   font-size: 12px; transition: all 0.2s;
-  font-family: 'JetBrains Mono', monospace; letter-spacing: 0.3px;
+  font-family: 'Share Tech Mono', monospace; letter-spacing: 0.4px;
+  padding: 4px 10px; border-radius: 3px; background: rgba(0, 240, 255, 0.06);
+  border: 1px solid rgba(0, 240, 255, 0.25);
 }
 .flex a:hover {
-  color: var(--accent3); text-shadow: 0 0 14px rgba(0, 255, 157, 0.6);
+  color: #000; background: var(--accent); border-color: var(--accent);
+  box-shadow: var(--glow);
 }
 
-/* ================= ABOUT ================= */
+/* ================= ABOUT SECTION ================= */
 .about {
   background: var(--card); padding: 0;
-  border-radius: 14px;
-  box-shadow: var(--shadow), 0 0 0 1px rgba(0, 240, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: var(--shadow), 0 0 0 1px rgba(0, 240, 255, 0.12);
   margin-top: 68px;
-  border: 1px solid rgba(0, 240, 255, 0.25);
+  border: 1px solid rgba(0, 240, 255, 0.28);
   backdrop-filter: blur(16px); position: relative; overflow: hidden;
 }
 .about .term-bar {
   padding: 10px 18px;
-  background: rgba(0,0,0,0.38);
-  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+  background: rgba(0,0,0,0.48);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.18);
 }
 .about .about-body { padding: 28px 32px 34px; }
 
 .about h3 {
-  font-size: 17px; margin-bottom: 12px; color: var(--accent);
-  font-family: 'JetBrains Mono', monospace; font-weight: 600;
+  font-size: 18px; margin-bottom: 12px; color: var(--accent);
+  font-family: 'Orbitron', sans-serif; font-weight: 700;
 }
 .about > .about-body > p { color: var(--muted); font-size: 13.5px; }
 .about > .about-body > p b { color: var(--text); }
 
 .about-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px; margin-top: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px; margin-top: 24px;
 }
 .about-card {
   background: rgba(0, 240, 255, 0.04);
-  padding: 18px; border-radius: 10px;
-  border: 1px solid rgba(0, 240, 255, 0.18);
+  padding: 20px; border-radius: 6px;
+  border: 1px solid rgba(0, 240, 255, 0.2);
   transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.04);
+  position: relative;
 }
 .about-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(0, 240, 255, 0.45);
-  background: rgba(0, 240, 255, 0.09);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 25px rgba(0, 240, 255, 0.15);
+  transform: translateY(-4px);
+  border-color: rgba(0, 240, 255, 0.55);
+  background: rgba(0, 240, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 25px rgba(0, 240, 255, 0.18);
 }
 .about-card h4 {
-  font-size: 13.5px; margin-bottom: 10px; color: var(--text);
-  font-family: 'Poppins', sans-serif;
+  font-size: 14px; margin-bottom: 12px; color: var(--accent3);
+  font-family: 'Orbitron', sans-serif;
 }
 .about-card ul { list-style: none; font-size: 12.5px; color: var(--muted); }
-.about-card ul li { margin-bottom: 5px; }
+.about-card ul li { margin-bottom: 6px; }
 .about-card p { font-size: 12.5px; color: var(--muted); }
 
 .social-links {
-  display: flex; justify-content: center; gap: 12px;
-  margin-top: 30px; flex-wrap: wrap;
+  display: flex; justify-content: center; gap: 14px;
+  margin-top: 32px; flex-wrap: wrap;
 }
 .social-links a {
-  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-  background: rgba(0, 240, 255, 0.07); border-radius: 50%;
-  color: var(--accent); font-size: 17px; text-decoration: none;
-  border: 1px solid rgba(0, 240, 255, 0.3);
+  width: 46px; height: 46px; display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 240, 255, 0.08); border-radius: 6px;
+  color: var(--accent); font-size: 18px; text-decoration: none;
+  border: 1px solid rgba(0, 240, 255, 0.35);
   box-shadow: 0 0 12px rgba(0, 240, 255, 0.12);
   transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
   transform-style: preserve-3d;
 }
 .social-links a:hover {
-  transform: translateY(-8px) scale(1.14) rotateY(20deg);
+  transform: translateY(-6px) scale(1.1);
   background: linear-gradient(135deg, #00f0ff, #00b8d9);
-  color: #02040a; box-shadow: 0 12px 32px rgba(0, 240, 255, 0.55), 0 0 20px rgba(0, 240, 255, 0.3);
+  color: #02040a; box-shadow: 0 12px 32px rgba(0, 240, 255, 0.6), var(--glow);
   border-color: transparent;
 }
 
-/* ================= CONTACT ================= */
+/* ================= CONTACT FORM ================= */
 form {
-  display: flex; flex-direction: column; gap: 12px;
-  margin-bottom: 48px; max-width: 540px;
+  display: flex; flex-direction: column; gap: 14px;
+  margin-bottom: 48px; max-width: 560px;
+  background: var(--card); padding: 24px; border-radius: 8px;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: var(--shadow); position: relative;
 }
 form input, form textarea {
-  padding: 12px 15px; border-radius: 8px;
+  padding: 13px 16px; border-radius: 5px;
   border: 1px solid rgba(0, 240, 255, 0.28);
-  background: var(--card); color: var(--text);
-  font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  background: rgba(2, 8, 18, 0.9); color: var(--text);
+  font-family: var(--font-mono); font-size: 13px;
   transition: all 0.25s;
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.05);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.5);
+}
+body.light-theme form input, body.light-theme form textarea {
+  background: #fff;
 }
 form input:focus, form textarea:focus {
   outline: none; border-color: #00f0ff;
-  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.18), var(--glow);
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.2), var(--glow);
 }
 form input::placeholder, form textarea::placeholder {
-  color: var(--muted); opacity: 0.65;
+  color: var(--muted); opacity: 0.7;
 }
-form textarea { min-height: 120px; resize: vertical; }
+form textarea { min-height: 130px; resize: vertical; }
 form button {
-  padding: 12px; border: none; border-radius: 8px;
+  padding: 14px; border: none; border-radius: 5px;
   background: linear-gradient(90deg, #00f0ff, #00b8d9);
-  color: #02040a; font-weight: 700; cursor: pointer;
-  font-family: 'Poppins', sans-serif; font-size: 13.5px;
+  color: #02040a; font-weight: 800; cursor: pointer;
+  font-family: 'Orbitron', sans-serif; font-size: 13.5px;
   transition: all 0.3s;
-  box-shadow: 0 4px 22px rgba(0, 240, 255, 0.45), 0 0 0 1px rgba(0, 240, 255, 0.25);
-  letter-spacing: 0.4px;
+  box-shadow: 0 4px 22px rgba(0, 240, 255, 0.45);
+  letter-spacing: 0.8px; clip-path: polygon(0 0, 96% 0, 100% 40%, 100% 100%, 0 100%);
 }
 form button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 32px rgba(0, 240, 255, 0.6), 0 0 18px rgba(0, 240, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 240, 255, 0.75), var(--glow);
 }
 
 /* ================= FOOTER ================= */
 footer {
   text-align: center; margin-top: 40px; padding-bottom: 36px;
-  color: var(--muted); font-size: 11.5px; letter-spacing: 0.5px;
+  color: var(--muted); font-size: 12px; letter-spacing: 0.5px;
+  font-family: 'Share Tech Mono', monospace;
 }
 footer::before {
-  content: "root@talha:~# ";
-  color: var(--accent3); opacity: 0.55;
+  content: "[sec_ops@talha-node ~]$ ";
+  color: var(--accent3); opacity: 0.8;
 }
 
-/* WhatsApp */
+/* WhatsApp Floating Button */
 .whatsapp-btn {
   position: fixed; bottom: 22px; right: 22px;
   background: #25D366; color: #fff;
-  width: 52px; height: 52px; border-radius: 50%;
+  width: 54px; height: 54px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 24px; box-shadow: 0 6px 24px rgba(37,211,102,0.45);
-  transition: all 0.3s; z-index: 50; text-decoration: none;
+  font-size: 28px; box-shadow: 0 6px 26px rgba(37,211,102,0.5);
+  transition: all 0.3s; z-index: 95; text-decoration: none;
+}
+.whatsapp-btn i {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%; line-height: 1;
 }
 .whatsapp-btn:hover {
   transform: scale(1.12) translateY(-5px);
-  box-shadow: 0 12px 32px rgba(37,211,102,0.6);
+  box-shadow: 0 12px 32px rgba(37,211,102,0.7);
 }
 
-/* Glitch effect for titles (subtle) */
+/* Cyber Glitch Effect */
 .glitch {
   position: relative;
+  display: inline-block;
 }
 .glitch:hover {
   animation: glitch 0.3s linear;
 }
 @keyframes glitch {
-  0% { text-shadow: 2px 0 #00e5ff, -2px 0 #00ff88; }
-  25% { text-shadow: -2px 0 #00e5ff, 2px 0 #00ff88; }
-  50% { text-shadow: 2px 0 #00ff88, -2px 0 #00e5ff; }
-  75% { text-shadow: -2px 0 #00ff88, 2px 0 #00e5ff; }
+  0% { text-shadow: 3px 0 #00e5ff, -3px 0 #ff0055; }
+  25% { text-shadow: -3px 0 #00e5ff, 3px 0 #ff0055; }
+  50% { text-shadow: 3px 0 #00ff88, -3px 0 #00e5ff; }
+  75% { text-shadow: -3px 0 #00ff88, 3px 0 #00e5ff; }
   100% { text-shadow: none; }
 }
 
-/* Responsive */
+/* INTERACTIVE FLOATING TERMINAL DRAWER */
+.cli-drawer-toggle {
+  position: fixed; bottom: 22px; left: 22px;
+  background: rgba(2, 10, 22, 0.95);
+  color: var(--accent3); border: 1px solid var(--accent3);
+  padding: 10px 16px; border-radius: 6px; font-family: 'Share Tech Mono', monospace;
+  font-size: 12px; cursor: pointer; z-index: 95;
+  box-shadow: 0 4px 20px rgba(0, 255, 157, 0.25);
+  transition: all 0.3s; display: flex; align-items: center; gap: 8px;
+}
+.cli-drawer-toggle:hover {
+  background: var(--accent3); color: #000; box-shadow: var(--glow-g);
+}
+
+.cli-modal {
+  position: fixed; bottom: 80px; left: 22px; width: 450px; height: 320px;
+  background: rgba(2, 8, 16, 0.96); border: 1px solid var(--accent);
+  border-radius: 8px; box-shadow: var(--shadow), var(--glow);
+  z-index: 99; display: none; flex-direction: column; overflow: hidden;
+  backdrop-filter: blur(16px);
+}
+.cli-modal.active { display: flex; animation: cliIn 0.25s ease-out; }
+@keyframes cliIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+.cli-header {
+  background: rgba(0, 240, 255, 0.12); padding: 8px 14px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+  font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent);
+}
+.cli-close { cursor: pointer; color: var(--alert); font-weight: bold; }
+.cli-close:hover { color: #ff5f56; }
+
+.cli-output {
+  flex: 1; padding: 12px; overflow-y: auto; font-size: 11.5px;
+  color: var(--accent3); font-family: 'Share Tech Mono', monospace;
+  line-height: 1.5;
+}
+.cli-input-wrapper {
+  display: flex; align-items: center; padding: 8px 12px;
+  background: rgba(0,0,0,0.6); border-top: 1px solid rgba(0, 240, 255, 0.2);
+}
+.cli-prompt { color: var(--accent); font-weight: bold; margin-right: 6px; font-size: 11px; }
+.cli-input {
+  flex: 1; background: transparent; border: none; outline: none;
+  color: #fff; font-family: 'Share Tech Mono', monospace; font-size: 12px;
+}
+
+/* Responsive Styles */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 32px; }
-  .profile { width: 240px; height: 240px; }
+  .profile { width: 230px; height: 230px; }
   nav.desktop-nav { display: none; }
   .mobile-menu-btn { display: block; }
-  header { padding: 16px 20px; }
+  header { padding: 14px 20px; }
+  .cli-modal { width: calc(100vw - 44px); left: 22px; right: 22px; }
 }
 @media (max-width: 480px) {
-  .intro-body { padding: 20px 18px 24px; }
-  .intro h2 { font-size: 18px; min-height: 56px; }
+  .intro-body { padding: 20px 16px 24px; }
+  .intro h2 { font-size: 18px; min-height: 58px; }
   .about .about-body { padding: 22px 16px 28px; }
-  .profile { width: 200px; height: 200px; }
+  .profile { width: 190px; height: 190px; }
   .section-title { font-size: 15px; }
+  .cyber-hud { font-size: 9.5px; padding: 4px 10px; }
 }
 </style>
 </head>
 <body class="dark-theme">
 
-<canvas id="matrix"></canvas>
+<!-- CRT Scanline Screen Overlay -->
+<div class="crt-overlay"></div>
 
+<!-- Cyber HUD Top Bar -->
+<div class="cyber-hud">
+  <div class="hud-item">
+    <span class="blink-dot"></span>
+    <span class="hud-tag">STATUS:</span>
+    <span class="hud-value">CONNECTED // ENCRYPTED</span>
+  </div>
+  <div class="hud-item">
+    <span class="hud-tag">SEC-LEVEL:</span>
+    <span class="hud-value" style="color:var(--accent3);">ALPHA-5</span>
+  </div>
+  <div class="hud-item">
+    <span class="hud-tag">IP:</span>
+    <span class="hud-value" id="hud-ip">127.0.0.1 (DEV_NODE)</span>
+  </div>
+  <div class="hud-actions">
+    <button class="hud-btn" id="sfx-toggle">🔊 SFX: ON</button>
+    <button class="hud-btn" id="crt-toggle">🖥️ CRT: ON</button>
+  </div>
+</div>
+
+<!-- Background Canvas Layers -->
+<canvas id="matrix"></canvas>
+<div id="cyber-grid"></div>
+
+<!-- HEADER -->
 <header>
   <div class="brand">
     <div class="logo">TA</div>
@@ -628,14 +820,21 @@ footer::before {
 
 <main>
 
-<!-- HERO -->
+<!-- HERO SECTION -->
 <section class="hero">
   <div class="intro">
+    <div class="corner-border corner-tl"></div>
+    <div class="corner-border corner-tr"></div>
+    <div class="corner-border corner-bl"></div>
+    <div class="corner-border corner-br"></div>
+
     <div class="term-bar">
-      <span class="term-dot r"></span>
-      <span class="term-dot y"></span>
-      <span class="term-dot g"></span>
-      <span class="term-title">talha@dev:~ — bash</span>
+      <div class="term-dots">
+        <span class="term-dot r"></span>
+        <span class="term-dot y"></span>
+        <span class="term-dot g"></span>
+      </div>
+      <span class="term-title">root@talha-sec-ops:~# bash</span>
     </div>
     <div class="intro-body">
       <h2>
@@ -667,7 +866,7 @@ footer::before {
   <div class="profile-container">
     <div class="profile">
       <div class="profile-glow"></div>
-      <img src="profile.jpeg" alt="Talha Afridi" class="profile-img">
+      <img src="profile.jpeg" alt="Talha Afridi" class="profile-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'250\' height=\'250\' viewBox=\'0 0 250 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23070e18\'/><circle cx=\'125\' cy=\'95\' r=\'45\' fill=\'%2300f0ff\' opacity=\'0.8\'/><path d=\'M 45 210 C 45 155, 205 155, 205 210 Z\' fill=\'%2300f0ff\' opacity=\'0.6\'/><text x=\'50%\' y=\'98\' font-family=\'Orbitron\' font-size=\'32\' fill=\'%23000\' text-anchor=\'middle\' font-weight=\'bold\'>TA</text></svg>';">
     </div>
     <h2 class="glitch">Talha Afridi</h2>
     <p>Flutter & Python Developer</p>
@@ -678,16 +877,20 @@ footer::before {
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS SECTION -->
 <h2 id="projects" class="section-title">Featured Projects</h2>
 <div class="projects">
 
   <div class="project">
+    <div class="corner-border corner-tl"></div>
+    <div class="corner-border corner-tr"></div>
     <div class="term-bar">
-      <span class="term-dot r"></span>
-      <span class="term-dot y"></span>
-      <span class="term-dot g"></span>
-      <span class="term-title">expense_manager</span>
+      <div class="term-dots">
+        <span class="term-dot r"></span>
+        <span class="term-dot y"></span>
+        <span class="term-dot g"></span>
+      </div>
+      <span class="term-title">expense_manager.sh</span>
     </div>
     <div class="proj-body">
       <h3>Smart Expense Manager</h3>
@@ -705,11 +908,15 @@ footer::before {
   </div>
 
   <div class="project">
+    <div class="corner-border corner-tl"></div>
+    <div class="corner-border corner-tr"></div>
     <div class="term-bar">
-      <span class="term-dot r"></span>
-      <span class="term-dot y"></span>
-      <span class="term-dot g"></span>
-      <span class="term-title">e_local_market</span>
+      <div class="term-dots">
+        <span class="term-dot r"></span>
+        <span class="term-dot y"></span>
+        <span class="term-dot g"></span>
+      </div>
+      <span class="term-title">e_local_market.py</span>
     </div>
     <div class="proj-body">
       <h3>E-Local Market</h3>
@@ -727,11 +934,15 @@ footer::before {
   </div>
 
   <div class="project">
+    <div class="corner-border corner-tl"></div>
+    <div class="corner-border corner-tr"></div>
     <div class="term-bar">
-      <span class="term-dot r"></span>
-      <span class="term-dot y"></span>
-      <span class="term-dot g"></span>
-      <span class="term-title">password_manager</span>
+      <div class="term-dots">
+        <span class="term-dot r"></span>
+        <span class="term-dot y"></span>
+        <span class="term-dot g"></span>
+      </div>
+      <span class="term-title">password_manager.bin</span>
     </div>
     <div class="proj-body">
       <h3>Password Manager</h3>
@@ -749,11 +960,15 @@ footer::before {
   </div>
 
   <div class="project">
+    <div class="corner-border corner-tl"></div>
+    <div class="corner-border corner-tr"></div>
     <div class="term-bar">
-      <span class="term-dot r"></span>
-      <span class="term-dot y"></span>
-      <span class="term-dot g"></span>
-      <span class="term-title">ai_chat_app</span>
+      <div class="term-dots">
+        <span class="term-dot r"></span>
+        <span class="term-dot y"></span>
+        <span class="term-dot g"></span>
+      </div>
+      <span class="term-title">ai_chat_app.dart</span>
     </div>
     <div class="proj-body">
       <h3>AI Chat App</h3>
@@ -771,11 +986,15 @@ footer::before {
   </div>
 
   <div class="project">
+    <div class="corner-border corner-tl"></div>
+    <div class="corner-border corner-tr"></div>
     <div class="term-bar">
-      <span class="term-dot r"></span>
-      <span class="term-dot y"></span>
-      <span class="term-dot g"></span>
-      <span class="term-title">todo_app</span>
+      <div class="term-dots">
+        <span class="term-dot r"></span>
+        <span class="term-dot y"></span>
+        <span class="term-dot g"></span>
+      </div>
+      <span class="term-title">todo_app.js</span>
     </div>
     <div class="proj-body">
       <h3>TODO App</h3>
@@ -794,17 +1013,19 @@ footer::before {
 
 </div>
 
-<!-- PYTHON PROJECTS -->
+<!-- PYTHON PROJECTS SECTION -->
 <section>
   <h2 class="section-title">Python Projects</h2>
   <div class="projects">
 
     <div class="project">
       <div class="term-bar">
-        <span class="term-dot r"></span>
-        <span class="term-dot y"></span>
-        <span class="term-dot g"></span>
-        <span class="term-title">full_python</span>
+        <div class="term-dots">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+        </div>
+        <span class="term-title">full_python.py</span>
       </div>
       <div class="proj-body">
         <h3>All About Python</h3>
@@ -821,10 +1042,12 @@ footer::before {
 
     <div class="project">
       <div class="term-bar">
-        <span class="term-dot r"></span>
-        <span class="term-dot y"></span>
-        <span class="term-dot g"></span>
-        <span class="term-title">python_advanced</span>
+        <div class="term-dots">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+        </div>
+        <span class="term-title">python_advanced.py</span>
       </div>
       <div class="proj-body">
         <h3>Python Advanced</h3>
@@ -841,10 +1064,12 @@ footer::before {
 
     <div class="project">
       <div class="term-bar">
-        <span class="term-dot r"></span>
-        <span class="term-dot y"></span>
-        <span class="term-dot g"></span>
-        <span class="term-title">password_tracker</span>
+        <div class="term-dots">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+        </div>
+        <span class="term-title">password_tracker.py</span>
       </div>
       <div class="proj-body">
         <h3>Password Tracker (Python)</h3>
@@ -861,10 +1086,12 @@ footer::before {
 
     <div class="project">
       <div class="term-bar">
-        <span class="term-dot r"></span>
-        <span class="term-dot y"></span>
-        <span class="term-dot g"></span>
-        <span class="term-title">ai_chat_python</span>
+        <div class="term-dots">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+        </div>
+        <span class="term-title">ai_chat_python.py</span>
       </div>
       <div class="proj-body">
         <h3>AI Chat App (Python)</h3>
@@ -882,12 +1109,14 @@ footer::before {
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT SECTION -->
 <section class="about" id="about">
   <div class="term-bar">
-    <span class="term-dot r"></span>
-    <span class="term-dot y"></span>
-    <span class="term-dot g"></span>
+    <div class="term-dots">
+      <span class="term-dot r"></span>
+      <span class="term-dot y"></span>
+      <span class="term-dot g"></span>
+    </div>
     <span class="term-title">about_me.sh</span>
   </div>
   <div class="about-body">
@@ -899,13 +1128,13 @@ footer::before {
 
     <div class="about-grid">
       <div class="about-card">
-        <h4>🎓 Education & Personal Info</h4>
+        <h4>🎓 Education & Info</h4>
         <ul>
           <li><b>BS Cybersecurity</b> — IMSciences University (1st Semester)</li>
           <li><b>F.Sc Pre-Engineering</b> — Islamia College Peshawar</li>
           <li><b>Matric</b> — Afridi Model School & College</li>
         </ul>
-        <p><b>Email:</b> talhashahafridi@gmail.com</p>
+        <p style="margin-top:8px;"><b>Email:</b> talhashahafridi@gmail.com</p>
         <p><b>Location:</b> Peshawar, Pakistan</p>
       </div>
 
@@ -939,9 +1168,11 @@ footer::before {
 <!-- HOW I BUILD -->
 <section class="about">
   <div class="term-bar">
-    <span class="term-dot r"></span>
-    <span class="term-dot y"></span>
-    <span class="term-dot g"></span>
+    <div class="term-dots">
+      <span class="term-dot r"></span>
+      <span class="term-dot y"></span>
+      <span class="term-dot g"></span>
+    </div>
     <span class="term-title">build_process.md</span>
   </div>
   <div class="about-body">
@@ -966,9 +1197,11 @@ footer::before {
 <!-- WHY WORK WITH ME -->
 <section class="about">
   <div class="term-bar">
-    <span class="term-dot r"></span>
-    <span class="term-dot y"></span>
-    <span class="term-dot g"></span>
+    <div class="term-dots">
+      <span class="term-dot r"></span>
+      <span class="term-dot y"></span>
+      <span class="term-dot g"></span>
+    </div>
     <span class="term-title">why_me.txt</span>
   </div>
   <div class="about-body">
@@ -982,25 +1215,110 @@ footer::before {
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT SECTION -->
 <h2 id="contact" class="section-title">Contact Me</h2>
-<form>
+<form id="contact-form">
   <input type="text" placeholder="Your Name" required>
   <input type="email" placeholder="Your Email" required>
   <textarea placeholder="Your Message..." required></textarea>
-  <button type="submit">Send Message</button>
+  <button type="submit">SEND ENCRYPTED MESSAGE</button>
 </form>
 
 <footer>© 2025 Talha Afridi — All rights reserved.</footer>
 
+<!-- WHATSAPP FLOATING BUTTON -->
 <a href="https://wa.me/923182586785" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
 
+<!-- FLOATING CLI TERMINAL DRAWER -->
+<button class="cli-drawer-toggle" id="cli-toggle">
+  <i class="fas fa-terminal"></i> <span>CLI TERMINAL [~]</span>
+</button>
+
+<div class="cli-modal" id="cli-modal">
+  <div class="cli-header">
+    <span>TALHA_SEC_OPS // INTERACTIVE SHELL</span>
+    <span class="cli-close" id="cli-close">✕</span>
+  </div>
+  <div class="cli-output" id="cli-output">
+    <div>Type <span style="color:var(--accent);">help</span> to view available terminal commands.</div>
+    <div>System Ready. Encryption Key Active.</div>
+  </div>
+  <div class="cli-input-wrapper">
+    <span class="cli-prompt">talha@sec:~$</span>
+    <input type="text" class="cli-input" id="cli-input" placeholder="Type a command (e.g. help, whoami, projects)..." autocomplete="off">
+  </div>
+</div>
+
 </main>
 
 <script>
-  // ================= MATRIX RAIN =================
+  // ================= WEB AUDIO SYNTHESIZER FOR SOUND FX =================
+  let sfxEnabled = true;
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  function playSound(type) {
+    if (!sfxEnabled) return;
+    try {
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      if (type === 'click') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.05);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+      } else if (type === 'hover') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.015, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.03);
+      } else if (type === 'cmd') {
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.08);
+      }
+    } catch(e) {}
+  }
+
+  // SFX and CRT Controls
+  const sfxBtn = document.getElementById('sfx-toggle');
+  sfxBtn.addEventListener('click', () => {
+    sfxEnabled = !sfxEnabled;
+    sfxBtn.textContent = sfxEnabled ? '🔊 SFX: ON' : '🔇 SFX: OFF';
+    if (sfxEnabled) playSound('click');
+  });
+
+  const crtBtn = document.getElementById('crt-toggle');
+  crtBtn.addEventListener('click', () => {
+    document.body.classList.toggle('crt-off');
+    const isOff = document.body.classList.contains('crt-off');
+    crtBtn.textContent = isOff ? '🖥️ CRT: OFF' : '🖥️ CRT: ON';
+    playSound('click');
+  });
+
+  // Attach hover sound to buttons and links
+  document.querySelectorAll('a, button, input, .chip, .project, .about-card').forEach(el => {
+    el.addEventListener('mouseenter', () => playSound('hover'));
+    el.addEventListener('click', () => playSound('click'));
+  });
+
+  // ================= MATRIX RAIN ANIMATION =================
   const canvas = document.getElementById('matrix');
   const ctx = canvas.getContext('2d');
 
@@ -1011,47 +1329,46 @@ footer::before {
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEF<>{}[]|/\\#$%&@*+=';
+  const chars = '0101010101アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEF<>{}[]|/\\#$%&@*+=;:!?';
   const fontSize = 14;
   let columns = Math.floor(canvas.width / fontSize);
   let drops = Array(columns).fill(1);
 
   function drawMatrix() {
-    // slower fade so rain stays more visible
-    ctx.fillStyle = 'rgba(2, 4, 10, 0.05)';
+    ctx.fillStyle = document.body.classList.contains('light-theme') ? 'rgba(228, 235, 243, 0.08)' : 'rgba(3, 7, 13, 0.06)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.font = fontSize + 'px JetBrains Mono, monospace';
 
     for (let i = 0; i < drops.length; i++) {
       const text = chars[Math.floor(Math.random() * chars.length)];
-      // bright head + cyan body + occasional green/purple
       const rand = Math.random();
-      if (rand > 0.97) {
+
+      if (rand > 0.96) {
         ctx.fillStyle = '#ffffff';
         ctx.shadowColor = '#00f0ff';
-        ctx.shadowBlur = 10;
-      } else if (rand > 0.90) {
+        ctx.shadowBlur = 12;
+      } else if (rand > 0.88) {
         ctx.fillStyle = '#00ff9d';
         ctx.shadowColor = '#00ff9d';
-        ctx.shadowBlur = 7;
-      } else if (rand > 0.85) {
+        ctx.shadowBlur = 8;
+      } else if (rand > 0.82) {
         ctx.fillStyle = '#b14aff';
         ctx.shadowColor = '#b14aff';
         ctx.shadowBlur = 6;
       } else {
-        ctx.fillStyle = 'rgba(0, 240, 255, 0.9)';
+        ctx.fillStyle = document.body.classList.contains('light-theme') ? 'rgba(0, 102, 204, 0.7)' : 'rgba(0, 240, 255, 0.85)';
         ctx.shadowBlur = 0;
       }
       ctx.fillText(text, i * fontSize, drops[i] * fontSize);
       ctx.shadowBlur = 0;
 
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.97) {
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
         drops[i] = 0;
       }
       drops[i]++;
     }
   }
-  setInterval(drawMatrix, 36);
+  setInterval(drawMatrix, 34);
 
   window.addEventListener('resize', () => {
     columns = Math.floor(canvas.width / fontSize);
@@ -1062,17 +1379,17 @@ footer::before {
   const typedEl = document.getElementById('typed-text');
   const fullText = "Hi, I'm Talha — Flutter, FastAPI & Python Developer";
   let charIndex = 0;
-  let typeSpeed = 55;
+  let typeSpeed = 50;
 
   function typeWriter() {
     if (charIndex <= fullText.length) {
       typedEl.textContent = fullText.substring(0, charIndex);
       charIndex++;
-      typeSpeed = 40 + Math.random() * 35;
+      typeSpeed = 35 + Math.random() * 35;
       setTimeout(typeWriter, typeSpeed);
     }
   }
-  setTimeout(typeWriter, 500);
+  setTimeout(typeWriter, 400);
 
   // ================= MOBILE MENU =================
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -1085,7 +1402,7 @@ footer::before {
     btn.addEventListener('click', () => mobileMenu.classList.remove('show'));
   });
 
-  // ================= THEME =================
+  // ================= THEME TOGGLE =================
   const themeBtn = document.getElementById('theme-toggle');
   const mobileThemeBtn = document.getElementById('mobile-theme-toggle');
 
@@ -1110,6 +1427,78 @@ footer::before {
     themeBtn.textContent = '☀️';
     mobileThemeBtn.textContent = '☀️';
   }
+
+  // ================= INTERACTIVE CLI TERMINAL DRAWER =================
+  const cliToggle = document.getElementById('cli-toggle');
+  const cliModal = document.getElementById('cli-modal');
+  const cliClose = document.getElementById('cli-close');
+  const cliInput = document.getElementById('cli-input');
+  const cliOutput = document.getElementById('cli-output');
+
+  cliToggle.addEventListener('click', () => {
+    cliModal.classList.toggle('active');
+    if (cliModal.classList.contains('active')) {
+      cliInput.focus();
+    }
+  });
+  cliClose.addEventListener('click', () => {
+    cliModal.classList.remove('active');
+  });
+
+  function appendCliMsg(text, isCmd = false) {
+    const div = document.createElement('div');
+    if (isCmd) {
+      div.innerHTML = `<span style="color:var(--accent);">talha@sec:~$</span> ${text}`;
+    } else {
+      div.innerHTML = text;
+    }
+    cliOutput.appendChild(div);
+    cliOutput.scrollTop = cliOutput.scrollHeight;
+  }
+
+  cliInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const val = cliInput.value.trim().toLowerCase();
+      if (!val) return;
+      appendCliMsg(cliInput.value, true);
+      playSound('cmd');
+      cliInput.value = '';
+
+      switch (val) {
+        case 'help':
+          appendCliMsg(`Available Commands:<br>
+          - <span style="color:var(--accent);">whoami</span>: Developer Identity<br>
+          - <span style="color:var(--accent);">skills</span>: List Tech Stack<br>
+          - <span style="color:var(--accent);">projects</span>: Jump to Projects<br>
+          - <span style="color:var(--accent);">contact</span>: Email & Social Links<br>
+          - <span style="color:var(--accent);">clear</span>: Clear terminal screen<br>
+          - <span style="color:var(--accent);">matrix</span>: Toggle matrix speed<br>
+          - <span style="color:var(--accent);">sudo</span>: Root access test`);
+          break;
+        case 'whoami':
+          appendCliMsg(`[IDENTITY]: Talha Afridi<br>[ROLE]: Flutter & Fullstack Developer | BS Cybersecurity Student<br>[STATUS]: Available for hire & freelance`);
+          break;
+        case 'skills':
+          appendCliMsg(`Flutter, Dart, BLoC, Provider, FastAPI, Firebase, Python, REST APIs, SQLite, Hive, Git, Kali Linux`);
+          break;
+        case 'projects':
+          appendCliMsg(`Redirecting to #projects...`);
+          window.location.hash = '#projects';
+          break;
+        case 'contact':
+          appendCliMsg(`Email: talhashahafridi@gmail.com | Phone: +92 318 2586785`);
+          break;
+        case 'clear':
+          cliOutput.innerHTML = '';
+          break;
+        case 'sudo':
+          appendCliMsg(`<span style="color:var(--alert);">[ACCESS DENIED]: You need Level 9 Security Clearance for sudo privilege!</span>`);
+          break;
+        default:
+          appendCliMsg(`Command not recognized: "${val}". Type <span style="color:var(--accent);">help</span> for commands.`);
+      }
+    }
+  });
 </script>
 </body>
 </html>
