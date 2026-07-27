@@ -1,29 +1,23 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>Talha Afridi — Cyber Security & Fullstack Terminal</title>
-
   <meta name="description" content="Talha Afridi — Flutter, FastAPI, Firebase & Python Developer. Production-ready apps with clean architecture and cybersecurity mindset." />
   <meta name="robots" content="index, follow">
-
   <meta property="og:title" content="Talha Afridi | Flutter & Fullstack Developer">
   <meta property="og:description" content="Flutter, FastAPI & Python developer building scalable and secure applications">
   <meta property="og:type" content="website">
-
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;600;700;800&family=Share+Tech+Mono&family=Orbitron:wght@500;700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
 /* ================= ROOT & CYBER VARIABLES ================= */
 :root {
-  --bg: #03070d;
-  --bg2: #070e18;
-  --card: rgba(6, 14, 26, 0.93);
-  --card-hover: rgba(10, 22, 40, 0.97);
+  --bg: #02060d;
+  --bg2: #060d18;
+  --card: rgba(5, 12, 24, 0.94);
+  --card-hover: rgba(8, 18, 36, 0.98);
   --text: #e2f1ff;
   --muted: #5c7b99;
   --accent: #00f0ff;      /* Cyan Neon */
@@ -32,18 +26,17 @@
   --accent4: #b14aff;     /* Neon Purple */
   --alert: #ff0055;       /* Red Alert */
   --warning: #ffb700;     /* Security Warning Amber */
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.85);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.88);
   --border: 1px solid rgba(0, 240, 255, 0.35);
-  --border-glow: 0 0 15px rgba(0, 240, 255, 0.3);
   --glow: 0 0 30px rgba(0, 240, 255, 0.6), 0 0 10px rgba(0, 240, 255, 0.4);
   --glow-g: 0 0 25px rgba(0, 255, 157, 0.5), 0 0 8px rgba(0, 255, 157, 0.3);
   --glow-p: 0 0 28px rgba(177, 74, 255, 0.45);
   --glow-alert: 0 0 25px rgba(255, 0, 85, 0.5);
-  --crt-opacity: 0.35;
+  --crt-opacity: 0.32;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Share Tech Mono', monospace;
   --font-cyber: 'Orbitron', 'Poppins', sans-serif;
+  --matrix-color: #00f0ff;
 }
-
 body.light-theme {
   --bg: #e4ebf3;
   --bg2: #d3deea;
@@ -59,15 +52,13 @@ body.light-theme {
   --warning: #d97706;
   --shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
   --border: 1px solid rgba(0, 102, 204, 0.3);
-  --border-glow: 0 0 10px rgba(0, 102, 204, 0.2);
   --glow: 0 0 20px rgba(0, 102, 204, 0.25);
   --glow-g: 0 0 18px rgba(0, 136, 68, 0.2);
   --crt-opacity: 0.05;
+  --matrix-color: #0066cc;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
   font-family: var(--font-mono);
   background: var(--bg);
@@ -79,21 +70,18 @@ body {
   position: relative;
   cursor: default;
 }
-
 /* Custom Cyber Selection */
 ::selection {
   background: var(--accent);
   color: #000;
   text-shadow: none;
 }
-
 /* Background Canvas Matrix */
 #matrix {
   position: fixed; inset: 0; z-index: -4;
   opacity: 0.65; pointer-events: none;
 }
 body.light-theme #matrix { opacity: 0.25; }
-
 /* Grid Line Canvas Overlay */
 #cyber-grid {
   position: fixed; inset: 0; z-index: -3;
@@ -103,7 +91,6 @@ body.light-theme #matrix { opacity: 0.25; }
     linear-gradient(90deg, rgba(0, 240, 255, 0.2) 1px, transparent 1px);
   background-size: 40px 40px;
 }
-
 /* CRT Screen Scanlines & Flicker */
 .crt-overlay {
   position: fixed; inset: 0;
@@ -114,7 +101,6 @@ body.light-theme #matrix { opacity: 0.25; }
   z-index: 9998; pointer-events: none; opacity: var(--crt-opacity);
 }
 body.crt-off .crt-overlay { display: none; }
-
 /* Vignette + Cyber Radial Lighting */
 body::after {
   content: "";
@@ -129,18 +115,16 @@ body::after {
 body.light-theme::after {
   background: radial-gradient(ellipse at 50% 30%, transparent 40%, rgba(0,0,0,0.06) 100%);
 }
-
 h1,h2,h3,h4,h5,h6 {
   font-family: var(--font-cyber);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
-
 /* ================= CYBER HUD TOP BAR ================= */
 .cyber-hud {
   background: rgba(2, 6, 14, 0.95);
   border-bottom: 1px solid rgba(0, 240, 255, 0.25);
-  padding: 4px 20px;
+  padding: 5px 20px;
   font-size: 11px;
   display: flex;
   justify-content: space-between;
@@ -150,6 +134,7 @@ h1,h2,h3,h4,h5,h6 {
   position: relative;
   z-index: 101;
   box-shadow: 0 2px 10px rgba(0, 240, 255, 0.1);
+  flex-wrap: wrap; gap: 8px;
 }
 body.light-theme .cyber-hud {
   background: rgba(220, 230, 242, 0.95);
@@ -164,8 +149,7 @@ body.light-theme .cyber-hud {
   animation: blink 1.2s infinite;
 }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
-
-.hud-actions { display: flex; gap: 12px; }
+.hud-actions { display: flex; gap: 8px; align-items: center; }
 .hud-btn {
   background: transparent; border: 1px solid rgba(0, 240, 255, 0.3);
   color: var(--text); padding: 2px 8px; border-radius: 3px;
@@ -175,7 +159,11 @@ body.light-theme .cyber-hud {
 .hud-btn:hover {
   background: var(--accent); color: #000; box-shadow: var(--glow);
 }
-
+.matrix-color-select {
+  background: rgba(0,0,0,0.6); border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--accent); font-size: 10px; padding: 2px 5px; border-radius: 3px;
+  font-family: 'Share Tech Mono', monospace; outline: none; cursor: pointer;
+}
 /* ================= HEADER ================= */
 header {
   display: flex; justify-content: space-between; align-items: center;
@@ -186,9 +174,7 @@ header {
   backdrop-filter: blur(16px);
 }
 body.light-theme header { background: rgba(238, 242, 247, 0.92); }
-
 .brand { display: flex; align-items: center; gap: 14px; }
-
 /* Hacker Cyberpunk Logo Badge */
 .logo {
   width: 48px; height: 48px; border-radius: 8px;
@@ -211,12 +197,9 @@ body.light-theme header { background: rgba(238, 242, 247, 0.92); }
   transform: translateY(-4px) scale(1.08);
   box-shadow: 0 0 40px rgba(0, 240, 255, 0.85), 0 0 20px rgba(177, 74, 255, 0.6);
 }
-
 .brand h1 { font-size: 19px; letter-spacing: 0.8px; font-family: 'Orbitron', sans-serif; text-shadow: 0 0 12px rgba(0, 240, 255, 0.4); }
 .brand p { font-size: 11px; color: var(--accent3); margin-top: 1px; letter-spacing: 0.8px; font-family: 'Share Tech Mono', monospace; }
-
 .desktop-nav { display: flex; align-items: center; gap: 8px; }
-
 .desktop-nav .nav-btn {
   text-decoration: none; font-weight: 600; font-size: 11.5px;
   padding: 8px 15px; border-radius: 4px;
@@ -237,14 +220,12 @@ body.light-theme header { background: rgba(238, 242, 247, 0.92); }
   box-shadow: var(--glow);
 }
 .desktop-nav .nav-btn:hover::before { opacity: 1; left: 7px; }
-
 .mobile-menu-btn {
   display: none; background: linear-gradient(135deg, #00f0ff, #00b8d9);
   color: #02040a; border: none; padding: 9px 12px; border-radius: 6px;
   font-size: 16px; cursor: pointer; box-shadow: var(--glow);
 }
 .mobile-menu-btn:hover { transform: scale(1.08); }
-
 #mobile-menu {
   position: fixed; top: 96px; right: 16px; width: 250px;
   background: var(--card); backdrop-filter: blur(28px);
@@ -268,16 +249,13 @@ body.light-theme header { background: rgba(238, 242, 247, 0.92); }
   background: linear-gradient(90deg, #00e5ff, #00a8cc);
   color: #03060c; transform: translateX(5px); border-color: transparent;
 }
-
 /* ================= MAIN ================= */
 main { max-width: 1240px; margin: 0 auto; padding: 22px; position: relative; z-index: 1; }
-
 /* ================= HERO ================= */
 .hero {
   display: grid; grid-template-columns: 1fr 340px;
   gap: 40px; align-items: center; margin-top: 24px;
 }
-
 /* Terminal Window Box */
 .intro {
   background: var(--card);
@@ -294,7 +272,6 @@ main { max-width: 1240px; margin: 0 auto; padding: 22px; position: relative; z-i
   box-shadow: var(--shadow), var(--glow), 0 0 60px rgba(0, 240, 255, 0.2);
   border-color: rgba(0, 240, 255, 0.65);
 }
-
 /* Corner Cyber Decors */
 .corner-border {
   position: absolute; width: 8px; height: 8px; border-color: var(--accent); pointer-events: none; z-index: 10;
@@ -303,7 +280,6 @@ main { max-width: 1240px; margin: 0 auto; padding: 22px; position: relative; z-i
 .corner-tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
 .corner-bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
 .corner-br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
-
 /* Terminal Header Bar */
 .term-bar {
   display: flex; align-items: center; justify-content: space-between;
@@ -312,20 +288,16 @@ main { max-width: 1240px; margin: 0 auto; padding: 22px; position: relative; z-i
   border-bottom: 1px solid rgba(0, 229, 255, 0.18);
 }
 body.light-theme .term-bar { background: rgba(0,0,0,0.08); }
-
 .term-dots { display: flex; align-items: center; gap: 7px; }
 .term-dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
 .term-dot.r { background: #ff5f56; box-shadow: 0 0 6px rgba(255,95,86,0.6); }
 .term-dot.y { background: #ffbd2e; box-shadow: 0 0 6px rgba(255,189,46,0.6); }
 .term-dot.g { background: #27c93f; box-shadow: 0 0 6px rgba(39,201,63,0.6); }
-
 .term-title {
   font-size: 11px; color: var(--accent);
   letter-spacing: 0.8px; font-family: 'Share Tech Mono', monospace;
 }
-
 .intro-body { padding: 28px 30px 32px; }
-
 .intro h2 {
   font-size: 23px; line-height: 1.45; margin-bottom: 14px;
   min-height: 72px; color: #fff;
@@ -333,10 +305,8 @@ body.light-theme .term-bar { background: rgba(0,0,0,0.08); }
   letter-spacing: -0.01em;
 }
 body.light-theme .intro h2 { color: #051224; }
-
 .intro p { margin-top: 12px; color: var(--muted); font-size: 13.5px; }
 .intro p b { color: var(--accent3); font-weight: 600; }
-
 /* Typing Cursor */
 .typed-cursor {
   display: inline-block;
@@ -350,7 +320,6 @@ body.light-theme .intro h2 { color: #051224; }
 @keyframes blinkCursor {
   50% { opacity: 0; }
 }
-
 .chips {
   margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px;
 }
@@ -370,7 +339,6 @@ body.light-theme .intro h2 { color: #051224; }
   box-shadow: var(--glow);
   border-color: #00f0ff; color: #fff;
 }
-
 .cta {
   display: inline-flex; align-items: center; gap: 8px;
   margin-top: 26px;
@@ -393,10 +361,8 @@ body.light-theme .intro h2 { color: #051224; }
   transform: translateY(-3px) scale(1.03);
   box-shadow: 0 8px 36px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.4);
 }
-
 /* ================= PROFILE CYBER CARD ================= */
 .profile-container { text-align: center; perspective: 1400px; }
-
 .profile {
   position: relative; width: 270px; height: 270px; margin: 0 auto;
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
@@ -406,7 +372,6 @@ body.light-theme .intro h2 { color: #051224; }
   0%, 100% { transform: translateY(0) rotateY(0deg); }
   50% { transform: translateY(-12px) rotateY(10deg); }
 }
-
 .profile-img {
   width: 88%; height: 88%; border-radius: 50%; object-fit: cover;
   border: 3px solid rgba(0, 240, 255, 0.65);
@@ -421,13 +386,11 @@ body.light-theme .intro h2 { color: #051224; }
   opacity: 0.85; z-index: 1;
 }
 @keyframes rotate { to { transform: rotate(360deg); } }
-
 .profile:hover .profile-img {
   transform: scale(1.06);
   border-color: #00f0ff;
   box-shadow: 0 0 70px rgba(0, 240, 255, 0.6), 0 0 30px rgba(177, 74, 255, 0.3);
 }
-
 .profile-container h2 {
   margin-top: 22px; font-size: 22px; color: var(--text); letter-spacing: 1.5px;
   font-family: 'Orbitron', sans-serif;
@@ -436,7 +399,6 @@ body.light-theme .intro h2 { color: #051224; }
   color: var(--accent); margin-top: 4px; font-size: 12px; letter-spacing: 0.8px;
   font-family: 'Share Tech Mono', monospace;
 }
-
 .status-bar {
   display: inline-flex; align-items: center; gap: 8px;
   margin-top: 14px; padding: 6px 14px;
@@ -455,7 +417,22 @@ body.light-theme .intro h2 { color: #051224; }
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.35; transform: scale(0.85); }
 }
-
+/* ================= LIVE SYSTEM PERFORMANCE MONITOR ================= */
+.sys-monitor {
+  background: var(--card); border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 8px; padding: 14px 20px; margin-top: 30px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px; font-family: 'Share Tech Mono', monospace; font-size: 11px;
+}
+.sys-metric-title { color: var(--muted); font-size: 10px; margin-bottom: 4px; }
+.sys-bar-track {
+  width: 100%; height: 6px; background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 3px; overflow: hidden;
+}
+.sys-bar-fill {
+  height: 100%; background: linear-gradient(90deg, var(--accent3), var(--accent));
+  width: 25%; transition: width 0.8s ease;
+}
 /* ================= SECTION HEADERS ================= */
 .section-title {
   margin: 68px 0 24px; font-size: 19px; color: var(--accent);
@@ -472,14 +449,12 @@ body.light-theme .intro h2 { color: #051224; }
   content: ""; flex: 1; height: 1px;
   background: linear-gradient(90deg, rgba(0, 240, 255, 0.6), rgba(0, 240, 255, 0.05));
 }
-
 /* ================= PROJECTS GRID ================= */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 22px;
 }
-
 .project {
   background: var(--card); padding: 0;
   border-radius: 8px;
@@ -494,7 +469,6 @@ body.light-theme .intro h2 { color: #051224; }
   border-bottom: 1px solid rgba(0, 240, 255, 0.18);
 }
 .project .proj-body { padding: 20px 22px 22px; }
-
 .project::after {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(135deg, rgba(0, 240, 255, 0.08), transparent 60%);
@@ -507,13 +481,11 @@ body.light-theme .intro h2 { color: #051224; }
   background: var(--card-hover);
 }
 .project:hover::after { opacity: 1; }
-
 .project h3 {
   font-size: 16px; margin-bottom: 8px; color: #fff;
   font-family: 'Orbitron', sans-serif; letter-spacing: 0.5px;
 }
 body.light-theme .project h3 { color: #04101e; }
-
 .project p { color: var(--muted); font-size: 12.5px; }
 .project ul {
   margin-top: 12px; font-size: 12px; color: var(--muted); list-style: none;
@@ -522,7 +494,6 @@ body.light-theme .project h3 { color: #04101e; }
 .project ul li::before {
   content: "⚡ "; color: var(--accent3); font-weight: 700;
 }
-
 .flex { display: flex; gap: 14px; margin-top: 16px; }
 .flex a {
   color: var(--accent); font-weight: 600; text-decoration: none;
@@ -535,7 +506,6 @@ body.light-theme .project h3 { color: #04101e; }
   color: #000; background: var(--accent); border-color: var(--accent);
   box-shadow: var(--glow);
 }
-
 /* ================= ABOUT SECTION ================= */
 .about {
   background: var(--card); padding: 0;
@@ -551,14 +521,12 @@ body.light-theme .project h3 { color: #04101e; }
   border-bottom: 1px solid rgba(0, 240, 255, 0.18);
 }
 .about .about-body { padding: 28px 32px 34px; }
-
 .about h3 {
   font-size: 18px; margin-bottom: 12px; color: var(--accent);
   font-family: 'Orbitron', sans-serif; font-weight: 700;
 }
 .about > .about-body > p { color: var(--muted); font-size: 13.5px; }
 .about > .about-body > p b { color: var(--text); }
-
 .about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -585,7 +553,6 @@ body.light-theme .project h3 { color: #04101e; }
 .about-card ul { list-style: none; font-size: 12.5px; color: var(--muted); }
 .about-card ul li { margin-bottom: 6px; }
 .about-card p { font-size: 12.5px; color: var(--muted); }
-
 .social-links {
   display: flex; justify-content: center; gap: 14px;
   margin-top: 32px; flex-wrap: wrap;
@@ -605,7 +572,6 @@ body.light-theme .project h3 { color: #04101e; }
   color: #02040a; box-shadow: 0 12px 32px rgba(0, 240, 255, 0.6), var(--glow);
   border-color: transparent;
 }
-
 /* ================= CONTACT FORM ================= */
 form {
   display: flex; flex-direction: column; gap: 14px;
@@ -646,7 +612,6 @@ form button:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 32px rgba(0, 240, 255, 0.75), var(--glow);
 }
-
 /* ================= FOOTER ================= */
 footer {
   text-align: center; margin-top: 40px; padding-bottom: 36px;
@@ -657,7 +622,6 @@ footer::before {
   content: "[sec_ops@talha-node ~]$ ";
   color: var(--accent3); opacity: 0.8;
 }
-
 /* WhatsApp Floating Button */
 .whatsapp-btn {
   position: fixed; bottom: 22px; right: 22px;
@@ -675,7 +639,6 @@ footer::before {
   transform: scale(1.12) translateY(-5px);
   box-shadow: 0 12px 32px rgba(37,211,102,0.7);
 }
-
 /* Cyber Glitch Effect */
 .glitch {
   position: relative;
@@ -691,7 +654,6 @@ footer::before {
   75% { text-shadow: -3px 0 #00ff88, 3px 0 #00e5ff; }
   100% { text-shadow: none; }
 }
-
 /* INTERACTIVE FLOATING TERMINAL DRAWER */
 .cli-drawer-toggle {
   position: fixed; bottom: 22px; left: 22px;
@@ -705,30 +667,21 @@ footer::before {
 .cli-drawer-toggle:hover {
   background: var(--accent3); color: #000; box-shadow: var(--glow-g);
 }
-
 .cli-modal {
-  position: fixed; bottom: 80px; left: 22px; width: 450px; height: 320px;
+  position: fixed; bottom: 80px; left: 22px; width: 480px; height: 350px;
   background: rgba(2, 8, 16, 0.96); border: 1px solid var(--accent);
+  position: fixed; bottom: 80px; left: 22px; width: 520px; height: 380px;
+  background: rgba(2, 8, 16, 0.97); border: 1px solid var(--accent);
   border-radius: 8px; box-shadow: var(--shadow), var(--glow);
   z-index: 99; display: none; flex-direction: column; overflow: hidden;
   backdrop-filter: blur(16px);
-}
-.cli-modal.active { display: flex; animation: cliIn 0.25s ease-out; }
-@keyframes cliIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
-.cli-header {
-  background: rgba(0, 240, 255, 0.12); padding: 8px 14px;
-  display: flex; justify-content: space-between; align-items: center;
-  border-bottom: 1px solid rgba(0, 240, 255, 0.25);
-  font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent);
-}
-.cli-close { cursor: pointer; color: var(--alert); font-weight: bold; }
 .cli-close:hover { color: #ff5f56; }
-
 .cli-output {
   flex: 1; padding: 12px; overflow-y: auto; font-size: 11.5px;
+  flex: 1; padding: 14px; overflow-y: auto; font-size: 11.5px;
   color: var(--accent3); font-family: 'Share Tech Mono', monospace;
   line-height: 1.5;
+  line-height: 1.6;
 }
 .cli-input-wrapper {
   display: flex; align-items: center; padding: 8px 12px;
@@ -739,7 +692,6 @@ footer::before {
   flex: 1; background: transparent; border: none; outline: none;
   color: #fff; font-family: 'Share Tech Mono', monospace; font-size: 12px;
 }
-
 /* Responsive Styles */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 32px; }
@@ -760,10 +712,8 @@ footer::before {
 </style>
 </head>
 <body class="dark-theme">
-
 <!-- CRT Scanline Screen Overlay -->
 <div class="crt-overlay"></div>
-
 <!-- Cyber HUD Top Bar -->
 <div class="cyber-hud">
   <div class="hud-item">
@@ -776,29 +726,33 @@ footer::before {
     <span class="hud-value" style="color:var(--accent3);">ALPHA-5</span>
   </div>
   <div class="hud-item">
-    <span class="hud-tag">IP:</span>
-    <span class="hud-value" id="hud-ip">127.0.0.1 (DEV_NODE)</span>
+    <span class="hud-tag">PING:</span>
+    <span class="hud-value" id="hud-ping">12ms</span>
   </div>
   <div class="hud-actions">
+    <select class="matrix-color-select" id="matrix-color">
+      <option value="#00f0ff">💙 Cyan Matrix</option>
+      <option value="#00ff9d">💚 Green Matrix</option>
+      <option value="#b14aff">💜 Purple Matrix</option>
+      <option value="#ff0055">🔴 Red Matrix</option>
+    </select>
+    <button class="hud-btn" id="hum-toggle">🔊 AMBIENT: OFF</button>
     <button class="hud-btn" id="sfx-toggle">🔊 SFX: ON</button>
     <button class="hud-btn" id="crt-toggle">🖥️ CRT: ON</button>
   </div>
 </div>
-
 <!-- Background Canvas Layers -->
 <canvas id="matrix"></canvas>
 <div id="cyber-grid"></div>
-
 <!-- HEADER -->
 <header>
   <div class="brand">
     <div class="logo">TA</div>
     <div>
-      <h1>Talha Afridi</h1>
+      <h1 class="scramble-text" data-original="Talha Afridi">Talha Afridi</h1>
       <p>Flutter & Fullstack Developer</p>
     </div>
   </div>
-
   <nav class="desktop-nav">
     <a class="nav-btn" href="#projects">Projects</a>
     <a class="nav-btn" href="#about">About</a>
@@ -806,9 +760,7 @@ footer::before {
     <a class="nav-btn" href="Talha_Afridi_Professional_CV.pdf" download id="cv-btn">Download CV</a>
     <button class="nav-btn" id="theme-toggle">🌙</button>
   </nav>
-
   <button id="mobile-menu-btn" class="mobile-menu-btn">☰</button>
-
   <div id="mobile-menu">
     <a href="#projects" class="mobile-nav-btn">Projects</a>
     <a href="#about" class="mobile-nav-btn">About</a>
@@ -817,9 +769,7 @@ footer::before {
     <button id="mobile-theme-toggle" class="mobile-nav-btn">🌙</button>
   </div>
 </header>
-
 <main>
-
 <!-- HERO SECTION -->
 <section class="hero">
   <div class="intro">
@@ -827,7 +777,6 @@ footer::before {
     <div class="corner-border corner-tr"></div>
     <div class="corner-border corner-bl"></div>
     <div class="corner-border corner-br"></div>
-
     <div class="term-bar">
       <div class="term-dots">
         <span class="term-dot r"></span>
@@ -845,7 +794,6 @@ footer::before {
         Firebase, and Python with clean architecture and secure backend integration.
       </p>
       <p><b>Impact:</b> 10+ real-world apps & multiple production-style projects</p>
-
       <div class="chips">
         <div class="chip">Flutter</div>
         <div class="chip">FastAPI</div>
@@ -858,17 +806,15 @@ footer::before {
         <div class="chip">Provider</div>
         <div class="chip">Cybersecurity</div>
       </div>
-
       <a class="cta" href="#projects">Explore Projects 🚀</a>
     </div>
   </div>
-
   <div class="profile-container">
     <div class="profile">
       <div class="profile-glow"></div>
       <img src="profile.jpeg" alt="Talha Afridi" class="profile-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'250\' height=\'250\' viewBox=\'0 0 250 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23070e18\'/><circle cx=\'125\' cy=\'95\' r=\'45\' fill=\'%2300f0ff\' opacity=\'0.8\'/><path d=\'M 45 210 C 45 155, 205 155, 205 210 Z\' fill=\'%2300f0ff\' opacity=\'0.6\'/><text x=\'50%\' y=\'98\' font-family=\'Orbitron\' font-size=\'32\' fill=\'%23000\' text-anchor=\'middle\' font-weight=\'bold\'>TA</text></svg>';">
     </div>
-    <h2 class="glitch">Talha Afridi</h2>
+    <h2 class="glitch scramble-text" data-original="Talha Afridi">Talha Afridi</h2>
     <p>Flutter & Python Developer</p>
     <div class="status-bar">
       <span class="status-dot"></span>
@@ -876,11 +822,36 @@ footer::before {
     </div>
   </div>
 </section>
-
+<!-- LIVE SYSTEM PERFORMANCE METRICS -->
+<div class="sys-monitor">
+  <div>
+    <div class="sys-metric-title">SYSTEM LOAD / CPU</div>
+    <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+      <span style="color:var(--accent);" id="cpu-val">18%</span>
+      <span style="color:var(--muted);">CORE_01</span>
+    </div>
+    <div class="sys-bar-track"><div class="sys-bar-fill" id="cpu-fill" style="width:18%;"></div></div>
+  </div>
+  <div>
+    <div class="sys-metric-title">MEMORY / ALLOCATED</div>
+    <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+      <span style="color:var(--accent3);" id="ram-val">4.2 GB</span>
+      <span style="color:var(--muted);">16.0 GB</span>
+    </div>
+    <div class="sys-bar-track"><div class="sys-bar-fill" id="ram-fill" style="width:32%; background:linear-gradient(90deg, #00f0ff, #b14aff);"></div></div>
+  </div>
+  <div>
+    <div class="sys-metric-title">SECURITY HANDSHAKE</div>
+    <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+      <span style="color:var(--accent3);">TLS 1.3 / AES-256</span>
+      <span style="color:var(--accent3);">VERIFIED</span>
+    </div>
+    <div class="sys-bar-track"><div class="sys-bar-fill" style="width:100%; background:var(--accent3);"></div></div>
+  </div>
+</div>
 <!-- PROJECTS SECTION -->
-<h2 id="projects" class="section-title">Featured Projects</h2>
+<h2 id="projects" class="section-title scramble-text" data-original="Featured Projects">Featured Projects</h2>
 <div class="projects">
-
   <div class="project">
     <div class="corner-border corner-tl"></div>
     <div class="corner-border corner-tr"></div>
@@ -906,7 +877,6 @@ footer::before {
       </div>
     </div>
   </div>
-
   <div class="project">
     <div class="corner-border corner-tl"></div>
     <div class="corner-border corner-tr"></div>
@@ -932,7 +902,6 @@ footer::before {
       </div>
     </div>
   </div>
-
   <div class="project">
     <div class="corner-border corner-tl"></div>
     <div class="corner-border corner-tr"></div>
@@ -958,7 +927,6 @@ footer::before {
       </div>
     </div>
   </div>
-
   <div class="project">
     <div class="corner-border corner-tl"></div>
     <div class="corner-border corner-tr"></div>
@@ -984,7 +952,6 @@ footer::before {
       </div>
     </div>
   </div>
-
   <div class="project">
     <div class="corner-border corner-tl"></div>
     <div class="corner-border corner-tr"></div>
@@ -1010,14 +977,11 @@ footer::before {
       </div>
     </div>
   </div>
-
 </div>
-
 <!-- PYTHON PROJECTS SECTION -->
 <section>
-  <h2 class="section-title">Python Projects</h2>
+  <h2 class="section-title scramble-text" data-original="Python Projects">Python Projects</h2>
   <div class="projects">
-
     <div class="project">
       <div class="term-bar">
         <div class="term-dots">
@@ -1039,7 +1003,6 @@ footer::before {
         </div>
       </div>
     </div>
-
     <div class="project">
       <div class="term-bar">
         <div class="term-dots">
@@ -1061,7 +1024,6 @@ footer::before {
         </div>
       </div>
     </div>
-
     <div class="project">
       <div class="term-bar">
         <div class="term-dots">
@@ -1083,7 +1045,6 @@ footer::before {
         </div>
       </div>
     </div>
-
     <div class="project">
       <div class="term-bar">
         <div class="term-dots">
@@ -1105,10 +1066,8 @@ footer::before {
         </div>
       </div>
     </div>
-
   </div>
 </section>
-
 <!-- ABOUT SECTION -->
 <section class="about" id="about">
   <div class="term-bar">
@@ -1120,12 +1079,11 @@ footer::before {
     <span class="term-title">about_me.sh</span>
   </div>
   <div class="about-body">
-    <h3>About Me</h3>
+    <h3 class="scramble-text" data-original="About Me">About Me</h3>
     <p>
       I'm <b>Talha Afridi</b>, a <b>Flutter & Fullstack Developer</b> and
       <b>Cybersecurity student</b> focused on building real-world digital products.
     </p>
-
     <div class="about-grid">
       <div class="about-card">
         <h4>🎓 Education & Info</h4>
@@ -1137,7 +1095,6 @@ footer::before {
         <p style="margin-top:8px;"><b>Email:</b> talhashahafridi@gmail.com</p>
         <p><b>Location:</b> Peshawar, Pakistan</p>
       </div>
-
       <div class="about-card">
         <h4>💡 Technical Skills</h4>
         <p>
@@ -1145,12 +1102,19 @@ footer::before {
           SQLite, Hive, Git, GitHub, Kali Linux
         </p>
       </div>
-
       <div class="about-card">
         <h4>🚀 Experience</h4>
         <p>
           Built 15+ Flutter apps and 30+ Python projects including backend systems,
           automation, and AI-powered applications.
+        </p>
+      </div>
+      <div class="about-card" style="border-color:var(--accent3);">
+        <h4>🛡️ Cyber Security Mindset</h4>
+        <p style="color:var(--accent3);">
+          ✓ Secure Coding Practices & OWASP Awareness<br>
+          ✓ Defensive & Offensive Security Fundamentals<br>
+          ✓ System Penetration Testing & Kali Linux Toolkit
         </p>
       </div>
     </div>
@@ -1164,7 +1128,6 @@ footer::before {
     </div>
   </div>
 </section>
-
 <!-- HOW I BUILD -->
 <section class="about">
   <div class="term-bar">
@@ -1176,7 +1139,7 @@ footer::before {
     <span class="term-title">build_process.md</span>
   </div>
   <div class="about-body">
-    <h3>How I Build Software</h3>
+    <h3 class="scramble-text" data-original="How I Build Software">How I Build Software</h3>
     <div class="about-grid">
       <div class="about-card">
         <h4>Architecture</h4>
@@ -1193,7 +1156,6 @@ footer::before {
     </div>
   </div>
 </section>
-
 <!-- WHY WORK WITH ME -->
 <section class="about">
   <div class="term-bar">
@@ -1205,7 +1167,7 @@ footer::before {
     <span class="term-title">why_me.txt</span>
   </div>
   <div class="about-body">
-    <h3>Why Work With Me</h3>
+    <h3 class="scramble-text" data-original="Why Work With Me">Why Work With Me</h3>
     <ul style="line-height:1.9; color:var(--muted); font-size:13.5px; list-style:none;">
       <li>› Real-world, production-ready apps</li>
       <li>› Clean, maintainable code</li>
@@ -1214,61 +1176,102 @@ footer::before {
     </ul>
   </div>
 </section>
-
 <!-- CONTACT SECTION -->
-<h2 id="contact" class="section-title">Contact Me</h2>
+<h2 id="contact" class="section-title scramble-text" data-original="Contact Me">Contact Me</h2>
 <form id="contact-form">
   <input type="text" placeholder="Your Name" required>
   <input type="email" placeholder="Your Email" required>
   <textarea placeholder="Your Message..." required></textarea>
+  <input type="text" id="contact-name" placeholder="Your Name" required>
+  <input type="email" id="contact-email" placeholder="Your Email" required>
+  <textarea id="contact-msg" placeholder="Your Message..." required></textarea>
   <button type="submit">SEND ENCRYPTED MESSAGE</button>
 </form>
-
 <footer>© 2025 Talha Afridi — All rights reserved.</footer>
-
 <!-- WHATSAPP FLOATING BUTTON -->
 <a href="https://wa.me/923182586785" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
-
 <!-- FLOATING CLI TERMINAL DRAWER -->
-<button class="cli-drawer-toggle" id="cli-toggle">
-  <i class="fas fa-terminal"></i> <span>CLI TERMINAL [~]</span>
+<button class="cli-drawer-toggle" id="cli-toggle" title="Press Ctrl + ~ or click to open terminal">
+  <i class="fas fa-terminal"></i> <span>CLI TERMINAL [Ctrl + ~]</span>
 </button>
-
 <div class="cli-modal" id="cli-modal">
   <div class="cli-header">
     <span>TALHA_SEC_OPS // INTERACTIVE SHELL</span>
     <span class="cli-close" id="cli-close">✕</span>
   </div>
   <div class="cli-output" id="cli-output">
-    <div>Type <span style="color:var(--accent);">help</span> to view available terminal commands.</div>
+    <div>Type <span style="color:var(--accent);">help</span> or <span style="color:var(--accent3);">neofetch</span> to start.</div>
     <div>System Ready. Encryption Key Active.</div>
+    <div>Welcome to Talha Afridi's Cyber Terminal.</div>
+    <div>Type <span style="color:var(--accent);">help</span> or <span style="color:var(--accent3);">socials</span> to start.</div>
+    <div>Try commands: <span style="color:var(--accent);">tiktok</span>, <span style="color:var(--accent);">github</span>, <span style="color:var(--accent);">cv</span>, <span style="color:var(--accent);">msg Hello</span>, <span style="color:var(--accent);">hack</span></div>
   </div>
   <div class="cli-input-wrapper">
     <span class="cli-prompt">talha@sec:~$</span>
-    <input type="text" class="cli-input" id="cli-input" placeholder="Type a command (e.g. help, whoami, projects)..." autocomplete="off">
+    <input type="text" class="cli-input" id="cli-input" placeholder="Type command (neofetch, scan, audit, help)..." autocomplete="off">
+    <input type="text" class="cli-input" id="cli-input" placeholder="Type command (tiktok, cv, msg, socials, hack)..." autocomplete="off">
   </div>
 </div>
-
 </main>
-
 <script>
-  // ================= WEB AUDIO SYNTHESIZER FOR SOUND FX =================
+  // Social Media Links Database
+  const SOCIAL_LINKS = {
+    tiktok: "https://www.tiktok.com/@talhashahafridi?_t=ZS-90sHnyPb3Lz&_r=1",
+    facebook: "https://web.facebook.com/profile.php?id=61580024770723",
+    fb: "https://web.facebook.com/profile.php?id=61580024770723",
+    instagram: "https://www.instagram.com/talha_afridi_56/",
+    insta: "https://www.instagram.com/talha_afridi_56/",
+    youtube: "https://www.youtube.com/@codewithtalha-w2h",
+    yt: "https://www.youtube.com/@codewithtalha-w2h",
+    github: "https://github.com/q343313",
+    gh: "https://github.com/q343313",
+    whatsapp: "https://wa.me/923182586785",
+    wa: "https://wa.me/923182586785"
+  };
+  // ================= WEB AUDIO SYNTHESIZER & AMBIENT DRONE =================
   let sfxEnabled = true;
+  let humEnabled = false;
   const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
+  let humOsc = null;
+  let humGain = null;
+  function toggleAmbientHum() {
+    if (humEnabled) {
+      if (humOsc) { humOsc.stop(); humOsc = null; }
+      humEnabled = false;
+      document.getElementById('hum-toggle').textContent = '🔊 AMBIENT: OFF';
+    } else {
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        humOsc = audioCtx.createOscillator();
+        humGain = audioCtx.createGain();
+        humOsc.type = 'sawtooth';
+        humOsc.frequency.setValueAtTime(55, audioCtx.currentTime); // Low 55Hz Cyber drone
+        humOsc.frequency.setValueAtTime(55, audioCtx.currentTime);
+        
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(120, audioCtx.currentTime);
+        humOsc.connect(filter);
+        filter.connect(humGain);
+        humGain.connect(audioCtx.destination);
+        humGain.gain.setValueAtTime(0.015, audioCtx.currentTime);
+        humOsc.start();
+        humEnabled = true;
+        document.getElementById('hum-toggle').textContent = '🔊 AMBIENT: ON';
+      } catch(e) {}
+    }
+  }
+  document.getElementById('hum-toggle').addEventListener('click', toggleAmbientHum);
   function playSound(type) {
     if (!sfxEnabled) return;
     try {
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
+      if (audioCtx.state === 'suspended') audioCtx.resume();
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.connect(gain);
       gain.connect(audioCtx.destination);
-
       if (type === 'click') {
         osc.type = 'sine';
         osc.frequency.setValueAtTime(800, audioCtx.currentTime);
@@ -1295,7 +1298,6 @@ footer::before {
       }
     } catch(e) {}
   }
-
   // SFX and CRT Controls
   const sfxBtn = document.getElementById('sfx-toggle');
   sfxBtn.addEventListener('click', () => {
@@ -1303,7 +1305,6 @@ footer::before {
     sfxBtn.textContent = sfxEnabled ? '🔊 SFX: ON' : '🔇 SFX: OFF';
     if (sfxEnabled) playSound('click');
   });
-
   const crtBtn = document.getElementById('crt-toggle');
   crtBtn.addEventListener('click', () => {
     document.body.classList.toggle('crt-off');
@@ -1311,57 +1312,46 @@ footer::before {
     crtBtn.textContent = isOff ? '🖥️ CRT: OFF' : '🖥️ CRT: ON';
     playSound('click');
   });
-
   // Attach hover sound to buttons and links
   document.querySelectorAll('a, button, input, .chip, .project, .about-card').forEach(el => {
     el.addEventListener('mouseenter', () => playSound('hover'));
     el.addEventListener('click', () => playSound('click'));
   });
-
-  // ================= MATRIX RAIN ANIMATION =================
+  // ================= MATRIX RAIN ANIMATION & COLOR CHOOSER =================
   const canvas = document.getElementById('matrix');
   const ctx = canvas.getContext('2d');
-
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
-
+  let matrixColor = '#00f0ff';
+  document.getElementById('matrix-color').addEventListener('change', (e) => {
+    matrixColor = e.target.value;
+    document.documentElement.style.setProperty('--matrix-color', matrixColor);
+  });
   const chars = '0101010101アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEF<>{}[]|/\\#$%&@*+=;:!?';
   const fontSize = 14;
   let columns = Math.floor(canvas.width / fontSize);
   let drops = Array(columns).fill(1);
-
   function drawMatrix() {
-    ctx.fillStyle = document.body.classList.contains('light-theme') ? 'rgba(228, 235, 243, 0.08)' : 'rgba(3, 7, 13, 0.06)';
+    ctx.fillStyle = document.body.classList.contains('light-theme') ? 'rgba(228, 235, 243, 0.08)' : 'rgba(2, 6, 13, 0.06)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.font = fontSize + 'px JetBrains Mono, monospace';
-
     for (let i = 0; i < drops.length; i++) {
       const text = chars[Math.floor(Math.random() * chars.length)];
       const rand = Math.random();
-
       if (rand > 0.96) {
         ctx.fillStyle = '#ffffff';
-        ctx.shadowColor = '#00f0ff';
+        ctx.shadowColor = matrixColor;
         ctx.shadowBlur = 12;
-      } else if (rand > 0.88) {
-        ctx.fillStyle = '#00ff9d';
-        ctx.shadowColor = '#00ff9d';
-        ctx.shadowBlur = 8;
-      } else if (rand > 0.82) {
-        ctx.fillStyle = '#b14aff';
-        ctx.shadowColor = '#b14aff';
-        ctx.shadowBlur = 6;
       } else {
-        ctx.fillStyle = document.body.classList.contains('light-theme') ? 'rgba(0, 102, 204, 0.7)' : 'rgba(0, 240, 255, 0.85)';
+        ctx.fillStyle = matrixColor;
         ctx.shadowBlur = 0;
       }
       ctx.fillText(text, i * fontSize, drops[i] * fontSize);
       ctx.shadowBlur = 0;
-
       if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
         drops[i] = 0;
       }
@@ -1369,18 +1359,28 @@ footer::before {
     }
   }
   setInterval(drawMatrix, 34);
-
-  window.addEventListener('resize', () => {
-    columns = Math.floor(canvas.width / fontSize);
-    drops = Array(columns).fill(1);
+  // ================= TEXT SCRAMBLE / DECRYPTION EFFECT =================
+  const scrambleChars = '!<>-_\\/[]{}—=+^?#________';
+  function scrambleText(el) {
+    const original = el.getAttribute('data-original') || el.innerText;
+    let iteration = 0;
+    const interval = setInterval(() => {
+      el.innerText = original.split('').map((char, index) => {
+        if (index < iteration) return original[index];
+        return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+      }).join('');
+      if (iteration >= original.length) clearInterval(interval);
+      iteration += 1 / 2;
+    }, 30);
+  }
+  document.querySelectorAll('.scramble-text').forEach(el => {
+    el.addEventListener('mouseenter', () => scrambleText(el));
   });
-
   // ================= TYPING ANIMATION =================
   const typedEl = document.getElementById('typed-text');
   const fullText = "Hi, I'm Talha — Flutter, FastAPI & Python Developer";
   let charIndex = 0;
   let typeSpeed = 50;
-
   function typeWriter() {
     if (charIndex <= fullText.length) {
       typedEl.textContent = fullText.substring(0, charIndex);
@@ -1390,22 +1390,27 @@ footer::before {
     }
   }
   setTimeout(typeWriter, 400);
-
+  // ================= DYNAMIC PING & SYSTEM METRICS SIMULATION =================
+  setInterval(() => {
+    const ping = Math.floor(10 + Math.random() * 8);
+    document.getElementById('hud-ping').textContent = ping + 'ms';
+    
+    const cpu = Math.floor(14 + Math.random() * 15);
+    document.getElementById('cpu-val').textContent = cpu + '%';
+    document.getElementById('cpu-fill').style.width = cpu + '%';
+  }, 2500);
   // ================= MOBILE MENU =================
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-
   mobileMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('show');
   });
   document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(btn => {
     btn.addEventListener('click', () => mobileMenu.classList.remove('show'));
   });
-
   // ================= THEME TOGGLE =================
   const themeBtn = document.getElementById('theme-toggle');
   const mobileThemeBtn = document.getElementById('mobile-theme-toggle');
-
   function toggleTheme() {
     if (document.body.classList.contains('dark-theme')) {
       document.body.classList.replace('dark-theme', 'light-theme');
@@ -1421,30 +1426,35 @@ footer::before {
   }
   themeBtn.addEventListener('click', toggleTheme);
   mobileThemeBtn.addEventListener('click', toggleTheme);
-
   if (localStorage.getItem('theme') === 'light') {
     document.body.classList.replace('dark-theme', 'light-theme');
     themeBtn.textContent = '☀️';
     mobileThemeBtn.textContent = '☀️';
   }
-
-  // ================= INTERACTIVE CLI TERMINAL DRAWER =================
+  // ================= INTERACTIVE CLI TERMINAL DRAWER & HOTKEYS =================
+  // ================= INTERACTIVE CLI TERMINAL ENGINE WITH COMMAND HISTORY =================
   const cliToggle = document.getElementById('cli-toggle');
   const cliModal = document.getElementById('cli-modal');
   const cliClose = document.getElementById('cli-close');
   const cliInput = document.getElementById('cli-input');
   const cliOutput = document.getElementById('cli-output');
-
-  cliToggle.addEventListener('click', () => {
+  let cmdHistory = [];
+  let historyIndex = -1;
+  function toggleTerminal() {
     cliModal.classList.toggle('active');
     if (cliModal.classList.contains('active')) {
       cliInput.focus();
     }
+  }
+  cliToggle.addEventListener('click', toggleTerminal);
+  cliClose.addEventListener('click', () => cliModal.classList.remove('active'));
+  // Hotkey listener: Ctrl + ~ or F2
+  window.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey && e.key === '`') || e.key === 'F2') {
+      e.preventDefault();
+      toggleTerminal();
+    }
   });
-  cliClose.addEventListener('click', () => {
-    cliModal.classList.remove('active');
-  });
-
   function appendCliMsg(text, isCmd = false) {
     const div = document.createElement('div');
     if (isCmd) {
@@ -1455,25 +1465,145 @@ footer::before {
     cliOutput.appendChild(div);
     cliOutput.scrollTop = cliOutput.scrollHeight;
   }
-
+  // Command History Navigation (Up / Down Arrow Keys)
   cliInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       const val = cliInput.value.trim().toLowerCase();
       if (!val) return;
       appendCliMsg(cliInput.value, true);
+    if (e.key === 'ArrowUp') {
+      if (cmdHistory.length > 0 && historyIndex < cmdHistory.length - 1) {
+        historyIndex++;
+        cliInput.value = cmdHistory[cmdHistory.length - 1 - historyIndex];
+      }
+    } else if (e.key === 'ArrowDown') {
+      if (historyIndex > 0) {
+        historyIndex--;
+        cliInput.value = cmdHistory[cmdHistory.length - 1 - historyIndex];
+      } else if (historyIndex === 0) {
+        historyIndex = -1;
+        cliInput.value = '';
+      }
+    } else if (e.key === 'Enter') {
+      const fullCmd = cliInput.value.trim();
+      if (!fullCmd) return;
+      
+      cmdHistory.push(fullCmd);
+      historyIndex = -1;
+      
+      appendCliMsg(fullCmd, true);
       playSound('cmd');
       cliInput.value = '';
-
       switch (val) {
+      const lowerCmd = fullCmd.toLowerCase();
+      const parts = lowerCmd.split(' ');
+      const mainCmd = parts[0];
+      const arg = parts.slice(1).join(' ');
+      // Check Social Media Direct Launcher
+      if (SOCIAL_LINKS[mainCmd]) {
+        appendCliMsg(`[LAUNCHING PROTOCOL]: Opening ${mainCmd.toUpperCase()} profile...`);
+        window.open(SOCIAL_LINKS[mainCmd], '_blank');
+        return;
+      }
+      switch (mainCmd) {
+        case 'socials':
+        case 'links':
+          appendCliMsg(`
+          <span style="color:var(--accent);">SOCIAL MEDIA TERMINAL LAUNCHERS:</span><br>
+          - <span style="color:var(--accent3);">tiktok</span> : Open TikTok Profile<br>
+          - <span style="color:var(--accent3);">facebook</span> / <span style="color:var(--accent3);">fb</span> : Open Facebook Profile<br>
+          - <span style="color:var(--accent3);">instagram</span> / <span style="color:var(--accent3);">insta</span> : Open Instagram Profile<br>
+          - <span style="color:var(--accent3);">youtube</span> / <span style="color:var(--accent3);">yt</span> : Open YouTube Channel<br>
+          - <span style="color:var(--accent3);">github</span> / <span style="color:var(--accent3);">gh</span> : Open GitHub Repos<br>
+          - <span style="color:var(--accent3);">whatsapp</span> / <span style="color:var(--accent3);">wa</span> : Open Direct WhatsApp Chat`);
+          break;
+        case 'cv':
+        case 'resume':
+        case 'download':
+          if (arg === 'cat' || mainCmd === 'resume') {
+            appendCliMsg(`
+            <span style="color:var(--accent);">=== TALHA AFRIDI CV SUMMARY ===</span><br>
+            <span style="color:var(--accent3);">Role:</span> Flutter & Fullstack Developer | Cybersecurity<br>
+            <span style="color:var(--accent3);">Edu:</span> BS Cybersecurity @ IMSciences University<br>
+            <span style="color:var(--accent3);">Apps:</span> 15+ Flutter Apps, 30+ Python Backends<br>
+            <span style="color:var(--accent3);">Stack:</span> Flutter, FastAPI, Firebase, Hive, SQLite, Kali<br>
+            <span style="color:var(--accent3);">Email:</span> talhashahafridi@gmail.com`);
+          } else {
+            appendCliMsg(`[DOWNLOADING CV]: Downloading Talha_Afridi_Professional_CV.pdf...`);
+            const a = document.createElement('a');
+            a.href = 'Talha_Afridi_Professional_CV.pdf';
+            a.download = 'Talha_Afridi_Professional_CV.pdf';
+            a.click();
+          }
+          break;
+        case 'msg':
+        case 'email':
+        case 'send':
+          if (!arg) {
+            appendCliMsg(`<span style="color:var(--alert);">Usage: msg [your message here]</span><br>Example: <span style="color:var(--accent);">msg Hello Talha, I want to discuss a Flutter project!</span>`);
+          } else {
+            appendCliMsg(`[ENCRYPTING MESSAGE]: "${arg}"...`);
+            appendCliMsg(`[DISPATCHING]: Opening default email client to talhashahafridi@gmail.com...`);
+            window.location.href = `mailto:talhashahafridi@gmail.com?subject=Portfolio%20Inquiry%20from%20Terminal&body=${encodeURIComponent(arg)}`;
+            
+            // Also autofill contact form for convenience
+            document.getElementById('contact-msg').value = arg;
+            document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+          }
+          break;
+        case 'hack':
+        case 'exploit':
+          appendCliMsg(`[INITIATING PENETRATION SCAN]...`);
+          setTimeout(() => appendCliMsg(`[+] Target: Localhost Security Gateway`), 400);
+          setTimeout(() => appendCliMsg(`[+] Bypassing Firewall... <span style="color:var(--accent3);">SUCCESS</span>`), 900);
+          setTimeout(() => appendCliMsg(`[+] Injecting Payload... <span style="color:var(--accent3);">OVERFLOW 0x7FFF88</span>`), 1400);
+          setTimeout(() => appendCliMsg(`<span style="color:var(--accent3); font-weight:bold;">[ROOT ACCESS GRANTED]: Welcome Master Hacker! 🚀</span>`), 1900);
+          break;
         case 'help':
           appendCliMsg(`Available Commands:<br>
+          - <span style="color:var(--accent);">neofetch</span>: System summary<br>
+          - <span style="color:var(--accent);">scan</span>: Port scan simulation<br>
+          - <span style="color:var(--accent);">audit</span>: Security audit report<br>
           - <span style="color:var(--accent);">whoami</span>: Developer Identity<br>
           - <span style="color:var(--accent);">skills</span>: List Tech Stack<br>
           - <span style="color:var(--accent);">projects</span>: Jump to Projects<br>
-          - <span style="color:var(--accent);">contact</span>: Email & Social Links<br>
-          - <span style="color:var(--accent);">clear</span>: Clear terminal screen<br>
-          - <span style="color:var(--accent);">matrix</span>: Toggle matrix speed<br>
-          - <span style="color:var(--accent);">sudo</span>: Root access test`);
+          - <span style="color:var(--accent);">contact</span>: Email & Phone<br>
+          - <span style="color:var(--accent);">clear</span>: Clear terminal<br>
+          - <span style="color:var(--accent);">sudo</span>: Root privilege check`);
+          - <span style="color:var(--accent);">tiktok</span> / <span style="color:var(--accent);">github</span> / <span style="color:var(--accent);">insta</span> / <span style="color:var(--accent);">fb</span> / <span style="color:var(--accent);">yt</span> / <span style="color:var(--accent);">wa</span> : Open Socials<br>
+          - <span style="color:var(--accent);">socials</span> : List all social media shortcuts<br>
+          - <span style="color:var(--accent);">cv</span> / <span style="color:var(--accent);">resume</span> : Download or View CV<br>
+          - <span style="color:var(--accent);">msg [text]</span> : Send email/message directly to Talha<br>
+          - <span style="color:var(--accent);">hack</span> : Cyber simulation test<br>
+          - <span style="color:var(--accent);">neofetch</span> : System specs<br>
+          - <span style="color:var(--accent);">scan</span> : Port scanner<br>
+          - <span style="color:var(--accent);">audit</span> : Security audit report<br>
+          - <span style="color:var(--accent);">whoami</span> / <span style="color:var(--accent);">skills</span> / <span style="color:var(--accent);">projects</span> / <span style="color:var(--accent);">contact</span><br>
+          - <span style="color:var(--accent);">clear</span> : Clear output`);
+          break;
+        case 'neofetch':
+          appendCliMsg(`
+          <span style="color:var(--accent3);">OS:</span> Kali-Cyber-OS v6.8<br>
+          <span style="color:var(--accent3);">Kernel:</span> 6.8.0-TalhaSec<br>
+          <span style="color:var(--accent3);">Developer:</span> Talha Afridi<br>
+          <span style="color:var(--accent3);">Focus:</span> Flutter & Fullstack Dev<br>
+          <span style="color:var(--accent3);">Degree:</span> BS Cybersecurity (IMSciences)<br>
+          <span style="color:var(--accent3);">Status:</span> Available for Hire 🚀`);
+          break;
+        case 'scan':
+          appendCliMsg(`Starting Port Scan on talha-node...<br>
+          [PORT 22/SSH]: OPEN (Encrypted Key)<br>
+          [PORT 80/HTTP]: REDIRECT_HTTPS<br>
+          [PORT 443/HTTPS]: SECURE TLS 1.3<br>
+          [PORT 8000/API]: FastAPI ACTIVE<br>
+          <span style="color:var(--accent3);">[RESULT]: ALL SYSTEMS SAFE</span>`);
+          break;
+        case 'audit':
+          appendCliMsg(`Running Security Audit...<br>
+          - XSS Protection: ENABLED<br>
+          - SQLi Prevention: STRICT<br>
+          - Clean Architecture: VERIFIED<br>
+          <span style="color:var(--accent3);">Audit Grade: AAA+</span>`);
           break;
         case 'whoami':
           appendCliMsg(`[IDENTITY]: Talha Afridi<br>[ROLE]: Flutter & Fullstack Developer | BS Cybersecurity Student<br>[STATUS]: Available for hire & freelance`);
@@ -1496,8 +1626,19 @@ footer::before {
           break;
         default:
           appendCliMsg(`Command not recognized: "${val}". Type <span style="color:var(--accent);">help</span> for commands.`);
+          appendCliMsg(`Command not recognized: "${fullCmd}". Type <span style="color:var(--accent);">help</span> or <span style="color:var(--accent);">socials</span>.`);
       }
     }
+  });
+  // Handle Contact Form Submit with Cyber Alert
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('contact-name').value;
+    const email = document.getElementById('contact-email').value;
+    const msg = document.getElementById('contact-msg').value;
+    playSound('cmd');
+    alert(`[ENCRYPTED MESSAGE SENT]: Thank you ${name}! Your message has been safely dispatched to Talha Afridi.`);
+    window.location.href = `mailto:talhashahafridi@gmail.com?subject=Portfolio%20Message%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(msg + '\n\nFrom: ' + email)}`;
   });
 </script>
 </body>
