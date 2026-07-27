@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Details — Talha Afridi Terminal</title>
+  <meta name="description" content="Detailed security breakdown and technical specs of Talha Afridi's projects." />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;600;700;800&family=Share+Tech+Mono&family=Orbitron:wght@500;700;900&family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ================= ROOT & CYBER VARIABLES ================= */
+    :root {
+      --bg: #02060d;
+      --bg2: #060d18;
+      --card: rgba(5, 12, 24, 0.94);
+      --card-hover: rgba(8, 18, 36, 0.98);
+      --text: #e2f1ff;
+      --muted: #5c7b99;
+      --accent: #00f0ff;
+      /* Cyan Neon */
+      --accent2: #00b8d9;
+      /* Deep Cyan */
+      --accent3: #00ff9d;
+      /* Hacker Green */
+      --accent4: #b14aff;
+      /* Neon Purple */
+      --alert: #ff0055;
+      /* Red Alert */
+      --warning: #ffb700;
+      /* Security Warning Amber */
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.88);
+      --border: 1px solid rgba(0, 240, 255, 0.35);
+      --glow: 0 0 30px rgba(0, 240, 255, 0.6), 0 0 10px rgba(0, 240, 255, 0.4);
+      --glow-g: 0 0 25px rgba(0, 255, 157, 0.5), 0 0 8px rgba(0, 255, 157, 0.3);
+      --glow-p: 0 0 28px rgba(177, 74, 255, 0.45);
+      --glow-alert: 0 0 25px rgba(255, 0, 85, 0.5);
+      --crt-opacity: 0.32;
+      --font-mono: 'JetBrains Mono', 'Fira Code', 'Share Tech Mono', monospace;
+      --font-cyber: 'Orbitron', 'Poppins', sans-serif;
+      --matrix-color: #00f0ff;
+    }
+
+    body.light-theme {
+      --bg: #e4ebf3;
+      --bg2: #d3deea;
+      --card: rgba(240, 245, 252, 0.95);
+      --card-hover: #ffffff;
+      --text: #061220;
+      --muted: #3a526b;
+      --accent: #0066cc;
+      --accent2: #004499;
+      --accent3: #008844;
+      --accent4: #6b21a8;
+      --alert: #dc2626;
+      --warning: #d97706;
+      --shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+      --border: 1px solid rgba(0, 102, 204, 0.3);
+      --glow: 0 0 20px rgba(0, 102, 204, 0.25);
+      --glow-g: 0 0 18px rgba(0, 136, 68, 0.2);
+      --crt-opacity: 0.05;
+      --matrix-color: #0066cc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-mono);
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.45s, color 0.45s;
+      overflow-x: hidden;
+      line-height: 1.65;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #000;
+    }
+
+    /* Background Canvas Matrix */
+    #matrix {
+      position: fixed;
+      inset: 0;
+      z-index: -4;
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    body.light-theme #matrix {
+      opacity: 0.25;
+    }
+
+    /* Grid Line Canvas Overlay */
+    #cyber-grid {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(0, 240, 255, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.2) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* CRT Screen Scanlines */
+    .crt-overlay {
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px,
+          rgba(0, 0, 0, 0.25) 2px, rgba(0, 0, 0, 0.25) 4px);
+      z-index: 9998;
+      pointer-events: none;
+      opacity: var(--crt-opacity);
+    }
+
+    body.crt-off .crt-overlay {
+      display: none;
+    }
+
+    /* Vignette Radial Glow */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 10%, transparent 20%, rgba(0, 0, 0, 0.85) 100%),
+        radial-gradient(circle at 10% 40%, rgba(0, 240, 255, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 90% 60%, rgba(177, 74, 255, 0.06) 0%, transparent 45%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-cyber);
+      font-weight: 700;
+    }
+
+    /* ================= CYBER HUD TOP BAR ================= */
+    .cyber-hud {
+      background: rgba(2, 6, 14, 0.95);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+      padding: 5px 20px;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--accent3);
+      font-family: 'Share Tech Mono', monospace;
+      position: relative;
+      z-index: 101;
+      box-shadow: 0 2px 10px rgba(0, 240, 255, 0.1);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    body.light-theme .cyber-hud {
+      background: rgba(220, 230, 242, 0.95);
+    }
+
+    .hud-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hud-tag {
+      color: var(--muted);
+    }
+
+    .hud-value {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .blink-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent3);
+      box-shadow: 0 0 8px var(--accent3);
+      animation: blink 1.2s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.2;
+      }
+    }
+
+    .hud-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .hud-btn {
+      background: transparent;
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--text);
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    .hud-btn:hover {
+      background: var(--accent);
+      color: #000;
+      box-shadow: var(--glow);
+    }
+
+    .matrix-color-select {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--accent);
+      font-size: 10px;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: 'Share Tech Mono', monospace;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 36px;
+      max-width: 1240px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+      background: rgba(3, 8, 18, 0.88);
+      backdrop-filter: blur(16px);
+    }
+
+    body.light-theme header {
+      background: rgba(238, 242, 247, 0.92);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #00f0ff 0%, #00b8d9 45%, #b14aff 100%);
+      font-weight: 900;
+      color: #02040a;
+      font-size: 16px;
+      font-family: 'Orbitron', monospace;
+      box-shadow: var(--glow);
+      clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      letter-spacing: 0.8px;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+    }
+
+    .brand p {
+      font-size: 11px;
+      color: var(--accent3);
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 8px 16px;
+      border-radius: 4px;
+      background: rgba(0, 240, 255, 0.1);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      box-shadow: var(--glow);
+      transition: all 0.25s;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .back-btn:hover {
+      background: var(--accent);
+      color: #000;
+      transform: translateX(-3px);
+    }
+
+    .theme-btn {
+      background: rgba(0, 240, 255, 0.05);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .theme-btn:hover {
+      background: rgba(0, 240, 255, 0.2);
+    }
+
+    /* ================= MAIN CONTAINER ================= */
+    main {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 26px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Project Quick Selector Tabs */
+    .project-selector {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
+    }
+
+    .proj-tab {
+      padding: 8px 16px;
+      border-radius: 4px;
+      background: rgba(5, 12, 24, 0.8);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s;
+      font-family: 'Share Tech Mono', monospace;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .proj-tab:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(0, 240, 255, 0.1);
+    }
+
+    .proj-tab.active {
+      background: linear-gradient(90deg, rgba(0, 240, 255, 0.25), rgba(177, 74, 255, 0.25));
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    }
+
+    .proj-tab .tab-num {
+      color: var(--accent3);
+      font-weight: 700;
+    }
+
+    /* ================= TERMINAL HERO WINDOW ================= */
+    .terminal-window {
+      background: var(--card);
+      border-radius: 8px;
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      box-shadow: var(--shadow), 0 0 30px rgba(0, 240, 255, 0.15);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .corner-border {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-color: var(--accent);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .corner-tl {
+      top: 0;
+      left: 0;
+      border-top: 2px solid;
+      border-left: 2px solid;
+    }
+
+    .corner-tr {
+      top: 0;
+      right: 0;
+      border-top: 2px solid;
+      border-right: 2px solid;
+    }
+
+    .corner-bl {
+      bottom: 0;
+      left: 0;
+      border-bottom: 2px solid;
+      border-left: 2px solid;
+    }
+
+    .corner-br {
+      bottom: 0;
+      right: 0;
+      border-bottom: 2px solid;
+      border-right: 2px solid;
+    }
+
+    .term-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      background: rgba(0, 0, 0, 0.6);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+    }
+
+    body.light-theme .term-bar {
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    .term-dots {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .term-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .term-dot.r {
+      background: #ff5f56;
+      box-shadow: 0 0 6px rgba(255, 95, 86, 0.6);
+    }
+
+    .term-dot.y {
+      background: #ffbd2e;
+      box-shadow: 0 0 6px rgba(255, 189, 46, 0.6);
+    }
+
+    .term-dot.g {
+      background: #27c93f;
+      box-shadow: 0 0 6px rgba(39, 201, 63, 0.6);
+    }
+
+    .term-filename {
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.8px;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    .proj-hero-body {
+      padding: 32px 36px;
+    }
+
+    .proj-badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .cyber-badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 3px;
+      font-family: 'Share Tech Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .badge-cyan {
+      background: rgba(0, 240, 255, 0.15);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    .badge-green {
+      background: rgba(0, 255, 157, 0.15);
+      color: var(--accent3);
+      border: 1px solid var(--accent3);
+    }
+
+    .badge-purple {
+      background: rgba(177, 74, 255, 0.15);
+      color: var(--accent4);
+      border: 1px solid var(--accent4);
+    }
+
+    .proj-title {
+      font-size: 32px;
+      color: #fff;
+      margin-bottom: 12px;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: -0.5px;
+      text-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    }
+
+    body.light-theme .proj-title {
+      color: #04101e;
+      text-shadow: none;
+    }
+
+    .proj-desc {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      max-width: 900px;
+      line-height: 1.75;
+    }
+
+    .proj-desc b {
+      color: var(--text);
+    }
+
+    .tech-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 26px;
+    }
+
+    .tech-chip {
+      padding: 4px 12px;
+      border-radius: 3px;
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      font-size: 11px;
+      background: rgba(0, 240, 255, 0.07);
+      color: var(--accent);
+      font-weight: 600;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    .tech-chip::before {
+      content: "$ ";
+      color: var(--accent3);
+    }
+
+    /* ================= SYSTEM SPECS & METRICS GRID ================= */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .spec-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      padding: 16px 20px;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    body.light-theme .spec-card {
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .spec-label {
+      font-size: 10px;
+      color: var(--muted);
+      font-family: 'Share Tech Mono', monospace;
+      text-transform: uppercase;
+    }
+
+    .spec-val {
+      font-size: 14px;
+      color: var(--accent3);
+      font-weight: 700;
+      margin-top: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ================= FEATURE SECTIONS ================= */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    @media (max-width: 850px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cyber-box {
+      background: var(--card);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-radius: 8px;
+      padding: 24px;
+      position: relative;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .cyber-box-title {
+      font-size: 18px;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Orbitron', sans-serif;
+      border-bottom: 1px dashed rgba(0, 240, 255, 0.25);
+      padding-bottom: 10px;
+    }
+
+    .cyber-list {
+      list-style: none;
+    }
+
+    .cyber-list li {
+      margin-bottom: 10px;
+      font-size: 13.5px;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .cyber-list li span.bullet {
+      color: var(--accent3);
+      font-family: 'Share Tech Mono', monospace;
+      font-weight: bold;
+    }
+
+    /* ================= SCREENSHOTS GALLERY ================= */
+    .gallery-section {
+      margin-bottom: 40px;
+    }
+
+    .gallery-title {
+      font-size: 20px;
+      color: var(--text);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .gallery-title i {
+      color: var(--accent);
+    }
+
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px;
+      justify-items: center;
+    }
+
+    .shot-card {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-radius: 12px;
+      padding: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      width: 100%;
+      max-width: 250px;
+    }
+
+    .shot-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      border-color: var(--accent);
+      box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+    }
+
+    .shot-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+      transition: opacity 0.3s;
+    }
+
+    .shot-caption {
+      font-size: 11px;
+      color: var(--accent3);
+      text-align: center;
+      margin-top: 8px;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    /* ================= ACTION BUTTONS & LINKS ================= */
+    .links-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.6px;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #00f0ff, #00b8d9);
+      color: #02040a;
+      box-shadow: 0 4px 24px rgba(0, 240, 255, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 36px rgba(0, 240, 255, 0.7);
+    }
+
+    .btn-secondary {
+      background: rgba(0, 240, 255, 0.08);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 240, 255, 0.25);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* ================= LIGHTBOX MODAL ================= */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 13, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 12px;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 40px rgba(0, 240, 255, 0.6);
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: var(--accent);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .lightbox-caption {
+      margin-top: 14px;
+      color: var(--accent3);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+    }
+
+    /* ================= CLI TERMINAL DRAWER ================= */
+    .cli-drawer-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(2, 6, 14, 0.9);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      cursor: pointer;
+      box-shadow: var(--glow);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cli-drawer-toggle:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .cli-modal {
+      position: fixed;
+      bottom: 70px;
+      right: 20px;
+      width: 440px;
+      height: 320px;
+      background: rgba(3, 9, 20, 0.96);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0, 240, 255, 0.4);
+      z-index: 1001;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+
+    .cli-modal.active {
+      display: flex;
+    }
+
+    .cli-header {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 8px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--accent);
+      font-family: 'Share Tech Mono', monospace;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+    }
+
+    .cli-close {
+      cursor: pointer;
+      color: var(--alert);
+      font-weight: bold;
+    }
+
+    .cli-output {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      font-size: 11.5px;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.5;
+      color: #d0e6ff;
+    }
+
+    .cli-input-wrapper {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      background: rgba(0, 0, 0, 0.4);
+      border-top: 1px solid rgba(0, 240, 255, 0.2);
+    }
+
+    .cli-prompt {
+      color: var(--accent3);
+      font-size: 11.5px;
+      margin-right: 6px;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    .cli-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid rgba(0, 240, 255, 0.15);
+      color: var(--muted);
+      font-size: 12px;
+      font-family: 'Share Tech Mono', monospace;
+    }
+  </style>
+</head>
+
+<body class="dark-theme">
+
+  <!-- CRT Screen Scanline Overlay -->
+  <div class="crt-overlay"></div>
+
+  <!-- Background Canvas Matrix & Cyber Grid -->
+  <canvas id="matrix"></canvas>
+  <div id="cyber-grid"></div>
+
+  <!-- Cyber HUD Top Bar -->
+  <div class="cyber-hud">
+    <div class="hud-item">
+      <span class="blink-dot"></span>
+      <span class="hud-tag">STATUS:</span>
+      <span class="hud-value" id="hud-status">ENCRYPTED // DECRYPTING_PROJECT</span>
+    </div>
+    <div class="hud-item">
+      <span class="hud-tag">SEC-LEVEL:</span>
+      <span class="hud-value" style="color:var(--accent3);">ALPHA-5</span>
+    </div>
+    <div class="hud-item">
+      <span class="hud-tag">PING:</span>
+      <span class="hud-value" id="hud-ping">12ms</span>
+    </div>
+    <div class="hud-actions">
+      <select class="matrix-color-select" id="matrix-color">
+        <option value="#00f0ff">💙 Cyan Matrix</option>
+        <option value="#00ff9d">💚 Green Matrix</option>
+        <option value="#b14aff">💜 Purple Matrix</option>
+        <option value="#ff0055">🔴 Red Matrix</option>
+      </select>
+      <button class="hud-btn" id="hum-toggle">🔊 AMBIENT: OFF</button>
+      <button class="hud-btn" id="sfx-toggle">🔊 SFX: ON</button>
+      <button class="hud-btn" id="crt-toggle">🖥️ CRT: ON</button>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <div class="logo">TA</div>
+      <div>
+        <h1 class="scramble-text" data-original="Talha Afridi">Talha Afridi</h1>
+        <p>Cyber Security & Fullstack Terminal</p>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> RETURN TO HUB</a>
+      <button class="theme-btn" id="theme-toggle">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- PROJECT SELECTOR TABS -->
+    <div class="project-selector" id="project-tabs">
+      <!-- Tabs populated via JS -->
+    </div>
+
+    <!-- TERMINAL HERO WINDOW -->
+    <div class="terminal-window">
+      <div class="corner-border corner-tl"></div>
+      <div class="corner-border corner-tr"></div>
+      <div class="corner-border corner-bl"></div>
+      <div class="corner-border corner-br"></div>
+
+      <div class="term-bar">
+        <div class="term-dots">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+        </div>
+        <span class="term-filename" id="term-file-name">project_loader.sh</span>
+      </div>
+
+      <div class="proj-hero-body">
+        <div class="proj-badge-row" id="proj-badges">
+          <!-- Badges dynamically rendered -->
+        </div>
+
+        <h1 class="proj-title scramble-text" id="proj-title">Loading Project...</h1>
+        <p class="proj-desc" id="proj-desc"></p>
+
+        <div class="tech-chips" id="tech-chips">
+          <!-- Tech stack chips dynamically rendered -->
+        </div>
+
+        <!-- SPECS & METRICS GRID -->
+        <div class="specs-grid" id="specs-grid">
+          <!-- Specs cards populated via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES & ADVANCED FUNCTIONALITIES GRID -->
+    <div class="features-grid">
+      <div class="cyber-box">
+        <h3 class="cyber-box-title"><i class="fas fa-microchip"></i> Core Architecture & Features</h3>
+        <ul class="cyber-list" id="core-features">
+          <!-- Populated via JS -->
+        </ul>
+      </div>
+
+      <div class="cyber-box">
+        <h3 class="cyber-box-title"><i class="fas fa-shield-halved"></i> Security & Advanced Capabilities</h3>
+        <ul class="cyber-list" id="adv-features">
+          <!-- Populated via JS -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- SCREENSHOTS GALLERY -->
+    <div class="gallery-section">
+      <h2 class="gallery-title"><i class="fas fa-images"></i> User Interface & System Visuals</h2>
+      <div class="screenshot-grid" id="screenshot-grid">
+        <!-- Screenshots populated via JS -->
+      </div>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="links-row" id="action-links">
+      <!-- Links populated via JS -->
+    </div>
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="lightbox-modal" id="lightbox">
+    <div class="lightbox-content">
+      <span class="lightbox-close" id="lightbox-close">✕</span>
+      <img src="" alt="Full view" id="lightbox-img">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- FLOATING CLI TERMINAL -->
+  <button class="cli-drawer-toggle" id="cli-toggle" title="Press Ctrl + ~ or click to open terminal">
+    <i class="fas fa-terminal"></i> <span>CLI TERMINAL [Ctrl + ~]</span>
+  </button>
+
+  <div class="cli-modal" id="cli-modal">
+    <div class="cli-header">
+      <span>TALHA_SEC_OPS // PROJECT SHELL</span>
+      <span class="cli-close" id="cli-close">✕</span>
+    </div>
+    <div class="cli-output" id="cli-output">
+      <div>Connected to Project Details Terminal.</div>
+      <div>Type <span style="color:var(--accent);">help</span> or <span style="color:var(--accent3);">projects</span> to
+        explore commands.</div>
+    </div>
+    <div class="cli-input-wrapper">
+      <span class="cli-prompt">talha@proj:~$</span>
+      <input type="text" class="cli-input" id="cli-input" placeholder="Type command (help, info, github, projects)..."
+        autocomplete="off">
+    </div>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Talha Afridi — Cyber Security & Fullstack Portfolio
+  </footer>
+
+  <script>
+    // ================= ALL PROJECTS DATABASE =================
+    const PROJECTS = {
+      expence: {
+        id: "expence",
+        num: "01",
+        title: "Smart Expense Manager",
+        termName: "expense_manager.sh",
+        badges: ["Flutter App", "Hive DB", "FastAPI Sync"],
+        badgeClasses: ["badge-cyan", "badge-green", "badge-purple"],
+        description: "A complete Flutter expense tracking application built with Hive for offline-first local database, visual expenditure charts, multi-category organization, and instant PDF report export. Fully integrated with a FastAPI Python backend for optional account sync and JWT authentication.",
+        chips: ["Flutter", "Hive", "FastAPI", "BLoC Pattern", "PDF Export", "Python", "SQLite"],
+        specs: [
+          { label: "CYBER SYSTEM ID", val: "PRJ-EXP-088" },
+          { label: "DEPLOYMENT STATUS", val: "OPERATIONAL // LIVE" },
+          { label: "STORAGE ENGINE", val: "Hive Encrypted Local" },
+          { label: "BACKEND PROTOCOL", val: "FastAPI REST API" }
+        ],
+        coreFeatures: [
+          "Offline-first local database architecture using Hive & SQLite",
+          "Interactive expense breakdown charts & monthly summary analytics",
+          "Custom category creation with daily and monthly spending limits",
+          "One-click PDF report generation for financial accounting",
+          "Light and Dark mode cyber UI with smooth theme sync",
+          "FastAPI backend integration for cloud backup & multi-device sync"
+        ],
+        advFeatures: [
+          "Custom budget threshold warnings & notification alerts",
+          "Multi-currency conversion & dynamic search filter engine",
+          "Encrypted automatic local database snapshots",
+          "User profile customization & expenditure insights",
+          "Clean Architecture with BLoC state management"
+        ],
+        screenshots: [
+          { src: "../images/expence/splash.jpeg", name: "Splash Screen" },
+          { src: "../images/expence/login.jpeg", name: "User Auth Login" },
+          { src: "../images/expence/signup.jpeg", name: "Account Registration" },
+          { src: "../images/expence/expence.jpeg", name: "Expense Overview" },
+          { src: "../images/expence/addex.jpeg", name: "Add New Expense" },
+          { src: "../images/expence/draw.jpeg", name: "Navigation Drawer" },
+          { src: "../images/expence/mood.jpeg", name: "Mood & Habit Tracker" },
+          { src: "../images/expence/profile.jpeg", name: "User Profile" },
+          { src: "../images/expence/setting.jpeg", name: "Settings & Config" },
+          { src: "../images/expence/addmood.jpeg", name: "Mood Entry Screen" }
+        ],
+        github: "https://github.com/q343313/Expence-Tracker-App",
+        playstore: "#"
+      },
+      market: {
+        id: "market",
+        num: "02",
+        title: "Local Market (E-Commerce)",
+        termName: "e_local_market.py",
+        badges: ["E-Commerce Platform", "Role Auth", "Cloud FCM"],
+        badgeClasses: ["badge-purple", "badge-cyan", "badge-green"],
+        description: "A modern full-stack Flutter E-Commerce application with a Python FastAPI backend. Features role-based access control for Buyers and Shop Owners, instant product upload with image compression, push notifications, seller dashboards, and cloud integration.",
+        chips: ["Flutter", "FastAPI", "Firebase FCM", "REST API", "JWT Auth", "Python", "Image Upload"],
+        specs: [
+          { label: "CYBER SYSTEM ID", val: "PRJ-MKT-104" },
+          { label: "DEPLOYMENT STATUS", val: "STABLE // ACTIVE" },
+          { label: "AUTHENTICATION", val: "JWT Token + Firebase" },
+          { label: "BACKEND ARCHITECTURE", val: "FastAPI Async Services" }
+        ],
+        coreFeatures: [
+          "Secure user authentication (JWT Login / Signup & Password Reset)",
+          "Role-based access system for Customers and Store Owners",
+          "Product upload interface with multi-image support & optimization",
+          "Real-time product catalog with instant search & category filters",
+          "Push notifications via Firebase Cloud Messaging (FCM)",
+          "Owner dashboard with sales analytics & product management"
+        ],
+        advFeatures: [
+          "Encrypted REST API communication between Flutter & FastAPI",
+          "Offline cache layer for smooth browsing without network",
+          "Direct seller WhatsApp & contact communication shortcuts",
+          "Developer diagnostics & app system info panel",
+          "Adaptive light and dark cyber theme switching"
+        ],
+        screenshots: [
+          { src: "../images/localmarket/spl.jpeg", name: "Splash Screen 1" },
+          { src: "../images/localmarket/spl1.jpeg", name: "Splash Screen 2" },
+          { src: "../images/localmarket/int1.jpeg", name: "Onboarding Intro 1" },
+          { src: "../images/localmarket/int2.jpeg", name: "Onboarding Intro 2" },
+          { src: "../images/localmarket/int3.jpeg", name: "Onboarding Intro 3" },
+          { src: "../images/localmarket/product.jpeg", name: "Product Listing" },
+          { src: "../images/localmarket/det.jpeg", name: "Product Details" },
+          { src: "../images/localmarket/user.jpeg", name: "User Dashboard" },
+          { src: "../images/localmarket/owner.jpeg", name: "Owner Control Panel" },
+          { src: "../images/localmarket/noti.jpeg", name: "Notifications Center" },
+          { src: "../images/localmarket/log.jpeg", name: "Login Screen" },
+          { src: "../images/localmarket/sin.jpeg", name: "Registration Screen" },
+          { src: "../images/localmarket/add.jpeg", name: "Add New Product" },
+          { src: "../images/localmarket/share.jpeg", name: "Share Product" },
+          { src: "../images/localmarket/edit.jpeg", name: "Edit Product Info" },
+          { src: "../images/localmarket/sett.jpeg", name: "Settings Screen" },
+          { src: "../images/localmarket/sett1.jpeg", name: "Advanced Options" },
+          { src: "../images/localmarket/dev.jpeg", name: "Developer Specs" },
+          { src: "../images/localmarket/app.jpeg", name: "App Version Info" }
+        ],
+        github: "https://github.com/q343313/localmarket",
+        playstore: "#"
+      },
+      pasman: {
+        id: "pasman",
+        num: "03",
+        title: "Password Manager Vault",
+        termName: "password_manager.bin",
+        badges: ["AES-256 Encryption", "Cyber Security", "Biometric Auth"],
+        badgeClasses: ["badge-green", "badge-cyan", "badge-purple"],
+        description: "A secure Flutter-based Password Manager designed with a cybersecurity mindset. Encrypts and protects credentials locally using AES-256 cryptography and SQLite key-vault storage. Features biometric unlock, master key verification, password strength analyzer, and encrypted backup export.",
+        chips: ["Flutter", "AES-256", "SQLite Vault", "Biometrics", "FastAPI Sync", "Security Toolkit"],
+        specs: [
+          { label: "CYBER SYSTEM ID", val: "PRJ-VAULT-999" },
+          { label: "SECURITY RATING", val: "CLASSIFIED // AES-256" },
+          { label: "LOCAL STORAGE", val: "Encrypted SQLite Vault" },
+          { label: "KEY DERIVATION", val: "PBKDF2 / SHA-256" }
+        ],
+        coreFeatures: [
+          "End-to-End AES-256 encryption for all stored credentials",
+          "Encrypted local database (zero unencrypted text storage)",
+          "Biometric fingerprint / face unlock & master key protection",
+          "Built-in password generator & strength analyzer",
+          "Automated encrypted backup & disaster recovery export",
+          "FastAPI backend support for cloud vault sync"
+        ],
+        advFeatures: [
+          "Category organization (Banking, Social, Servers, Personal)",
+          "Instant one-click password clipboard copy & auto-wipe timer",
+          "Encrypted CSV import & export toolkit",
+          "Password history log & compromised credential alert check",
+          "Dark and Light cyber theme interface"
+        ],
+        screenshots: [
+          { src: "../images/pasman/sp1.jpeg", name: "Vault Splash Screen 1" },
+          { src: "../images/pasman/sp2.jpeg", name: "Vault Splash Screen 2" },
+          { src: "../images/pasman/in1.jpeg", name: "Security Intro 1" },
+          { src: "../images/pasman/in2.jpeg", name: "Security Intro 2" },
+          { src: "../images/pasman/in3.jpeg", name: "Security Intro 3" },
+          { src: "../images/pasman/acc.jpeg", name: "Vault Dashboard" },
+          { src: "../images/pasman/enh.jpeg", name: "Encryption Panel" },
+          { src: "../images/pasman/hom.jpeg", name: "Credential Vault Home" },
+          { src: "../images/pasman/enc.jpeg", name: "Encrypt Custom Data" },
+          { src: "../images/pasman/dec.jpeg", name: "Decrypt Entry" },
+          { src: "../images/pasman/set.jpeg", name: "Vault Settings" },
+          { src: "../images/pasman/no.jpeg", name: "Security Alerts" },
+          { src: "../images/pasman/dr.jpeg", name: "Secure Drawer" },
+          { src: "../images/pasman/imp.jpeg", name: "Import / Export CSV" },
+          { src: "../images/pasman/fav.jpeg", name: "Favorite Passwords" },
+          { src: "../images/pasman/his.jpeg", name: "Vault Audit History" },
+          { src: "../images/pasman/ench.jpeg", name: "Cipher Specs" },
+          { src: "../images/pasman/WhatsApp Image 2025-10-19 at 10.18.09 AM (1).jpeg", name: "Password Generator" },
+          { src: "../images/pasman/WhatsApp Image 2025-10-19 at 10.18.11 AM (1).jpeg", name: "Breach Warning" },
+          { src: "../images/pasman/WhatsApp Image 2025-10-19 at 10.18.11 AM.jpeg", name: "Master Key Settings" }
+        ],
+        github: "https://github.com/q343313/Password-Manager.git",
+        playstore: "#"
+      },
+      chat: {
+        id: "chat",
+        num: "04",
+        title: "AI Chat Application",
+        termName: "ai_chat_app.dart",
+        badges: ["GPT / AI Models", "OpenRouter API", "Voice Assistant"],
+        badgeClasses: ["badge-cyan", "badge-purple", "badge-green"],
+        description: "A professional Flutter-based AI Chat application powered by OpenAI and OpenRouter APIs. Supports streaming real-time conversations, markdown response rendering, speech recognition, custom AI prompt personas (Developer, Cyber Specialist, Tutor), and local message caching.",
+        chips: ["Flutter", "OpenAI API", "OpenRouter", "FastAPI", "Hive Cache", "Markdown Engine", "Speech AI"],
+        specs: [
+          { label: "CYBER SYSTEM ID", val: "PRJ-AIC-707" },
+          { label: "AI MODEL BACKBONE", val: "GPT-4 / Claude / OpenRouter" },
+          { label: "MESSAGE CACHE", val: "Hive Encrypted Memory" },
+          { label: "STREAMING ENGINE", val: "Server-Sent Events (SSE)" }
+        ],
+        coreFeatures: [
+          "Real-time streaming AI responses via OpenRouter & OpenAI endpoints",
+          "Dynamic conversation memory & typing animation feedback",
+          "Dark / Light theme transitions with cyber glowing UI",
+          "Offline chat message history storage with Hive",
+          "Custom user avatars and AI bot profiles",
+          "FastAPI analytics backend for user chat sync"
+        ],
+        advFeatures: [
+          "Multi-session chat thread management with auto-titling",
+          "Speech-to-Text input & Text-to-Speech AI voice responses",
+          "Custom AI personalities (Code Auditor, Tutor, Assistant)",
+          "Full Markdown & code syntax highlighter inside chat bubbles"
+        ],
+        screenshots: [
+          { src: "../images/chat/sp.jpeg", name: "AI App Splash Screen" },
+          { src: "../images/chat/homd.jpeg", name: "Dark Mode Chat Hub" },
+          { src: "../images/chat/chd.jpeg", name: "Dark Mode Conversation" },
+          { src: "../images/chat/homl.jpeg", name: "Light Mode Chat Hub" },
+          { src: "../images/chat/chl.jpeg", name: "Light Mode Conversation" }
+        ],
+        github: "https://github.com/q343313/chatGptApp",
+        playstore: "#"
+      },
+      ads: {
+        id: "ads",
+        num: "05",
+        title: "Smart To-Do Productivity App",
+        termName: "todo_app.js",
+        badges: ["Productivity App", "Offline Storage", "Task Engine"],
+        badgeClasses: ["badge-green", "badge-cyan", "badge-purple"],
+        description: "A high-performance Flutter task management app designed to organize daily workflow efficiently. Includes priority management (High/Medium/Low), custom tags, date filtering, productivity analytics, local notification reminders, and optional FastAPI cloud synchronization.",
+        chips: ["Flutter", "Hive", "SQLite", "FastAPI", "Task Analytics", "Local Notifications"],
+        specs: [
+          { label: "CYBER SYSTEM ID", val: "PRJ-TODO-302" },
+          { label: "SYSTEM STATUS", val: "OPTIMIZED // RUNNING" },
+          { label: "TASK ENGINE", val: "Hive Priority Queue" },
+          { label: "NOTIFICATION CORE", val: "Flutter Local Alerts" }
+        ],
+        coreFeatures: [
+          "Offline task storage utilizing Hive & SQLite local databases",
+          "Full CRUD operations for daily task scheduling & categorizing",
+          "Dark and Light mode cyber theme UI",
+          "Instant search & category or date filter engine",
+          "Local notifications and recurring task reminders",
+          "FastAPI backend integration for optional cloud sync"
+        ],
+        advFeatures: [
+          "Task priority matrix (High / Medium / Low) with colored badges",
+          "Productivity progress charts & completion statistics",
+          "Custom categories with personalized icons",
+          "Auto-save drafts and zero-latency state updates"
+        ],
+        screenshots: [
+          { src: "../images/todo/spl.jpeg", name: "Splash Screen 1" },
+          { src: "../images/todo/spl2.jpeg", name: "Splash Screen 2" },
+          { src: "../images/todo/homl.jpeg", name: "Task Dashboard" },
+          { src: "../images/todo/addl.jpeg", name: "Add Task Screen" },
+          { src: "../images/todo/fill.jpeg", name: "Filter Tasks" },
+          { src: "../images/todo/adsl.jpeg", name: "Category List" },
+          { src: "../images/todo/mai.jpeg", name: "Main Task Overview" },
+          { src: "../images/todo/sea.jpeg", name: "Smart Search" },
+          { src: "../images/todo/othl.jpeg", name: "Options & Config" },
+          { src: "../images/todo/emp.jpeg", name: "Empty State View" },
+          { src: "../images/todo/det.jpeg", name: "Task Details View" },
+          { src: "../images/todo/sel.jpeg", name: "Priority Selector" },
+          { src: "../images/todo/editl.jpeg", name: "Edit Task Screen" },
+          { src: "../images/todo/notil.jpeg", name: "Notifications Panel" }
+        ],
+        github: "https://github.com/q343313/TODO-APP",
+        playstore: "#"
+      }
+    };
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ================= GET URL QUERY PARAMS =================
+    function getSelectedProjectId() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let id = urlParams.get("id");
+      if (!id && window.location.hash) {
+        id = window.location.hash.replace("#", "");
+      }
+      return (id && PROJECTS[id]) ? id : "expence";
+    }
+
+    let currentProjId = getSelectedProjectId();
+
+    // ================= RENDER PROJECT SELECTOR TABS =================
+    function renderTabs() {
+      const tabsContainer = document.getElementById("project-tabs");
+      tabsContainer.innerHTML = "";
+      Object.keys(PROJECTS).forEach(key => {
+        const p = PROJECTS[key];
+        const btn = document.createElement("button");
+        btn.className = `proj-tab ${p.id === currentProjId ? 'active' : ''}`;
+        btn.innerHTML = `<span class="tab-num">[${p.num}]</span> ${p.title}`;
+        btn.addEventListener("click", () => switchProject(p.id));
+        tabsContainer.appendChild(btn);
+      });
+    }
+
+    // ================= SWITCH PROJECT =================
+    function switchProject(id) {
+      if (!PROJECTS[id]) return;
+      currentProjId = id;
+      window.history.pushState(null, "", `?id=${id}`);
+      renderTabs();
+      loadProjectData(id);
+      playSound('cmd');
+    }
+
+    // ================= LOAD & RENDER PROJECT DATA =================
+    function loadProjectData(id) {
+      const p = PROJECTS[id];
+      document.title = `${p.title} — Talha Afridi Terminal`;
+
+      document.getElementById("hud-status").textContent = `ENCRYPTED // VIEWING_${p.id.toUpperCase()}`;
+      document.getElementById("term-file-name").textContent = `cat /projects/${p.termName}`;
+
+      // Title & Desc
+      const titleEl = document.getElementById("proj-title");
+      titleEl.setAttribute("data-original", p.title);
+      titleEl.textContent = p.title;
+      scrambleText(titleEl);
+
+      document.getElementById("proj-desc").innerHTML = p.description;
+
+      // Badges
+      const badgesContainer = document.getElementById("proj-badges");
+      badgesContainer.innerHTML = p.badges.map((b, i) =>
+        `<span class="cyber-badge ${p.badgeClasses[i % p.badgeClasses.length]}">[ ${b} ]</span>`
+      ).join('');
+
+      // Tech Chips
+      const chipsContainer = document.getElementById("tech-chips");
+      chipsContainer.innerHTML = p.chips.map(c =>
+        `<div class="tech-chip">${c}</div>`
+      ).join('');
+
+      // Specs
+      const specsContainer = document.getElementById("specs-grid");
+      specsContainer.innerHTML = p.specs.map(s => `
+        <div class="spec-card">
+          <div class="spec-label">${s.label}</div>
+          <div class="spec-val">${s.val}</div>
+        </div>
+      `).join('');
+
+      // Features Lists
+      document.getElementById("core-features").innerHTML = p.coreFeatures.map(f => `
+        <li><span class="bullet">[+]</span> <div>${f}</div></li>
+      `).join('');
+
+      document.getElementById("adv-features").innerHTML = p.advFeatures.map(f => `
+        <li><span class="bullet">[✓]</span> <div>${f}</div></li>
+      `).join('');
+
+      // Screenshots Gallery
+      const gallery = document.getElementById("screenshot-grid");
+      gallery.innerHTML = p.screenshots.map(s => `
+        <div class="shot-card" onclick="openLightbox('${s.src}', '${s.name.replace(/'/g, "\\'")}')">
+          <img src="${s.src}" alt="${s.name}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'240\\' height=\\'400\\' viewBox=\\'0 0 240 400\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%23081426\\'/><text x=\\'50%\\' y=\\'50%\\' font-family=\\'Orbitron\\' font-size=\\'14\\' fill=\\'%2300f0ff\\' text-anchor=\\'middle\\'>IMAGE PREVIEW</text></svg>';">
+          <div class="shot-caption">${s.name}</div>
+        </div>
+      `).join('');
+
+      // Action Links
+      document.getElementById("action-links").innerHTML = `
+        <a href="${p.github}" target="_blank" class="action-btn btn-primary">
+          <i class="fab fa-github"></i> VIEW CODE ON GITHUB
+        </a>
+        <a href="${p.playstore}" target="_blank" class="action-btn btn-secondary">
+          <i class="fab fa-google-play"></i> PLAY STORE (COMING SOON)
+        </a>
+        <a href="../index.html" class="action-btn btn-secondary">
+          <i class="fas fa-grid"></i> SYSTEM HUB
+        </a>
+      `;
+    }
+
+    // ================= LIGHTBOX MODAL =================
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    function openLightbox(src, name) {
+      lightboxImg.src = src;
+      lightboxCaption.textContent = name;
+      lightbox.classList.add('active');
+      playSound('click');
+    }
+
+    document.getElementById('lightbox-close').addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+
+    // ================= WEB AUDIO SFX & MATRIX =================
+    let sfxEnabled = true;
+    let humEnabled = false;
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let humOsc = null;
+    let humGain = null;
+
+    function toggleAmbientHum() {
+      if (humEnabled) {
+        if (humOsc) { humOsc.stop(); humOsc = null; }
+        humEnabled = false;
+        document.getElementById('hum-toggle').textContent = '🔊 AMBIENT: OFF';
+      } else {
+        try {
+          if (audioCtx.state === 'suspended') audioCtx.resume();
+          humOsc = audioCtx.createOscillator();
+          humGain = audioCtx.createGain();
+          humOsc.type = 'sawtooth';
+          humOsc.frequency.setValueAtTime(55, audioCtx.currentTime);
+          const filter = audioCtx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(120, audioCtx.currentTime);
+          humOsc.connect(filter);
+          filter.connect(humGain);
+          humGain.connect(audioCtx.destination);
+          humGain.gain.setValueAtTime(0.015, audioCtx.currentTime);
+          humOsc.start();
+          humEnabled = true;
+          document.getElementById('hum-toggle').textContent = '🔊 AMBIENT: ON';
+        } catch (e) { }
+      }
+    }
+    document.getElementById('hum-toggle').addEventListener('click', toggleAmbientHum);
+
+    function playSound(type) {
+      if (!sfxEnabled) return;
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        if (type === 'click') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.05);
+          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.05);
+        } else if (type === 'hover') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.015, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.03);
+        } else if (type === 'cmd') {
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.08);
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
+        }
+      } catch (e) { }
+    }
+
+    const sfxBtn = document.getElementById('sfx-toggle');
+    sfxBtn.addEventListener('click', () => {
+      sfxEnabled = !sfxEnabled;
+      sfxBtn.textContent = sfxEnabled ? '🔊 SFX: ON' : '🔇 SFX: OFF';
+      if (sfxEnabled) playSound('click');
+    });
+
+    const crtBtn = document.getElementById('crt-toggle');
+    crtBtn.addEventListener('click', () => {
+      document.body.classList.toggle('crt-off');
+      const isOff = document.body.classList.contains('crt-off');
+      crtBtn.textContent = isOff ? '🖥️ CRT: OFF' : '🖥️ CRT: ON';
+      playSound('click');
+    });
+
+    // Attach sound handlers
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest('a, button, .proj-tab, .shot-card')) playSound('hover');
+    });
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('a, button, .proj-tab, .shot-card')) playSound('click');
+    });
+
+    // ================= MATRIX RAIN ANIMATION =================
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    let matrixColor = '#00f0ff';
+    document.getElementById('matrix-color').addEventListener('change', (e) => {
+      matrixColor = e.target.value;
+      document.documentElement.style.setProperty('--matrix-color', matrixColor);
+    });
+
+    const chars = '0101010101アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEF<>{}[]|/\\#$%&@*+=;:!?';
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize);
+    let drops = Array(columns).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = document.body.classList.contains('light-theme') ? 'rgba(228, 235, 243, 0.08)' : 'rgba(2, 6, 13, 0.06)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.font = fontSize + 'px JetBrains Mono, monospace';
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        const rand = Math.random();
+        if (rand > 0.96) {
+          ctx.fillStyle = '#ffffff';
+          ctx.shadowColor = matrixColor;
+          ctx.shadowBlur = 12;
+        } else {
+          ctx.fillStyle = matrixColor;
+          ctx.shadowBlur = 0;
+        }
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        ctx.shadowBlur = 0;
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    setInterval(drawMatrix, 34);
+
+    // ================= TEXT SCRAMBLE EFFECT =================
+    const scrambleChars = '!<>-_\\/[]{}—=+^?#________';
+    function scrambleText(el) {
+      const original = el.getAttribute('data-original') || el.innerText;
+      let iteration = 0;
+      const interval = setInterval(() => {
+        el.innerText = original.split('').map((char, index) => {
+          if (index < iteration) return original[index];
+          return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+        }).join('');
+        if (iteration >= original.length) clearInterval(interval);
+        iteration += 1 / 2;
+      }, 30);
+    }
+
+    document.querySelectorAll('.scramble-text').forEach(el => {
+      el.addEventListener('mouseenter', () => scrambleText(el));
+    });
+
+    // Dynamic Ping Simulation
+    setInterval(() => {
+      const ping = Math.floor(10 + Math.random() * 8);
+      document.getElementById('hud-ping').textContent = ping + 'ms';
+    }, 2500);
+
+    // ================= THEME TOGGLE =================
+    const themeBtn = document.getElementById('theme-toggle');
+    function toggleTheme() {
+      if (document.body.classList.contains('dark-theme')) {
+        document.body.classList.replace('dark-theme', 'light-theme');
+        themeBtn.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.body.classList.replace('light-theme', 'dark-theme');
+        themeBtn.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+    themeBtn.addEventListener('click', toggleTheme);
+
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.replace('dark-theme', 'light-theme');
+      themeBtn.textContent = '☀️';
+    }
+
+    // ================= CLI TERMINAL ENGINE =================
+    const cliToggle = document.getElementById('cli-toggle');
+    const cliModal = document.getElementById('cli-modal');
+    const cliClose = document.getElementById('cli-close');
+    const cliInput = document.getElementById('cli-input');
+    const cliOutput = document.getElementById('cli-output');
+
+    function toggleTerminal() {
+      cliModal.classList.toggle('active');
+      if (cliModal.classList.contains('active')) cliInput.focus();
+    }
+    cliToggle.addEventListener('click', toggleTerminal);
+    cliClose.addEventListener('click', () => cliModal.classList.remove('active'));
+
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey && e.key === '`') || e.key === 'F2') {
+        e.preventDefault();
+        toggleTerminal();
+      }
+    });
+
+    function appendCliMsg(text, isCmd = false) {
+      const div = document.createElement('div');
+      div.innerHTML = isCmd ? `<span style="color:var(--accent);">talha@proj:~$</span> ${text}` : text;
+      cliOutput.appendChild(div);
+      cliOutput.scrollTop = cliOutput.scrollHeight;
+    }
+
+    cliInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const cmd = cliInput.value.trim();
+        if (!cmd) return;
+        appendCliMsg(cmd, true);
+        playSound('cmd');
+        cliInput.value = '';
+        const lower = cmd.toLowerCase();
+
+        if (lower === 'help') {
+          appendCliMsg(`Available Commands:<br>
+          - <span style="color:var(--accent);">projects</span> : List all projects<br>
+          - <span style="color:var(--accent);">load [expence|market|pasman|chat|ads]</span> : Load specific project<br>
+          - <span style="color:var(--accent);">info</span> : Show current project specs<br>
+          - <span style="color:var(--accent);">github</span> : Open GitHub repository<br>
+          - <span style="color:var(--accent);">hub</span> : Return to portfolio index<br>
+          - <span style="color:var(--accent);">clear</span> : Clear terminal screen`);
+        } else if (lower === 'projects') {
+          appendCliMsg(`Available System Projects:<br>1. expence (Expense Manager)<br>2. market (Local Market)<br>3. pasman (Password Vault)<br>4. chat (AI Chat App)<br>5. ads (TODO App)`);
+        } else if (lower.startsWith('load ')) {
+          const target = lower.split(' ')[1];
+          if (PROJECTS[target]) {
+            switchProject(target);
+            appendCliMsg(`[SUCCESS]: Loaded project "${target}"`);
+          } else {
+            appendCliMsg(`<span style="color:var(--alert);">[ERROR]: Project "${target}" not found!</span>`);
+          }
+        } else if (lower === 'info') {
+          const p = PROJECTS[currentProjId];
+          appendCliMsg(`[PROJECT INFO]: ${p.title}<br>Tech Stack: ${p.chips.join(', ')}`);
+        } else if (lower === 'github') {
+          window.open(PROJECTS[currentProjId].github, '_blank');
+          appendCliMsg(`Opening GitHub repo...`);
+        } else if (lower === 'hub' || lower === 'index') {
+          window.location.href = '../index.html';
+        } else if (lower === 'clear') {
+          cliOutput.innerHTML = '';
+        } else {
+          appendCliMsg(`Unknown command: "${cmd}". Type <span style="color:var(--accent);">help</span>.`);
+        }
+      }
+    });
+
+    // INITIAL LOAD
+    renderTabs();
+    loadProjectData(currentProjId);
+  </script>
+</body>
+
+</html>
