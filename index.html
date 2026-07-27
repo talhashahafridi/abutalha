@@ -668,19 +668,25 @@ footer::before {
   background: var(--accent3); color: #000; box-shadow: var(--glow-g);
 }
 .cli-modal {
-  position: fixed; bottom: 80px; left: 22px; width: 480px; height: 350px;
-  background: rgba(2, 8, 16, 0.96); border: 1px solid var(--accent);
   position: fixed; bottom: 80px; left: 22px; width: 520px; height: 380px;
   background: rgba(2, 8, 16, 0.97); border: 1px solid var(--accent);
   border-radius: 8px; box-shadow: var(--shadow), var(--glow);
   z-index: 99; display: none; flex-direction: column; overflow: hidden;
   backdrop-filter: blur(16px);
+}
+.cli-modal.active { display: flex; animation: cliIn 0.25s ease-out; }
+@keyframes cliIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+.cli-header {
+  background: rgba(0, 240, 255, 0.12); padding: 8px 14px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+  font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent);
+}
+.cli-close { cursor: pointer; color: var(--alert); font-weight: bold; }
 .cli-close:hover { color: #ff5f56; }
 .cli-output {
-  flex: 1; padding: 12px; overflow-y: auto; font-size: 11.5px;
   flex: 1; padding: 14px; overflow-y: auto; font-size: 11.5px;
   color: var(--accent3); font-family: 'Share Tech Mono', monospace;
-  line-height: 1.5;
   line-height: 1.6;
 }
 .cli-input-wrapper {
@@ -1179,9 +1185,6 @@ footer::before {
 <!-- CONTACT SECTION -->
 <h2 id="contact" class="section-title scramble-text" data-original="Contact Me">Contact Me</h2>
 <form id="contact-form">
-  <input type="text" placeholder="Your Name" required>
-  <input type="email" placeholder="Your Email" required>
-  <textarea placeholder="Your Message..." required></textarea>
   <input type="text" id="contact-name" placeholder="Your Name" required>
   <input type="email" id="contact-email" placeholder="Your Email" required>
   <textarea id="contact-msg" placeholder="Your Message..." required></textarea>
@@ -1202,15 +1205,12 @@ footer::before {
     <span class="cli-close" id="cli-close">✕</span>
   </div>
   <div class="cli-output" id="cli-output">
-    <div>Type <span style="color:var(--accent);">help</span> or <span style="color:var(--accent3);">neofetch</span> to start.</div>
-    <div>System Ready. Encryption Key Active.</div>
     <div>Welcome to Talha Afridi's Cyber Terminal.</div>
     <div>Type <span style="color:var(--accent);">help</span> or <span style="color:var(--accent3);">socials</span> to start.</div>
     <div>Try commands: <span style="color:var(--accent);">tiktok</span>, <span style="color:var(--accent);">github</span>, <span style="color:var(--accent);">cv</span>, <span style="color:var(--accent);">msg Hello</span>, <span style="color:var(--accent);">hack</span></div>
   </div>
   <div class="cli-input-wrapper">
     <span class="cli-prompt">talha@sec:~$</span>
-    <input type="text" class="cli-input" id="cli-input" placeholder="Type command (neofetch, scan, audit, help)..." autocomplete="off">
     <input type="text" class="cli-input" id="cli-input" placeholder="Type command (tiktok, cv, msg, socials, hack)..." autocomplete="off">
   </div>
 </div>
@@ -1247,7 +1247,6 @@ footer::before {
         humOsc = audioCtx.createOscillator();
         humGain = audioCtx.createGain();
         humOsc.type = 'sawtooth';
-        humOsc.frequency.setValueAtTime(55, audioCtx.currentTime); // Low 55Hz Cyber drone
         humOsc.frequency.setValueAtTime(55, audioCtx.currentTime);
         
         const filter = audioCtx.createBiquadFilter();
@@ -1431,7 +1430,6 @@ footer::before {
     themeBtn.textContent = '☀️';
     mobileThemeBtn.textContent = '☀️';
   }
-  // ================= INTERACTIVE CLI TERMINAL DRAWER & HOTKEYS =================
   // ================= INTERACTIVE CLI TERMINAL ENGINE WITH COMMAND HISTORY =================
   const cliToggle = document.getElementById('cli-toggle');
   const cliModal = document.getElementById('cli-modal');
@@ -1467,10 +1465,6 @@ footer::before {
   }
   // Command History Navigation (Up / Down Arrow Keys)
   cliInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      const val = cliInput.value.trim().toLowerCase();
-      if (!val) return;
-      appendCliMsg(cliInput.value, true);
     if (e.key === 'ArrowUp') {
       if (cmdHistory.length > 0 && historyIndex < cmdHistory.length - 1) {
         historyIndex++;
@@ -1494,7 +1488,6 @@ footer::before {
       appendCliMsg(fullCmd, true);
       playSound('cmd');
       cliInput.value = '';
-      switch (val) {
       const lowerCmd = fullCmd.toLowerCase();
       const parts = lowerCmd.split(' ');
       const mainCmd = parts[0];
@@ -1561,15 +1554,6 @@ footer::before {
           break;
         case 'help':
           appendCliMsg(`Available Commands:<br>
-          - <span style="color:var(--accent);">neofetch</span>: System summary<br>
-          - <span style="color:var(--accent);">scan</span>: Port scan simulation<br>
-          - <span style="color:var(--accent);">audit</span>: Security audit report<br>
-          - <span style="color:var(--accent);">whoami</span>: Developer Identity<br>
-          - <span style="color:var(--accent);">skills</span>: List Tech Stack<br>
-          - <span style="color:var(--accent);">projects</span>: Jump to Projects<br>
-          - <span style="color:var(--accent);">contact</span>: Email & Phone<br>
-          - <span style="color:var(--accent);">clear</span>: Clear terminal<br>
-          - <span style="color:var(--accent);">sudo</span>: Root privilege check`);
           - <span style="color:var(--accent);">tiktok</span> / <span style="color:var(--accent);">github</span> / <span style="color:var(--accent);">insta</span> / <span style="color:var(--accent);">fb</span> / <span style="color:var(--accent);">yt</span> / <span style="color:var(--accent);">wa</span> : Open Socials<br>
           - <span style="color:var(--accent);">socials</span> : List all social media shortcuts<br>
           - <span style="color:var(--accent);">cv</span> / <span style="color:var(--accent);">resume</span> : Download or View CV<br>
@@ -1625,7 +1609,6 @@ footer::before {
           appendCliMsg(`<span style="color:var(--alert);">[ACCESS DENIED]: You need Level 9 Security Clearance for sudo privilege!</span>`);
           break;
         default:
-          appendCliMsg(`Command not recognized: "${val}". Type <span style="color:var(--accent);">help</span> for commands.`);
           appendCliMsg(`Command not recognized: "${fullCmd}". Type <span style="color:var(--accent);">help</span> or <span style="color:var(--accent);">socials</span>.`);
       }
     }
