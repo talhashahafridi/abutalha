@@ -70,9 +70,9 @@ body {
 /* Matrix rain – stronger cyberpunk */
 #matrix {
   position: fixed; inset: 0; z-index: -4;
-  opacity: 0.32; pointer-events: none;
+  opacity: 0.52; pointer-events: none;
 }
-body.light-theme #matrix { opacity: 0.08; }
+body.light-theme #matrix { opacity: 0.28; }
 
 /* Scanlines */
 body::before {
@@ -80,11 +80,11 @@ body::before {
   position: fixed; inset: 0;
   background: repeating-linear-gradient(
     0deg, transparent, transparent 2px,
-    rgba(0,0,0,0.18) 2px, rgba(0,0,0,0.18) 4px
+    rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px
   );
-  z-index: 9998; pointer-events: none; opacity: 0.45;
+  z-index: 9998; pointer-events: none; opacity: 0.3;
 }
-body.light-theme::before { opacity: 0.05; }
+body.light-theme::before { opacity: 0.04; }
 
 /* Vignette + soft cyber glow edges */
 body::after {
@@ -1017,39 +1017,41 @@ footer::before {
   let drops = Array(columns).fill(1);
 
   function drawMatrix() {
-    ctx.fillStyle = 'rgba(2, 4, 10, 0.08)';
+    // slower fade so rain stays more visible
+    ctx.fillStyle = 'rgba(2, 4, 10, 0.05)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.font = fontSize + 'px JetBrains Mono, monospace';
 
     for (let i = 0; i < drops.length; i++) {
       const text = chars[Math.floor(Math.random() * chars.length)];
+      // bright head + cyan body + occasional green/purple
       const rand = Math.random();
-      if (rand > 0.975) {
+      if (rand > 0.97) {
         ctx.fillStyle = '#ffffff';
         ctx.shadowColor = '#00f0ff';
-        ctx.shadowBlur = 8;
-      } else if (rand > 0.92) {
+        ctx.shadowBlur = 10;
+      } else if (rand > 0.90) {
         ctx.fillStyle = '#00ff9d';
         ctx.shadowColor = '#00ff9d';
-        ctx.shadowBlur = 6;
-      } else if (rand > 0.88) {
+        ctx.shadowBlur = 7;
+      } else if (rand > 0.85) {
         ctx.fillStyle = '#b14aff';
         ctx.shadowColor = '#b14aff';
-        ctx.shadowBlur = 5;
+        ctx.shadowBlur = 6;
       } else {
-        ctx.fillStyle = 'rgba(0, 240, 255, 0.75)';
+        ctx.fillStyle = 'rgba(0, 240, 255, 0.9)';
         ctx.shadowBlur = 0;
       }
       ctx.fillText(text, i * fontSize, drops[i] * fontSize);
       ctx.shadowBlur = 0;
 
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.972) {
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.97) {
         drops[i] = 0;
       }
       drops[i]++;
     }
   }
-  setInterval(drawMatrix, 38);
+  setInterval(drawMatrix, 36);
 
   window.addEventListener('resize', () => {
     columns = Math.floor(canvas.width / fontSize);
