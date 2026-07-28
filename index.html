@@ -1205,7 +1205,7 @@ body.light-theme .skill-progress { background: linear-gradient(90deg, #0066cc, #
     <a class="nav-btn" href="#projects">Projects</a>
     <a class="nav-btn" href="#about">About</a>
     <a class="nav-btn" href="#contact">Contact</a>
-    <a class="nav-btn" href="Talha_Afridi_Professional_CV.pdf" download id="cv-btn">Download CV</a>
+    <a class="nav-btn" href="cv.html" target="_blank" id="cv-btn">📄 Executive CV</a>
     <button class="nav-btn" id="theme-toggle">🌙 THEME</button>
   </nav>
   <button id="mobile-menu-btn" class="mobile-menu-btn">☰</button>
@@ -1213,7 +1213,7 @@ body.light-theme .skill-progress { background: linear-gradient(90deg, #0066cc, #
     <a href="#projects" class="mobile-nav-btn">Projects</a>
     <a href="#about" class="mobile-nav-btn">About</a>
     <a href="#contact" class="mobile-nav-btn">Contact</a>
-    <a href="Talha_Afridi_Professional_CV.pdf" download class="mobile-nav-btn">Download CV</a>
+    <a href="cv.html" target="_blank" class="mobile-nav-btn">📄 Executive CV</a>
     <button id="mobile-theme-toggle" class="mobile-nav-btn">🌙 THEME</button>
   </div>
 </header>
@@ -1567,7 +1567,7 @@ body.light-theme .skill-progress { background: linear-gradient(90deg, #0066cc, #
           <li><b>F.Sc Pre-Engineering</b> — Islamia College Peshawar</li>
           <li><b>Matric</b> — Afridi Model School & College</li>
         </ul>
-        <p style="margin-top:8px;"><b>Email:</b> talhashahafridi@gmail.com</p>
+        <p style="margin-top:8px;"><b>Email:</b> talhaafridishah@gmail.com</p>
         <p><b>Location:</b> Peshawar, Pakistan</p>
       </div>
       <div class="about-card" style="grid-column: 1 / -1;">
@@ -2133,13 +2133,10 @@ body.light-theme .skill-progress { background: linear-gradient(90deg, #0066cc, #
             <span style="color:var(--accent3);">Edu:</span> BS Cybersecurity @ IMSciences University<br>
             <span style="color:var(--accent3);">Apps:</span> 15+ Flutter Apps, 30+ Python Backends<br>
             <span style="color:var(--accent3);">Stack:</span> Flutter, FastAPI, Firebase, Hive, SQLite, Kali<br>
-            <span style="color:var(--accent3);">Email:</span> talhashahafridi@gmail.com`);
+            <span style="color:var(--accent3);">Email:</span> talhaafridishah@gmail.com`);
           } else {
-            appendCliMsg(`[DOWNLOADING CV]: Downloading Talha_Afridi_Professional_CV.pdf...`);
-            const a = document.createElement('a');
-            a.href = 'Talha_Afridi_Professional_CV.pdf';
-            a.download = 'Talha_Afridi_Professional_CV.pdf';
-            a.click();
+            appendCliMsg(`[OPENING EXECUTIVE CV]: Launching Executive Resume & PDF Exporter...`);
+            window.open('cv.html', '_blank');
           }
           break;
         case 'msg':
@@ -2149,8 +2146,8 @@ body.light-theme .skill-progress { background: linear-gradient(90deg, #0066cc, #
             appendCliMsg(`<span style="color:var(--alert);">Usage: msg [your message here]</span><br>Example: <span style="color:var(--accent);">msg Hello Talha, I want to discuss a Flutter project!</span>`);
           } else {
             appendCliMsg(`[ENCRYPTING MESSAGE]: "${arg}"...`);
-            appendCliMsg(`[DISPATCHING]: Opening default email client to talhashahafridi@gmail.com...`);
-            window.location.href = `mailto:talhashahafridi@gmail.com?subject=Portfolio%20Inquiry%20from%20Terminal&body=${encodeURIComponent(arg)}`;
+            appendCliMsg(`[DISPATCHING]: Opening default email client to talhaafridishah@gmail.com...`);
+            window.location.href = `mailto:talhaafridishah@gmail.com?subject=Portfolio%20Inquiry%20from%20Terminal&body=${encodeURIComponent(arg)}`;
             
             // Also autofill contact form for convenience
             document.getElementById('contact-msg').value = arg;
@@ -2213,7 +2210,7 @@ body.light-theme .skill-progress { background: linear-gradient(90deg, #0066cc, #
           window.location.hash = '#projects';
           break;
         case 'contact':
-          appendCliMsg(`Email: talhashahafridi@gmail.com | Phone: +92 318 2586785`);
+          appendCliMsg(`Email: talhaafridishah@gmail.com | Phone: +92 318 2586785`);
           break;
         case 'clear':
           cliOutput.innerHTML = '';
@@ -2256,7 +2253,7 @@ body.light-theme .skill-progress { background: linear-gradient(90deg, #0066cc, #
     const msg = document.getElementById('contact-msg').value;
     safePlaySound('cmd');
     safeShowToast(`[ENCRYPTED MESSAGE SENT]: Thank you ${name}! Message dispatched.`);
-    window.location.href = `mailto:talhashahafridi@gmail.com?subject=Portfolio%20Message%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(msg + '\n\nFrom: ' + email)}`;
+    window.location.href = `mailto:talhaafridishah@gmail.com?subject=Portfolio%20Message%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(msg + '\n\nFrom: ' + email)}`;
   });
 
   // ================= CYBER TOAST NOTIFICATION ENGINE =================
@@ -2277,7 +2274,7 @@ body.light-theme .skill-progress { background: linear-gradient(90deg, #0066cc, #
   const PALETTE_COMMANDS = [
     { name: "Explore Featured Projects", icon: "fa-cubes", tag: "NAV", action: () => document.getElementById('projects').scrollIntoView({behavior:'smooth'}) },
     { name: "Launch Cyber Penetration & Port Scanner", icon: "fa-shield-halved", tag: "TOOL", action: () => document.getElementById('cyber-scanner').scrollIntoView({behavior:'smooth'}) },
-    { name: "Download Professional CV (PDF)", icon: "fa-download", tag: "FILE", action: () => { showToast("Downloading Professional CV..."); document.getElementById('cv-btn').click(); } },
+    { name: "Open Executive Professional CV (PDF)", icon: "fa-file-pdf", tag: "RESUME", action: () => { safeShowToast("Opening Executive CV..."); window.open('cv.html', '_blank'); } },
     { name: "Direct Chat on WhatsApp", icon: "fa-whatsapp", tag: "SOCIAL", action: () => window.open('https://wa.me/923182586785', '_blank') },
     { name: "Open Instagram Profile (@talhashahafridi)", icon: "fa-instagram", tag: "SOCIAL", action: () => window.open('https://www.instagram.com/talhashahafridi', '_blank') },
     { name: "Open Smart Expense Manager", icon: "fa-wallet", tag: "PROJECT", action: () => window.location.href='projects/project.html?id=expence' },
