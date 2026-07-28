@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talha Afridi — Executive Professional CV / Resume</title>
+  <meta name="description" content="Official Executive Resume & CV of Talha Afridi — Flutter, FastAPI & Python Developer, Cybersecurity Specialist.">
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@600;700;800;900&family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ================= EXECUTIVE CV THEME VARIABLES ================= */
+    :root {
+      --bg: #030712;
+      --card: rgba(15, 23, 42, 0.96);
+      --card-border: rgba(56, 189, 248, 0.35);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --heading: #ffffff;
+      --accent: #38bdf8;       /* Sapphire Blue */
+      --accent-alt: #00ff9d;   /* Cyber Green */
+      --accent-dark: #0284c7;
+      --sidebar-bg: #090e1a;
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      --font-body: 'Space Grotesk', 'Inter', sans-serif;
+      --font-cyber: 'Orbitron', sans-serif;
+      --font-code: 'Share Tech Mono', 'JetBrains Mono', monospace;
+    }
+
+    body.light-theme {
+      --bg: #ffffff;
+      --card: #ffffff;
+      --card-border: #cbd5e1;
+      --text: #0f172a;
+      --muted: #475569;
+      --heading: #0f172a;
+      --accent: #2563eb;
+      --accent-alt: #059669;
+      --accent-dark: #1d4ed8;
+      --sidebar-bg: #f8fafc;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-cyber);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px;
+      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+    }
+
+    /* TOP ACTION BAR */
+    .cv-action-bar {
+      max-width: 1100px;
+      margin: 0 auto 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card);
+      padding: 14px 24px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .action-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-cyber);
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--accent);
+    }
+
+    .action-btns {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-family: var(--font-code);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #ffffff;
+      box-shadow: 0 4px 18px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.55);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border-color: var(--card-border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    /* CV CONTAINER */
+    .cv-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    /* EXECUTIVE HEADER SECTION */
+    .cv-header {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(9, 14, 26, 0.99));
+      padding: 36px 40px;
+      border-bottom: 2px solid var(--card-border);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 28px;
+      align-items: center;
+    }
+
+    body.light-theme .cv-header {
+      background: linear-gradient(135deg, #ffffff, #f1f5f9);
+    }
+
+    .profile-photo {
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.05);
+    }
+
+    .header-details h1 {
+      font-family: var(--font-cyber);
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--heading);
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .header-details .title-badge {
+      display: inline-block;
+      font-family: var(--font-code);
+      color: var(--accent);
+      font-size: 13.5px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .header-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px 18px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    .header-contact-grid a, .header-contact-grid div {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .header-contact-grid a:hover {
+      color: var(--accent);
+    }
+
+    .header-contact-grid i {
+      color: var(--accent);
+      font-size: 14px;
+      width: 16px;
+      text-align: center;
+    }
+
+    .header-qr-box {
+      text-align: center;
+      padding: 12px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+
+    .header-qr-box p {
+      font-size: 10px;
+      font-family: var(--font-code);
+      color: var(--accent-alt);
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    /* MAIN 2-COLUMN CV LAYOUT */
+    .cv-body {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+    }
+
+    /* SIDEBAR COLUMN */
+    .cv-sidebar {
+      background: var(--sidebar-bg);
+      padding: 32px 26px;
+      border-right: 1px solid var(--card-border);
+    }
+
+    .section-title {
+      font-family: var(--font-cyber);
+      font-size: 13.5px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px dashed var(--card-border);
+      padding-bottom: 8px;
+    }
+
+    .sidebar-block {
+      margin-bottom: 28px;
+    }
+
+    .sidebar-block:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Education Item */
+    .edu-card {
+      margin-bottom: 16px;
+      padding-left: 12px;
+      border-left: 2px solid var(--accent);
+    }
+
+    .edu-card h4 {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1.3;
+    }
+
+    .edu-card .inst {
+      font-size: 12px;
+      color: var(--accent-alt);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .edu-card .year {
+      font-size: 11px;
+      font-family: var(--font-code);
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Certifications Item */
+    .cert-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 12.5px;
+    }
+
+    .cert-item i {
+      color: #fbbf24;
+      margin-top: 3px;
+    }
+
+    .cert-item div {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .cert-item span {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      font-family: var(--font-code);
+    }
+
+    /* Skill Grouping */
+    .skill-group {
+      margin-bottom: 14px;
+    }
+
+    .skill-group-title {
+      font-size: 12px;
+      font-family: var(--font-code);
+      color: var(--accent-alt);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .pill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pill {
+      font-size: 11px;
+      font-family: var(--font-code);
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      font-weight: 600;
+    }
+
+    /* MAIN CONTENT COLUMN */
+    .cv-main-content {
+      padding: 32px 38px;
+    }
+
+    .main-block {
+      margin-bottom: 30px;
+    }
+
+    .main-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .exec-summary {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.75;
+      text-align: justify;
+    }
+
+    /* Timeline & Experience Items */
+    .exp-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .exp-header h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--heading);
+    }
+
+    .exp-header .date-badge {
+      font-size: 11px;
+      font-family: var(--font-code);
+      background: rgba(0, 255, 157, 0.15);
+      color: var(--accent-alt);
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--accent-alt);
+      font-weight: 700;
+    }
+
+    .exp-sub {
+      font-size: 12.5px;
+      color: var(--accent);
+      font-family: var(--font-code);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .exp-p {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* Project Timeline Items */
+    .timeline-item {
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid var(--card-border);
+      margin-bottom: 20px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .item-header h3 {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--heading);
+    }
+
+    .item-header .tag {
+      font-size: 10.5px;
+      font-family: var(--font-code);
+      color: var(--accent-alt);
+      font-weight: 700;
+    }
+
+    .item-desc {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .item-bullets {
+      list-style: none;
+      font-size: 12.5px;
+      color: var(--text);
+    }
+
+    .item-bullets li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 4px;
+    }
+
+    .item-bullets li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-code);
+      font-size: 11.5px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Hobbies Grid */
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+    }
+
+    .hobby-card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+      font-size: 12px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hobby-card i {
+      color: var(--accent-alt);
+      font-size: 13px;
+    }
+
+    /* CV FOOTER STAMP */
+    .cv-footer {
+      text-align: center;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid var(--card-border);
+      font-family: var(--font-code);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ================= PRINT MEDIA STYLES (A4 PERFECT FORMAT) ================= */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 10.5pt !important;
+      }
+
+      .cv-action-bar {
+        display: none !important;
+      }
+
+      .cv-container {
+        max-width: 100% !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        background: #ffffff !important;
+      }
+
+      .cv-header {
+        background: #f8fafc !important;
+        border-bottom: 2pt solid #0f172a !important;
+        padding: 20px 24px !important;
+      }
+
+      .header-details h1 {
+        color: #0f172a !important;
+      }
+
+      .header-details .title-badge {
+        color: #1d4ed8 !important;
+      }
+
+      .cv-sidebar {
+        background: #f8fafc !important;
+        border-right: 1pt solid #cbd5e1 !important;
+        padding: 20px 18px !important;
+      }
+
+      .cv-main-content {
+        padding: 20px 24px !important;
+      }
+
+      .section-title {
+        color: #1d4ed8 !important;
+        border-bottom-color: #cbd5e1 !important;
+      }
+
+      .pill {
+        background: #eff6ff !important;
+        color: #1d4ed8 !important;
+        border-color: #bfdbfe !important;
+      }
+
+      .timeline-item::before {
+        background: #1d4ed8 !important;
+        box-shadow: none !important;
+      }
+
+      .exp-box {
+        background: #ffffff !important;
+        border-color: #cbd5e1 !important;
+      }
+
+      .hobby-card {
+        background: #f8fafc !important;
+        border-color: #e2e8f0 !important;
+      }
+
+      .cv-footer {
+        display: none !important;
+      }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 850px) {
+      .cv-header {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .profile-photo {
+        margin: 0 auto;
+      }
+
+      .header-contact-grid {
+        justify-content: center;
+      }
+
+      .header-qr-box {
+        display: none;
+      }
+
+      .cv-body {
+        grid-template-columns: 1fr;
+      }
+
+      .cv-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--card-border);
+      }
+    }
+  </style>
+</head>
+<body class="dark-theme">
+
+  <!-- TOP ACTION BAR -->
+  <div class="cv-action-bar">
+    <div class="action-brand">
+      <i class="fas fa-shield-halved"></i> TALHA AFRIDI // EXECUTIVE RESUME
+    </div>
+    <div class="action-btns">
+      <a href="index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Portfolio</a>
+      <button class="btn btn-secondary" id="theme-btn"><i class="fas fa-sun"></i> Theme</button>
+      <button class="btn btn-primary" onclick="window.print()"><i class="fas fa-print"></i> Print / Save PDF</button>
+    </div>
+  </div>
+
+  <!-- MAIN CV CONTAINER PAPER -->
+  <div class="cv-container">
+    
+    <!-- EXECUTIVE HEADER -->
+    <header class="cv-header">
+      <img src="profile.jpeg" alt="Talha Afridi" class="profile-photo" id="cv-profile-img" title="Click to flip photo">
+      <div class="header-details">
+        <h1>TALHA AFRIDI</h1>
+        <span class="title-badge"><i class="fas fa-code"></i> FLUTTER, FASTAPI & PYTHON DEVELOPER // CYBERSECURITY SPECIALIST</span>
+        
+        <div class="header-contact-grid">
+          <div><i class="fas fa-envelope"></i> <a href="mailto:talhaafridishah@gmail.com">talhaafridishah@gmail.com</a></div>
+          <div><i class="fas fa-phone"></i> <a href="tel:+923182586785">+92 318 2586785</a></div>
+          <div><i class="fas fa-location-dot"></i> Peshawar, KPK, Pakistan (25000)</div>
+          <div><i class="fab fa-github"></i> <a href="https://github.com/q343313" target="_blank">github.com/q343313</a></div>
+          <div><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/afridi-shah-b66950379/" target="_blank">linkedin.com/in/afridi-shah</a></div>
+          <div><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/talhashahafridi" target="_blank">@talhashahafridi</a></div>
+          <div><i class="fas fa-globe"></i> <a href="https://q343313.github.io/abutalha/" target="_blank">q343313.github.io/abutalha</a></div>
+        </div>
+      </div>
+      
+      <div class="header-qr-box">
+        <i class="fas fa-qrcode" style="font-size: 50px; color: var(--accent);"></i>
+        <p>PORTFOLIO LINK</p>
+      </div>
+    </header>
+
+    <!-- 2-COLUMN BODY -->
+    <div class="cv-body">
+      
+      <!-- LEFT SIDEBAR -->
+      <aside class="cv-sidebar">
+        
+        <!-- EDUCATION -->
+        <div class="sidebar-block">
+          <div class="section-title"><i class="fas fa-graduation-cap"></i> Education</div>
+          
+          <div class="edu-card">
+            <h4>Bachelor of Science: Cybersecurity</h4>
+            <div class="inst">IMSciences University (Institute of Management Sciences)</div>
+            <div class="year">06/2025 – 06/2029 (Peshawar, KPK)</div>
+          </div>
+          
+          <div class="edu-card">
+            <h4>F.Sc: Pre-Engineering</h4>
+            <div class="inst">Islamia College Peshawar</div>
+            <div class="year">05/2023 – 05/2025 (Peshawar, KPK)</div>
+          </div>
+
+          <div class="edu-card">
+            <h4>Matric: Pre-Engineering</h4>
+            <div class="inst">Afridi Model School & College</div>
+            <div class="year">05/2021 – 05/2023 (Peshawar, KPK)</div>
+          </div>
+        </div>
+
+        <!-- CERTIFICATIONS -->
+        <div class="sidebar-block">
+          <div class="section-title"><i class="fas fa-award"></i> Certifications</div>
+          
+          <div class="cert-item">
+            <i class="fas fa-certificate"></i>
+            <div>
+              Flutter App Development
+              <span>Ask Envisionary</span>
+            </div>
+          </div>
+
+          <div class="cert-item">
+            <i class="fas fa-certificate"></i>
+            <div>
+              Python Programming
+              <span>Ask Envisionary</span>
+            </div>
+          </div>
+
+          <div class="cert-item">
+            <i class="fas fa-certificate"></i>
+            <div>
+              FastAPI for Backend Development
+              <span>Ask Envisionary</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SKILLS CATEGORIZATION -->
+        <div class="sidebar-block">
+          <div class="section-title"><i class="fas fa-sliders"></i> Technical Skills</div>
+          
+          <div class="skill-group">
+            <div class="skill-group-title">📱 App Development</div>
+            <div class="pill-cloud">
+              <span class="pill">Flutter</span>
+              <span class="pill">Dart</span>
+              <span class="pill">Provider</span>
+              <span class="pill">BLoC</span>
+              <span class="pill">MVVM</span>
+              <span class="pill">UI/UX Design</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">⚡ Backend & Databases</div>
+            <div class="pill-cloud">
+              <span class="pill">FastAPI</span>
+              <span class="pill">Python</span>
+              <span class="pill">Firebase</span>
+              <span class="pill">REST APIs</span>
+              <span class="pill">JSON</span>
+              <span class="pill">SQLite</span>
+              <span class="pill">Hive</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">📊 Data Science</div>
+            <div class="pill-cloud">
+              <span class="pill">NumPy</span>
+              <span class="pill">Pandas</span>
+              <span class="pill">Matplotlib</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">🛡️ Cyber & OS Tools</div>
+            <div class="pill-cloud">
+              <span class="pill">Kali Linux</span>
+              <span class="pill">Networking</span>
+              <span class="pill">Git & GitHub</span>
+              <span class="pill">Terminal Commands</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title">🚀 Core Competencies</div>
+            <div class="pill-cloud">
+              <span class="pill">Problem Solving</span>
+              <span class="pill">Debugging</span>
+              <span class="pill">Play Store Deployment</span>
+              <span class="pill">Web Deployment</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LANGUAGES -->
+        <div class="sidebar-block">
+          <div class="section-title"><i class="fas fa-language"></i> Languages</div>
+          <div class="pill-cloud">
+            <span class="pill">English (Professional)</span>
+            <span class="pill">Urdu (Native)</span>
+            <span class="pill">Pashto (Native)</span>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- RIGHT MAIN CONTENT AREA -->
+      <main class="cv-main-content">
+        
+        <!-- PROFESSIONAL SUMMARY / EXPERIENCE -->
+        <div class="main-block">
+          <div class="section-title"><i class="fas fa-user-tie"></i> Professional Summary</div>
+          <p class="exec-summary">
+            A skilled app developer with expertise in <b>Flutter, Dart, and UI/UX design</b>, complemented by a strong foundation in backend technologies such as <b>FastAPI and Python</b>. Proficient in data science tools including <b>NumPy and Pandas</b>, with a keen understanding of cybersecurity and OS tools like <b>Kali Linux</b>. Demonstrates exceptional problem-solving abilities and debugging skills, with experience in deploying applications to the Play Store and web platforms. Career goals include advancing app development capabilities while integrating innovative solutions across diverse technological landscapes.
+          </p>
+        </div>
+
+        <!-- WORK HISTORY -->
+        <div class="main-block">
+          <div class="section-title"><i class="fas fa-briefcase"></i> Work History</div>
+          
+          <div class="exp-box">
+            <div class="exp-header">
+              <h3>Flutter, FastAPI & Python Developer</h3>
+              <span class="date-badge">04/2025 – Current</span>
+            </div>
+            <div class="exp-sub"><i class="fas fa-building"></i> Flutter Developer — Peshawar, Pakistan</div>
+            <p class="exp-p">
+              Dedicated Flutter and Python Developer specializing in building modern, responsive, and scalable cross-platform mobile applications and Python FastAPI backend microservices.
+            </p>
+            <ul class="item-bullets" style="margin-top:8px;">
+              <li>Engineered real-world production projects using Hive for encrypted offline database storage and Provider/BLoC for reactive state management.</li>
+              <li>Integrated RESTful APIs for smooth, high-speed data communication and asynchronous JSON payload handling.</li>
+              <li>Applied hands-on expertise in Object-Oriented Programming (OOP) concepts, file handling, and data processing in Python.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- FEATURED PROJECTS -->
+        <div class="main-block">
+          <div class="section-title"><i class="fas fa-laptop-code"></i> Key Engineered Projects</div>
+
+          <!-- Project 1 -->
+          <div class="timeline-item">
+            <div class="item-header">
+              <h3>Smart Expense Manager & Automated PDF Accountant</h3>
+              <span class="tag">FLUTTER // HIVE // FASTAPI</span>
+            </div>
+            <div class="item-desc">Cross-platform expense tracker featuring offline-first Hive database, spending charts, budget threshold alerts, and instant PDF report generation.</div>
+            <a href="https://github.com/q343313/Expence-Tracker-App" target="_blank" class="project-link"><i class="fab fa-github"></i> View GitHub Repository</a>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="timeline-item">
+            <div class="item-header">
+              <h3>E-Local Market Multi-Vendor Suite</h3>
+              <span class="tag">FLUTTER // FASTAPI // FIREBASE</span>
+            </div>
+            <div class="item-desc">E-commerce suite connecting local merchants with buyers, featuring seller dashboards, image compression, and Firebase FCM push notifications.</div>
+            <a href="https://github.com/q343313/E-Local-Market" target="_blank" class="project-link"><i class="fab fa-github"></i> View GitHub Repository</a>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="timeline-item">
+            <div class="item-header">
+              <h3>PasMan — Encrypted Password Manager Vault</h3>
+              <span class="tag">FLUTTER // AES-256 // HIVE</span>
+            </div>
+            <div class="item-desc">Cryptographic password manager vault with local AES-256 encryption, key derivation, and biometric authentication.</div>
+            <a href="https://github.com/q343313/Password-Manager-App" target="_blank" class="project-link"><i class="fab fa-github"></i> View GitHub Repository</a>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="timeline-item">
+            <div class="item-header">
+              <h3>AI Cyber Chat Assistant (Python & OpenRouter)</h3>
+              <span class="tag">PYTHON // OPENROUTER API // FLUTTER</span>
+            </div>
+            <div class="item-desc">AI conversational assistant built with Python backend middleware and OpenRouter API integration.</div>
+            <a href="https://github.com/q343313/chat-app-in-python" target="_blank" class="project-link"><i class="fab fa-github"></i> View GitHub Repository</a>
+          </div>
+        </div>
+
+        <!-- HOBBIES AND INTERESTS -->
+        <div class="main-block">
+          <div class="section-title"><i class="fas fa-heart"></i> Hobbies & Interests</div>
+          <div class="hobbies-grid">
+            <div class="hobby-card"><i class="fas fa-code"></i> Building personal coding projects & exploring new tech</div>
+            <div class="hobby-card"><i class="fas fa-mobile-screen"></i> Learning advanced app development & backend architecture</div>
+            <div class="hobby-card"><i class="fab fa-github"></i> Contributing to open-source projects on GitHub</div>
+            <div class="hobby-card"><i class="fas fa-puzzle-piece"></i> Solving programming challenges & debugging</div>
+            <div class="hobby-card"><i class="fas fa-palette"></i> Designing clean, modern mobile app UI interfaces</div>
+            <div class="hobby-card"><i class="fas fa-newspaper"></i> Reading tech articles & staying updated with software trends</div>
+            <div class="hobby-card"><i class="fas fa-people-group"></i> Sharing knowledge & helping others learn to code</div>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+
+    <!-- CV FOOTER STAMP -->
+    <footer class="cv-footer">
+      OFFICIAL EXECUTIVE RESUME // TALHA AFRIDI — GENERATED VIA CYBER PORTFOLIO SUITE © 2025
+    </footer>
+
+  </div>
+
+  <script>
+    // Theme Controller
+    const themeBtn = document.getElementById('theme-btn');
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+
+    if (savedTheme === 'light') {
+      document.body.className = 'light-theme';
+      themeBtn.innerHTML = '<i class="fas fa-moon"></i> Theme';
+    } else {
+      document.body.className = 'dark-theme';
+      themeBtn.innerHTML = '<i class="fas fa-sun"></i> Theme';
+    }
+
+    themeBtn.addEventListener('click', () => {
+      if (document.body.classList.contains('light-theme')) {
+        document.body.className = 'dark-theme';
+        localStorage.setItem('portfolio-theme', 'dark');
+        themeBtn.innerHTML = '<i class="fas fa-sun"></i> Theme';
+      } else {
+        document.body.className = 'light-theme';
+        localStorage.setItem('portfolio-theme', 'light');
+        themeBtn.innerHTML = '<i class="fas fa-moon"></i> Theme';
+      }
+    });
+
+    // Profile photo switcher
+    const PROFILE_PHOTOS = ['profile.jpeg', 'profile2.jpeg', 'profile3.jpeg'];
+    let photoIdx = 0;
+    const profileImg = document.getElementById('cv-profile-img');
+
+    if (profileImg) {
+      profileImg.addEventListener('click', () => {
+        photoIdx = (photoIdx + 1) % PROFILE_PHOTOS.length;
+        profileImg.style.opacity = '0';
+        profileImg.style.transform = 'scale(0.85)';
+        setTimeout(() => {
+          profileImg.src = PROFILE_PHOTOS[photoIdx];
+          profileImg.style.opacity = '1';
+          profileImg.style.transform = 'scale(1)';
+        }, 200);
+      });
+    }
+  </script>
+
+</body>
+</html>
