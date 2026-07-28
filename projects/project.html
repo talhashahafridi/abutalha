@@ -12,343 +12,194 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     /* ================= ROOT & CYBER VARIABLES ================= */
-    :root {
+    /* ================= 4 HACKER CYBER THEMES SYSTEM ================= */
+    /* 1. Dark Cyber Theme (Default) */
+    :root,
+    body.dark-theme,
+    body.theme-dark {
       --bg: #02060d;
       --bg2: #060d18;
-      --card: rgba(5, 12, 24, 0.94);
+      --card: rgba(5, 12, 24, 0.96);
       --card-hover: rgba(8, 18, 36, 0.98);
-      --text: #e2f1ff;
-      --muted: #5c7b99;
+      --text: #ffffff;
+      --muted: #cbd5e1;
       --accent: #00f0ff;
-      /* Cyan Neon */
-      --accent2: #00b8d9;
-      /* Deep Cyan */
+      --accent2: #0088ff;
       --accent3: #00ff9d;
-      /* Hacker Green */
-      --accent4: #b14aff;
-      /* Neon Purple */
+      --accent4: #d946ef;
       --alert: #ff0055;
-      /* Red Alert */
       --warning: #ffb700;
-      /* Security Warning Amber */
-      --shadow: 0 18px 50px rgba(0, 0, 0, 0.88);
-      --border: 1px solid rgba(0, 240, 255, 0.35);
-      --glow: 0 0 30px rgba(0, 240, 255, 0.6), 0 0 10px rgba(0, 240, 255, 0.4);
-      --glow-g: 0 0 25px rgba(0, 255, 157, 0.5), 0 0 8px rgba(0, 255, 157, 0.3);
-      --glow-p: 0 0 28px rgba(177, 74, 255, 0.45);
-      --glow-alert: 0 0 25px rgba(255, 0, 85, 0.5);
-      --crt-opacity: 0.32;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.95);
+      --border: 1px solid rgba(0, 240, 255, 0.4);
+      --glow: 0 0 30px rgba(0, 240, 255, 0.65);
+      --glow-g: 0 0 25px rgba(0, 255, 157, 0.55);
+      --crt-opacity: 0.28;
       --font-mono: 'JetBrains Mono', 'Fira Code', 'Share Tech Mono', monospace;
       --font-cyber: 'Orbitron', 'Poppins', sans-serif;
       --matrix-color: #00f0ff;
+      --accent-grid: rgba(0, 240, 255, 0.18);
+      --glow-radial1: rgba(0, 240, 255, 0.08);
+      --glow-radial2: rgba(177, 74, 255, 0.08);
     }
 
-    body.light-theme {
-      --bg: #eaf1f8;
-      --bg2: #dae4f0;
+    /* 2. Pure Snow White Light Theme */
+    body.light-theme,
+    body.theme-light {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      --bg: #ffffff;
+      --bg2: #ffffff;
       --card: #ffffff;
-      --card-hover: #f4f8fc;
-      --text: #0a192f;
-      --muted: #43617d;
-      --accent: #0066cc;
-      --accent2: #004499;
-      --accent3: #008844;
-      --accent4: #6b21a8;
+      --card-hover: #ffffff;
+      --text: #0f172a;
+      /* Deep Crisp Slate Black */
+      --muted: #475569;
+      /* Dark Readable Slate */
+      --accent: #2563eb;
+      /* Royal Sapphire Blue */
+      --accent2: #1d4ed8;
+      --accent3: #059669;
+      /* Vibrant Emerald Green */
+      --accent4: #7c3aed;
       --alert: #dc2626;
       --warning: #d97706;
-      --shadow: 0 10px 30px rgba(0, 50, 100, 0.08);
-      --border: 1px solid rgba(0, 102, 204, 0.22);
-      --glow: 0 0 15px rgba(0, 102, 204, 0.2);
-      --glow-g: 0 0 15px rgba(0, 136, 68, 0.15);
-      --crt-opacity: 0.04;
-      --matrix-color: #0066cc;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      --border: 1px solid #e2e8f0;
+      --glow: 0 0 15px rgba(37, 99, 235, 0.15);
+      --glow-g: 0 0 15px rgba(5, 150, 105, 0.15);
+      --crt-opacity: 0;
+      --matrix-color: #cbd5e1;
+      --accent-grid: rgba(0, 0, 0, 0.03);
+      --glow-radial1: rgba(37, 99, 235, 0.02);
+      --glow-radial2: rgba(5, 150, 105, 0.02);
     }
 
-    /* ================= LIGHT THEME COMPLETE STYLING OVERRIDES ================= */
-    body.light-theme::after {
-      background: radial-gradient(ellipse at 50% 30%, transparent 40%, rgba(0, 0, 0, 0.05) 100%);
-    }
-
-    body.light-theme #matrix {
-      opacity: 0.2;
-    }
-
-    body.light-theme .cyber-hud {
-      background: rgba(224, 234, 246, 0.95);
-      border-bottom: 1px solid rgba(0, 102, 204, 0.2);
-    }
-
-    body.light-theme .hud-btn {
-      border-color: rgba(0, 102, 204, 0.3);
-      color: #0a192f;
-    }
-
-    body.light-theme .hud-btn:hover {
-      background: #0066cc;
-      color: #ffffff;
-    }
-
-    body.light-theme .matrix-color-select {
-      background: #ffffff;
-      color: #0066cc;
-      border-color: rgba(0, 102, 204, 0.3);
-    }
-
-    body.light-theme header {
-      background: rgba(240, 246, 253, 0.95);
-      border-bottom: 1px solid rgba(0, 102, 204, 0.18);
-    }
-
-    body.light-theme .brand h1 {
-      color: #0a192f;
-      text-shadow: none;
-    }
-
-    body.light-theme .brand p {
-      color: #008844;
-    }
-
-    body.light-theme .back-btn {
-      background: rgba(0, 102, 204, 0.08);
-      color: #0066cc;
-      border-color: #0066cc;
-      box-shadow: none;
-    }
-
-    body.light-theme .back-btn:hover {
-      background: #0066cc;
-      color: #ffffff;
-    }
-
-    body.light-theme .theme-btn {
-      background: rgba(0, 102, 204, 0.08);
-      border-color: rgba(0, 102, 204, 0.3);
-      color: #0a192f;
-    }
-
-    body.light-theme .proj-tab {
-      background: #ffffff;
-      border-color: rgba(0, 102, 204, 0.25);
-      color: #43617d;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-
-    body.light-theme .proj-tab:hover {
-      color: #0066cc;
-      border-color: #0066cc;
-      background: rgba(0, 102, 204, 0.08);
-    }
-
-    body.light-theme .proj-tab.active {
-      background: linear-gradient(90deg, #0066cc, #6b21a8);
-      border-color: transparent;
-      color: #ffffff;
-      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
-    }
-
-    body.light-theme .proj-tab.active .tab-num {
-      color: #7effc7;
-    }
-
-    body.light-theme .terminal-window {
-      background: #ffffff;
-      border-color: rgba(0, 102, 204, 0.25);
-      box-shadow: 0 10px 30px rgba(0, 50, 100, 0.08);
+    /* Pure White Theme Complete Element Overrides */
+    body.light-theme header,
+    body.light-theme .cyber-hud,
+    body.light-theme .terminal-window,
+    body.light-theme .cyber-box,
+    body.light-theme .spec-card,
+    body.light-theme .shot-card,
+    body.light-theme .palette-box {
+      background: #ffffff !important;
+      border-color: #e2e8f0 !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+      color: #0f172a !important;
     }
 
     body.light-theme .term-bar {
-      background: rgba(225, 236, 248, 0.9);
-      border-bottom: 1px solid rgba(0, 102, 204, 0.18);
+      background: #f8fafc !important;
+      border-bottom: 1px solid #e2e8f0 !important;
     }
 
-    body.light-theme .term-filename {
-      color: #0066cc;
-      font-weight: 700;
+    body.light-theme .hud-btn,
+    body.light-theme .matrix-color-select,
+    body.light-theme .back-btn {
+      background: #ffffff !important;
+      border-color: #cbd5e1 !important;
+      color: #0f172a !important;
     }
 
-    body.light-theme .proj-title {
-      color: #0a192f;
-      text-shadow: none;
-    }
-
-    body.light-theme .proj-desc {
-      color: #334e68;
-    }
-
-    body.light-theme .proj-desc b {
-      color: #0a192f;
-    }
-
-    body.light-theme .badge-cyan {
-      background: rgba(0, 102, 204, 0.1);
-      color: #0066cc;
-      border-color: rgba(0, 102, 204, 0.35);
-    }
-
-    body.light-theme .badge-green {
-      background: rgba(0, 136, 68, 0.1);
-      color: #008844;
-      border-color: rgba(0, 136, 68, 0.35);
-    }
-
-    body.light-theme .badge-purple {
-      background: rgba(107, 33, 168, 0.1);
-      color: #6b21a8;
-      border-color: rgba(107, 33, 168, 0.35);
+    body.light-theme .term-title,
+    body.light-theme .term-filename,
+    body.light-theme .term-bar span {
+      color: #2563eb !important;
     }
 
     body.light-theme .tech-chip {
-      background: rgba(0, 102, 204, 0.08);
-      color: #0066cc;
-      border-color: rgba(0, 102, 204, 0.28);
+      background: #f1f5f9 !important;
+      color: #1d4ed8 !important;
+      border: 1px solid #cbd5e1 !important;
     }
 
-    body.light-theme .tech-chip::before {
-      color: #008844;
+    body.light-theme .cyber-search-field,
+    body.light-theme .palette-input {
+      background: #ffffff !important;
+      color: #0f172a !important;
+      border: 1px solid #cbd5e1 !important;
     }
 
-    body.light-theme .spec-card {
-      background: #f4f8fc;
-      border-color: rgba(0, 102, 204, 0.2);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    /* LIGHT THEME BACKGROUND OVERLAY OVERRIDES (DISABLE DARK VIGNETTE & DARK CANVAS) */
+    body.light-theme,
+    body.light-theme html {
+      background-color: #ffffff !important;
+      background: #ffffff !important;
     }
 
-    body.light-theme .spec-label {
-      color: #55728d;
+    body.light-theme::after {
+      background: none !important;
+      opacity: 0 !important;
     }
 
-    body.light-theme .spec-val {
-      color: #008844;
-      font-weight: 800;
+    body.light-theme #matrix {
+      opacity: 0.12 !important;
     }
 
-    body.light-theme .cyber-box {
-      background: #ffffff;
-      border-color: rgba(0, 102, 204, 0.22);
-      box-shadow: 0 8px 24px rgba(0, 50, 100, 0.06);
+    body.light-theme #cyber-grid {
+      opacity: 0.04 !important;
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px) !important;
     }
 
-    body.light-theme .cyber-box-title {
-      color: #0066cc;
-      border-bottom-color: rgba(0, 102, 204, 0.18);
+    body.light-theme .crt-overlay {
+      display: none !important;
     }
 
-    body.light-theme .cyber-list li {
-      color: #0a192f;
+    /* 3. Electric Blue Theme (Deep Sapphire Cyber) */
+    body.theme-blue {
+      --bg: #090d16;
+      --bg2: #0f172a;
+      --card: rgba(15, 23, 42, 0.96);
+      --card-hover: rgba(30, 41, 59, 0.98);
+      --text: #ffffff;
+      /* Pure Crystal White */
+      --muted: #94a3b8;
+      /* Soft Sky Slate */
+      --accent: #38bdf8;
+      /* Sky Blue Accent */
+      --accent2: #2563eb;
+      --accent3: #34d399;
+      /* Mint Accent */
+      --accent4: #c084fc;
+      --alert: #f43f5e;
+      --warning: #fbbf24;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.95);
+      --border: 1px solid rgba(56, 189, 248, 0.4);
+      --glow: 0 0 30px rgba(56, 189, 248, 0.65);
+      --glow-g: 0 0 25px rgba(52, 211, 153, 0.55);
+      --crt-opacity: 0.28;
+      --matrix-color: #38bdf8;
+      --accent-grid: rgba(56, 189, 248, 0.18);
+      --glow-radial1: rgba(56, 189, 248, 0.09);
+      --glow-radial2: rgba(37, 99, 235, 0.09);
     }
 
-    body.light-theme .cyber-list li span.bullet {
-      color: #008844;
-    }
-
-    body.light-theme .gallery-title {
-      color: #0a192f;
-    }
-
-    body.light-theme .gallery-title i {
-      color: #0066cc;
-    }
-
-    body.light-theme .shot-card {
-      background: #ffffff;
-      border-color: rgba(0, 102, 204, 0.22);
-      box-shadow: 0 4px 14px rgba(0, 50, 100, 0.06);
-    }
-
-    body.light-theme .shot-card:hover {
-      border-color: #0066cc;
-      box-shadow: 0 8px 25px rgba(0, 102, 204, 0.2);
-    }
-
-    body.light-theme .shot-caption {
-      color: #008844;
-      font-weight: 700;
-    }
-
-    body.light-theme .btn-primary {
-      background: linear-gradient(90deg, #0066cc, #004499);
-      color: #ffffff;
-      box-shadow: 0 4px 18px rgba(0, 102, 204, 0.3);
-    }
-
-    body.light-theme .btn-primary:hover {
-      box-shadow: 0 6px 26px rgba(0, 102, 204, 0.5);
-    }
-
-    body.light-theme .btn-secondary {
-      background: rgba(0, 102, 204, 0.08);
-      color: #0066cc;
-      border-color: #0066cc;
-      box-shadow: 0 2px 10px rgba(0, 102, 204, 0.1);
-    }
-
-    body.light-theme .btn-secondary:hover {
-      background: #0066cc;
-      color: #ffffff;
-    }
-
-    body.light-theme .cli-drawer-toggle {
-      background: rgba(240, 246, 253, 0.95);
-      border-color: #0066cc;
-      color: #0066cc;
-      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
-    }
-
-    body.light-theme .cli-drawer-toggle:hover {
-      background: #0066cc;
-      color: #ffffff;
-    }
-
-    body.light-theme .cli-modal {
-      background: rgba(245, 249, 254, 0.97);
-      border-color: #0066cc;
-      box-shadow: 0 10px 40px rgba(0, 102, 204, 0.2);
-    }
-
-    body.light-theme .cli-header {
-      background: rgba(224, 234, 246, 0.95);
-      color: #0066cc;
-      border-bottom-color: rgba(0, 102, 204, 0.18);
-    }
-
-    body.light-theme .cli-output {
-      color: #0a192f;
-    }
-
-    body.light-theme .cli-input-wrapper {
-      background: rgba(224, 234, 246, 0.6);
-      border-top-color: rgba(0, 102, 204, 0.18);
-    }
-
-    body.light-theme .cli-prompt {
-      color: #008844;
-    }
-
-    body.light-theme .cli-input {
-      color: #0a192f;
-    }
-
-    body.light-theme footer {
-      border-top-color: rgba(0, 102, 204, 0.15);
-      color: #43617d;
-    }
-
-    body.light-theme .lightbox-modal {
-      background: rgba(235, 242, 250, 0.96);
-    }
-
-    body.light-theme .lightbox-content img {
-      border-color: #0066cc;
-      box-shadow: 0 0 35px rgba(0, 102, 204, 0.25);
-    }
-
-    body.light-theme .lightbox-close {
-      color: #0066cc;
-    }
-
-    body.light-theme .lightbox-caption {
-      color: #008844;
-      font-weight: bold;
+    /* 4. Matrix Green Theme */
+    body.theme-green {
+      --bg: #010a05;
+      --bg2: #03140a;
+      --card: rgba(2, 16, 8, 0.96);
+      --card-hover: rgba(4, 26, 12, 0.98);
+      --text: #ffffff;
+      --muted: #a7f3d0;
+      --accent: #00ff9d;
+      /* Terminal Green */
+      --accent2: #00cc66;
+      --accent3: #7effc7;
+      --accent4: #38bdf8;
+      --alert: #ff2a6d;
+      --warning: #facc15;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.95);
+      --border: 1px solid rgba(0, 255, 157, 0.45);
+      --glow: 0 0 30px rgba(0, 255, 157, 0.7);
+      --glow-g: 0 0 25px rgba(126, 255, 199, 0.6);
+      --crt-opacity: 0.28;
+      --matrix-color: #00ff9d;
+      --accent-grid: rgba(0, 255, 157, 0.18);
+      --glow-radial1: rgba(0, 255, 157, 0.09);
+      --glow-radial2: rgba(56, 189, 248, 0.07);
     }
 
     * {
@@ -641,6 +492,308 @@
       padding: 26px 20px;
       position: relative;
       z-index: 1;
+    }
+
+    /* ================= MASTER CYBER SEARCH CONSOLE & FILTERS ================= */
+    .cyber-console-wrapper {
+      background: var(--card);
+      border-radius: 8px;
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      box-shadow: var(--shadow), 0 0 25px rgba(0, 240, 255, 0.12);
+      backdrop-filter: blur(20px);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    body.light-theme .cyber-console-wrapper {
+      background: #ffffff;
+      border-color: rgba(0, 102, 204, 0.25);
+      box-shadow: 0 8px 24px rgba(0, 50, 100, 0.06);
+    }
+
+    .cyber-console-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+      background: rgba(0, 0, 0, 0.55);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+    }
+
+    body.light-theme .cyber-console-bar {
+      background: rgba(225, 236, 248, 0.9);
+      border-bottom-color: rgba(0, 102, 204, 0.18);
+    }
+
+    .console-title {
+      font-size: 11px;
+      color: var(--accent);
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 0.6px;
+    }
+
+    body.light-theme .console-title {
+      color: #0066cc;
+      font-weight: 700;
+    }
+
+    .console-badge {
+      font-size: 10px;
+      font-weight: bold;
+      color: var(--accent3);
+      background: rgba(0, 255, 157, 0.12);
+      border: 1px solid var(--accent3);
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    body.light-theme .console-badge {
+      color: #008844;
+      border-color: rgba(0, 136, 68, 0.35);
+      background: rgba(0, 136, 68, 0.08);
+    }
+
+    .cyber-search-inner {
+      padding: 18px 20px 14px;
+      position: relative;
+    }
+
+    .search-input-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(2, 8, 18, 0.95);
+      border: 1px solid rgba(0, 240, 255, 0.4);
+      border-radius: 6px;
+      padding: 4px 14px;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+      transition: all 0.25s ease;
+    }
+
+    .search-input-box:focus-within {
+      border-color: #00f0ff;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.4), var(--glow);
+    }
+
+    body.light-theme .search-input-box {
+      background: #f4f8fc;
+      border-color: rgba(0, 102, 204, 0.3);
+      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-theme .search-input-box:focus-within {
+      border-color: #0066cc;
+      box-shadow: 0 0 18px rgba(0, 102, 204, 0.25);
+    }
+
+    .search-prompt {
+      font-size: 12px;
+      color: var(--accent3);
+      font-family: 'Share Tech Mono', monospace;
+      margin-right: 10px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    body.light-theme .search-prompt {
+      color: #008844;
+    }
+
+    .cyber-search-field {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13.5px;
+      padding: 10px 0;
+    }
+
+    body.light-theme .cyber-search-field {
+      color: #0a192f;
+    }
+
+    .cyber-search-field::placeholder {
+      color: var(--muted);
+      opacity: 0.75;
+    }
+
+    .search-hotkey-badge {
+      font-size: 10px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--accent);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-family: 'Share Tech Mono', monospace;
+      margin-left: 8px;
+    }
+
+    body.light-theme .search-hotkey-badge {
+      background: rgba(0, 102, 204, 0.08);
+      border-color: rgba(0, 102, 204, 0.3);
+      color: #0066cc;
+    }
+
+    .search-clear-btn {
+      background: transparent;
+      border: none;
+      color: var(--alert);
+      font-size: 12px;
+      font-weight: bold;
+      font-family: 'Share Tech Mono', monospace;
+      cursor: pointer;
+      padding: 3px 8px;
+      border-radius: 4px;
+      transition: all 0.2s;
+      margin-left: 6px;
+    }
+
+    .search-clear-btn:hover {
+      background: rgba(255, 0, 85, 0.2);
+    }
+
+    /* Live Auto Suggestions Dropdown */
+    .search-suggestions {
+      position: absolute;
+      top: 100%;
+      left: 20px;
+      right: 20px;
+      margin-top: 6px;
+      background: rgba(3, 10, 22, 0.98);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), var(--glow);
+      backdrop-filter: blur(16px);
+      max-height: 280px;
+      overflow-y: auto;
+      display: none;
+      z-index: 100;
+      padding: 8px;
+    }
+
+    .search-suggestions.active {
+      display: block;
+      animation: dropIn 0.2s ease-out;
+    }
+
+    @keyframes dropIn {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    body.light-theme .search-suggestions {
+      background: #ffffff;
+      border-color: #0066cc;
+      box-shadow: 0 10px 35px rgba(0, 82, 204, 0.2);
+    }
+
+    .sugg-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      color: var(--text);
+      border: 1px solid transparent;
+      margin-bottom: 4px;
+    }
+
+    body.light-theme .sugg-item {
+      color: #0a192f;
+    }
+
+    .sugg-item:hover,
+    .sugg-item.active-item {
+      background: rgba(0, 240, 255, 0.15);
+      border-color: var(--accent);
+      color: #ffffff;
+      padding-left: 18px;
+    }
+
+    body.light-theme .sugg-item:hover,
+    body.light-theme .sugg-item.active-item {
+      background: rgba(0, 102, 204, 0.1);
+      border-color: #0066cc;
+      color: #0066cc;
+    }
+
+    .sugg-match {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      background: rgba(0, 255, 157, 0.15);
+      color: var(--accent3);
+      border: 1px solid var(--accent3);
+    }
+
+    body.light-theme .sugg-match {
+      color: #008844;
+      border-color: rgba(0, 136, 68, 0.35);
+      background: rgba(0, 136, 68, 0.08);
+    }
+
+    /* Category Filter Quick Bar */
+    .filter-quick-bar {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filter-quick-btn {
+      padding: 4px 12px;
+      border-radius: 3px;
+      background: rgba(0, 240, 255, 0.05);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    .filter-quick-btn:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(0, 240, 255, 0.12);
+    }
+
+    .filter-quick-btn.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+      box-shadow: var(--glow);
+      font-weight: 800;
+    }
+
+    body.light-theme .filter-quick-btn {
+      background: #ffffff;
+      border-color: rgba(0, 102, 204, 0.2);
+      color: #43617d;
+    }
+
+    body.light-theme .filter-quick-btn.active {
+      background: #0066cc;
+      color: #ffffff;
+      border-color: #0066cc;
     }
 
     /* Project Quick Selector Tabs */
@@ -1223,6 +1376,93 @@
       font-size: 11.5px;
     }
 
+    /* Floating WhatsApp Button Styling */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #ffffff !important;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.55);
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 9999;
+      text-decoration: none;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .whatsapp-btn i {
+      color: #ffffff !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .whatsapp-btn::before {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid #25D366;
+      animation: pulse-ring 2s infinite;
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: scale(1.25);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(0.95);
+        opacity: 0;
+      }
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.15) translateY(-5px);
+      box-shadow: 0 14px 40px rgba(37, 211, 102, 0.85);
+      color: #ffffff !important;
+    }
+
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 70px;
+      background: rgba(5, 12, 24, 0.95);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'Share Tech Mono', monospace;
+      white-space: nowrap;
+      border: 1px solid #25D366;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      opacity: 0;
+      transform: translateX(10px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .whatsapp-btn:hover .whatsapp-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
     footer {
       text-align: center;
       padding: 30px;
@@ -1238,6 +1478,21 @@
 
   <!-- CRT Screen Scanline Overlay -->
   <div class="crt-overlay"></div>
+
+  <!-- Cyber Toast Notification -->
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a href="https://wa.me/923182586785" target="_blank" class="whatsapp-btn" title="Direct Chat on WhatsApp">
+    <span class="whatsapp-tooltip">Chat on WhatsApp 💬</span>
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a>
+
+  <!-- Command Palette Spotlight Modal -->
+
+
 
   <!-- Background Canvas Matrix & Cyber Grid -->
   <canvas id="matrix"></canvas>
@@ -1259,11 +1514,13 @@
       <span class="hud-value" id="hud-ping">12ms</span>
     </div>
     <div class="hud-actions">
+      <button class="hud-btn" id="palette-toggle" style="color:var(--accent3); font-weight:bold;"><i
+          class="fas fa-terminal"></i> ⌘ PALETTE [Ctrl+K]</button>
       <select class="matrix-color-select" id="matrix-color">
-        <option value="#00f0ff">💙 Cyan Matrix</option>
-        <option value="#00ff9d">💚 Green Matrix</option>
-        <option value="#b14aff">💜 Purple Matrix</option>
-        <option value="#ff0055">🔴 Red Matrix</option>
+        <option value="dark">🌙 Dark Cyber</option>
+        <option value="light">☀️ Light Cyber</option>
+        <option value="blue">💙 Electric Blue</option>
+        <option value="green">💚 Matrix Green</option>
       </select>
       <button class="hud-btn" id="hum-toggle">🔊 AMBIENT: OFF</button>
       <button class="hud-btn" id="sfx-toggle">🔊 SFX: ON</button>
@@ -1287,6 +1544,43 @@
   </header>
 
   <main>
+    <!-- MASTER CYBER SEARCH CONSOLE & FILTER SUITE -->
+    <div class="cyber-console-wrapper">
+      <div class="cyber-console-bar">
+        <div class="term-dots">
+          <span class="term-dot r"></span>
+          <span class="term-dot y"></span>
+          <span class="term-dot g"></span>
+        </div>
+        <span class="console-title"><i class="fas fa-terminal"></i> PROJECT_SEARCH_OPERATIONS_v3.0</span>
+        <span class="console-badge" id="search-match-count">5 Projects Active</span>
+      </div>
+
+      <div class="cyber-search-inner">
+        <div class="search-input-box">
+          <span class="search-prompt">search@talha-sec:~$</span>
+          <input type="text" id="project-search-input" class="cyber-search-field"
+            placeholder="Search by name, tech (Flutter, FastAPI, Hive, AES-256), features..." autocomplete="off">
+          <span class="search-hotkey-badge">Ctrl + K</span>
+          <button id="search-clear-btn" class="search-clear-btn" style="display:none;">✕ CLEAR</button>
+        </div>
+
+        <!-- Live Auto Suggestions Dropdown -->
+        <div class="search-suggestions" id="search-suggestions"></div>
+
+        <!-- Quick Category Filter Bar -->
+        <div class="filter-quick-bar" id="category-filter-bar">
+          <span
+            style="font-size:10px; color:var(--muted); font-family:'Share Tech Mono', monospace; margin-right:4px;">FILTER:</span>
+          <button class="filter-quick-btn active" data-cat="all">[⚡ ALL ]</button>
+          <button class="filter-quick-btn" data-cat="flutter">[ 📱 FLUTTER ]</button>
+          <button class="filter-quick-btn" data-cat="python">[ 🐍 PYTHON & BACKEND ]</button>
+          <button class="filter-quick-btn" data-cat="security">[ 🔐 SECURITY & VAULT ]</button>
+          <button class="filter-quick-btn" data-cat="ai">[ 🤖 AI ENGINE ]</button>
+        </div>
+      </div>
+    </div>
+
     <!-- PROJECT SELECTOR TABS -->
     <div class="project-selector" id="project-tabs">
       <!-- Tabs populated via JS -->
@@ -1930,25 +2224,71 @@
       document.getElementById('hud-ping').textContent = ping + 'ms';
     }, 2500);
 
-    // ================= THEME TOGGLE =================
-    const themeBtn = document.getElementById('theme-toggle');
-    function toggleTheme() {
-      if (document.body.classList.contains('dark-theme')) {
-        document.body.classList.replace('dark-theme', 'light-theme');
-        themeBtn.textContent = '☀️';
-        localStorage.setItem('theme', 'light');
-      } else {
-        document.body.classList.replace('light-theme', 'dark-theme');
-        themeBtn.textContent = '🌙';
-        localStorage.setItem('theme', 'dark');
+    // ================= SAFELY DEFINED TOAST & AUDIO HELPERS =================
+    function safePlaySound(type = 'cmd') {
+      if (typeof playSound === 'function') {
+        try { playSound(type); } catch (e) { }
       }
     }
-    themeBtn.addEventListener('click', toggleTheme);
 
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.replace('dark-theme', 'light-theme');
-      themeBtn.textContent = '☀️';
+    function safeShowToast(msg) {
+      const toast = document.getElementById('cyber-toast');
+      const msgEl = document.getElementById('toast-msg');
+      if (toast && msgEl) {
+        msgEl.textContent = msg;
+        toast.classList.add('show');
+        safePlaySound('cmd');
+        setTimeout(() => toast.classList.remove('show'), 3200);
+      }
     }
+
+    // ================= 4 HACKER CYBER THEMES ENGINE (DARK, LIGHT, BLUE, GREEN) =================
+    const THEMES = ['dark', 'light', 'blue', 'green'];
+    const matrixSelect = document.getElementById('matrix-color');
+
+    function applyTheme(themeKey) {
+      if (!THEMES.includes(themeKey)) themeKey = 'dark';
+
+      document.body.className = `theme-${themeKey}`;
+      if (themeKey === 'dark') document.body.classList.add('dark-theme');
+      if (themeKey === 'light') document.body.classList.add('light-theme');
+
+      localStorage.setItem('portfolio-theme', themeKey);
+
+      if (matrixSelect) matrixSelect.value = themeKey;
+
+      const themeBtns = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle');
+      themeBtns.forEach(btn => {
+        const labels = { dark: '🌙 DARK', light: '☀️ LIGHT', blue: '💙 BLUE', green: '💚 GREEN' };
+        btn.innerHTML = labels[themeKey] || '🌙 THEME';
+      });
+    }
+
+    function cycleTheme() {
+      const current = localStorage.getItem('portfolio-theme') || 'dark';
+      const currIdx = THEMES.indexOf(current);
+      const nextTheme = THEMES[(currIdx + 1) % THEMES.length];
+      applyTheme(nextTheme);
+      safePlaySound('cmd');
+      safeShowToast(`Theme Activated: ${nextTheme.toUpperCase()}`);
+    }
+
+    if (matrixSelect) {
+      matrixSelect.addEventListener('change', (e) => {
+        applyTheme(e.target.value);
+        safePlaySound('cmd');
+        safeShowToast(`Theme Activated: ${e.target.value.toUpperCase()}`);
+      });
+    }
+
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) themeBtn.addEventListener('click', cycleTheme);
+
+    const mobileThemeBtn = document.getElementById('mobile-theme-toggle');
+    if (mobileThemeBtn) mobileThemeBtn.addEventListener('click', cycleTheme);
+
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    applyTheme(savedTheme);
 
     // ================= CLI TERMINAL ENGINE =================
     const cliToggle = document.getElementById('cli-toggle');
@@ -2024,6 +2364,238 @@
     // INITIAL LOAD
     renderTabs();
     loadProjectData(currentProjId);
+
+    // ================= CYBER TOAST NOTIFICATION ENGINE =================
+    function showToast(msg) {
+      const toast = document.getElementById('cyber-toast');
+      document.getElementById('toast-msg').textContent = msg;
+      toast.classList.add('show');
+      playSound('cmd');
+      setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+
+    // ================= SPOTLIGHT COMMAND PALETTE ENGINE (Ctrl + K) =================
+    const paletteToggle = document.getElementById('palette-toggle');
+    const paletteModal = document.getElementById('palette-modal');
+    const paletteInput = document.getElementById('palette-input');
+    const paletteResults = document.getElementById('palette-results');
+
+    const PALETTE_COMMANDS = [
+      { name: "Switch to Smart Expense Manager", icon: "fa-wallet", tag: "PROJ", action: () => switchProject('expence') },
+      { name: "Switch to E-Local Market App", icon: "fa-shopping-cart", tag: "PROJ", action: () => switchProject('market') },
+      { name: "Switch to Password Vault", icon: "fa-key", tag: "PROJ", action: () => switchProject('pasman') },
+      { name: "Switch to AI Chat Application", icon: "fa-robot", tag: "PROJ", action: () => switchProject('chat') },
+      { name: "Switch to Smart TODO App", icon: "fa-tasks", tag: "PROJ", action: () => switchProject('ads') },
+      { name: "Open GitHub Source Code", icon: "fa-code-branch", tag: "CODE", action: () => window.open(PROJECTS[currentProjId].github, '_blank') },
+      { name: "Return to Main Portfolio Hub", icon: "fa-arrow-left", tag: "NAV", action: () => window.location.href = '../index.html' },
+      { name: "Switch Hacker Theme (Cyan/Green/Purple/Red)", icon: "fa-palette", tag: "THEME", action: () => themeBtn.click() },
+      { name: "Toggle CRT Scanlines", icon: "fa-desktop", tag: "SYSTEM", action: () => crtBtn.click() },
+      { name: "Toggle Ambient Audio", icon: "fa-volume-high", tag: "AUDIO", action: () => toggleAmbientHum() }
+    ];
+
+    function renderPaletteItems(filterText = "") {
+      paletteResults.innerHTML = "";
+      const filtered = PALETTE_COMMANDS.filter(c => c.name.toLowerCase().includes(filterText.toLowerCase()) || c.tag.toLowerCase().includes(filterText.toLowerCase()));
+      if (filtered.length === 0) {
+        paletteResults.innerHTML = `<div style="padding:16px; text-align:center; color:var(--muted);">No commands matching "${filterText}"</div>`;
+        return;
+      }
+      filtered.forEach((c, idx) => {
+        const div = document.createElement('div');
+        div.className = `palette-item ${idx === 0 ? 'selected' : ''}`;
+        div.innerHTML = `<div><i class="fas ${c.icon}" style="margin-right:10px; color:var(--accent);"></i> ${c.name}</div><span class="item-tag">${c.tag}</span>`;
+        div.addEventListener('click', () => {
+          paletteModal.classList.remove('active');
+          c.action();
+          playSound('click');
+        });
+        paletteResults.appendChild(div);
+      });
+    }
+
+    function togglePalette() {
+      paletteModal.classList.toggle('active');
+      if (paletteModal.classList.contains('active')) {
+        paletteInput.value = '';
+        renderPaletteItems('');
+        paletteInput.focus();
+        playSound('cmd');
+      }
+    }
+
+    paletteToggle.addEventListener('click', togglePalette);
+    paletteModal.addEventListener('click', (e) => { if (e.target === paletteModal) paletteModal.classList.remove('active'); });
+    paletteInput.addEventListener('input', (e) => renderPaletteItems(e.target.value));
+
+    // ================= ADVANCED MASTER SEARCH & LIVE TAB FILTER ENGINE =================
+    const searchInput = document.getElementById("project-search-input");
+    const searchClearBtn = document.getElementById("search-clear-btn");
+    const searchSuggestions = document.getElementById("search-suggestions");
+    const matchCountBadge = document.getElementById("search-match-count");
+    const quickFilterBtns = document.querySelectorAll(".filter-quick-btn");
+
+    let currentSuggIndex = -1;
+
+    // Filter project tabs & dropdown in real time
+    function filterProjects(query = "", category = "all") {
+      const q = query.trim().toLowerCase();
+      let visibleCount = 0;
+      let matchedProjIds = [];
+
+      // Update tabs visibility
+      document.querySelectorAll(".proj-tab").forEach(tab => {
+        const id = tab.getAttribute("data-id");
+        const p = PROJECTS[id];
+        if (!p) return;
+
+        let categoryMatch = (category === "all");
+        if (category === "flutter" && p.chips.some(c => c.toLowerCase().includes("flutter") || c.toLowerCase().includes("dart"))) categoryMatch = true;
+        if (category === "python" && p.chips.some(c => c.toLowerCase().includes("python") || c.toLowerCase().includes("fastapi"))) categoryMatch = true;
+        if (category === "security" && (id === "pasman" || p.chips.some(c => c.toLowerCase().includes("hive") || c.toLowerCase().includes("sqlite")))) categoryMatch = true;
+        if (category === "ai" && (id === "chat" || p.chips.some(c => c.toLowerCase().includes("openrouter") || c.toLowerCase().includes("ai")))) categoryMatch = true;
+
+        let queryMatch = !q || p.title.toLowerCase().includes(q) || p.description.toLowerCase().includes(q) || p.chips.some(c => c.toLowerCase().includes(q)) || p.coreFeatures.some(f => f.toLowerCase().includes(q)) || p.advFeatures.some(f => f.toLowerCase().includes(q));
+
+        if (categoryMatch && queryMatch) {
+          tab.style.display = "flex";
+          tab.style.opacity = "1";
+          visibleCount++;
+          matchedProjIds.push(id);
+        } else {
+          tab.style.opacity = "0.2";
+          tab.style.display = "none";
+        }
+      });
+
+      matchCountBadge.textContent = `${visibleCount} of 5 Projects Active`;
+
+      // Auto-switch project if query uniquely identifies a single project
+      if (q && matchedProjIds.length === 1 && matchedProjIds[0] !== currentProjId) {
+        switchProject(matchedProjIds[0]);
+      }
+
+      // Populate dropdown suggestions
+      if (!q) {
+        searchClearBtn.style.display = "none";
+        searchSuggestions.classList.remove("active");
+        searchSuggestions.innerHTML = "";
+        currentSuggIndex = -1;
+        return;
+      }
+
+      searchClearBtn.style.display = "inline-block";
+      searchSuggestions.innerHTML = "";
+
+      const matches = [];
+      matchedProjIds.forEach(id => {
+        const p = PROJECTS[id];
+        let reason = "Match";
+        if (p.title.toLowerCase().includes(q)) reason = "Title Match";
+        else {
+          const chipMatch = p.chips.find(c => c.toLowerCase().includes(q));
+          if (chipMatch) reason = `Tech: ${chipMatch}`;
+          else reason = "Feature Match";
+        }
+        matches.push({ proj: p, reason });
+      });
+
+      if (matches.length === 0) {
+        searchSuggestions.innerHTML = `<div style="padding:14px; text-align:center; color:var(--muted); font-size:12.5px;"><i class="fas fa-exclamation-triangle" style="color:var(--alert); margin-right:6px;"></i> No projects or technologies found matching "${query}"</div>`;
+      } else {
+        matches.forEach((m, idx) => {
+          const item = document.createElement("div");
+          item.className = `sugg-item ${idx === currentSuggIndex ? "active-item" : ""}`;
+          item.innerHTML = `
+            <div>
+              <i class="fas fa-cube" style="margin-right:10px; color:var(--accent);"></i>
+              <strong>${m.proj.title}</strong>
+            </div>
+            <span class="sugg-match">${m.reason}</span>
+          `;
+          item.addEventListener("click", () => {
+            switchProject(m.proj.id);
+            searchInput.value = "";
+            filterProjects("", getActiveCategory());
+            searchSuggestions.classList.remove("active");
+            showToast(`Loaded ${m.proj.title}`);
+          });
+          searchSuggestions.appendChild(item);
+        });
+      }
+
+      searchSuggestions.classList.add("active");
+    }
+
+    function getActiveCategory() {
+      const activeBtn = document.querySelector(".filter-quick-btn.active");
+      return activeBtn ? activeBtn.getAttribute("data-cat") : "all";
+    }
+
+    // Category button click handlers
+    quickFilterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        quickFilterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        playSound("click");
+        filterProjects(searchInput.value, btn.getAttribute("data-cat"));
+      });
+    });
+
+    // Keyboard navigation (Arrow keys & Enter)
+    searchInput.addEventListener("input", (e) => {
+      currentSuggIndex = -1;
+      filterProjects(e.target.value, getActiveCategory());
+    });
+
+    searchInput.addEventListener("keydown", (e) => {
+      const items = searchSuggestions.querySelectorAll(".sugg-item");
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (items.length === 0) return;
+        currentSuggIndex = (currentSuggIndex + 1) % items.length;
+        updateSuggHighlight(items);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (items.length === 0) return;
+        currentSuggIndex = (currentSuggIndex - 1 + items.length) % items.length;
+        updateSuggHighlight(items);
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        if (currentSuggIndex >= 0 && items[currentSuggIndex]) {
+          items[currentSuggIndex].click();
+        } else if (items.length > 0) {
+          items[0].click();
+        }
+      } else if (e.key === "Escape") {
+        searchInput.value = "";
+        filterProjects("", getActiveCategory());
+        searchSuggestions.classList.remove("active");
+      }
+    });
+
+    function updateSuggHighlight(items) {
+      items.forEach((item, idx) => {
+        if (idx === currentSuggIndex) {
+          item.classList.add("active-item");
+          item.scrollIntoView({ block: "nearest" });
+        } else {
+          item.classList.remove("active-item");
+        }
+      });
+    }
+
+    searchClearBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      filterProjects("", getActiveCategory());
+      searchInput.focus();
+      playSound("click");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".cyber-console-wrapper")) {
+        searchSuggestions.classList.remove("active");
+      }
+    });
   </script>
 </body>
 
