@@ -10,53 +10,209 @@
   <meta property="og:description" content="Flutter, FastAPI & Python developer building scalable and secure applications">
   <meta property="og:type" content="website">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;600;700;800&family=Share+Tech+Mono&family=Orbitron:wght@500;700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-/* ================= ROOT & CYBER VARIABLES ================= */
-:root {
+  <style>
+/* ================= 4 HACKER CYBER THEMES SYSTEM ================= */
+/* 1. Dark Cyber (Default) */
+:root, body.dark-theme, body.theme-dark {
   --bg: #02060d;
   --bg2: #060d18;
-  --card: rgba(5, 12, 24, 0.94);
+  --card: rgba(5, 12, 24, 0.96);
   --card-hover: rgba(8, 18, 36, 0.98);
-  --text: #e2f1ff;
-  --muted: #5c7b99;
+  --text: #ffffff;
+  --muted: #cbd5e1;
   --accent: #00f0ff;      /* Cyan Neon */
-  --accent2: #00b8d9;     /* Deep Cyan */
+  --accent2: #0088ff;     /* Electric Blue */
   --accent3: #00ff9d;     /* Hacker Green */
-  --accent4: #b14aff;     /* Neon Purple */
+  --accent4: #d946ef;     /* Neon Purple */
   --alert: #ff0055;       /* Red Alert */
   --warning: #ffb700;     /* Security Warning Amber */
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.88);
-  --border: 1px solid rgba(0, 240, 255, 0.35);
-  --glow: 0 0 30px rgba(0, 240, 255, 0.6), 0 0 10px rgba(0, 240, 255, 0.4);
-  --glow-g: 0 0 25px rgba(0, 255, 157, 0.5), 0 0 8px rgba(0, 255, 157, 0.3);
-  --glow-p: 0 0 28px rgba(177, 74, 255, 0.45);
-  --glow-alert: 0 0 25px rgba(255, 0, 85, 0.5);
-  --crt-opacity: 0.32;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.95);
+  --border: 1px solid rgba(0, 240, 255, 0.4);
+  --glow: 0 0 30px rgba(0, 240, 255, 0.65);
+  --glow-g: 0 0 25px rgba(0, 255, 157, 0.55);
+  --crt-opacity: 0.28;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Share Tech Mono', monospace;
   --font-cyber: 'Orbitron', 'Poppins', sans-serif;
   --matrix-color: #00f0ff;
+  --accent-grid: rgba(0, 240, 255, 0.18);
+  --glow-radial1: rgba(0, 240, 255, 0.08);
+  --glow-radial2: rgba(177, 74, 255, 0.08);
 }
-body.light-theme {
-  --bg: #e4ebf3;
-  --bg2: #d3deea;
-  --card: rgba(240, 245, 252, 0.95);
+
+/* 2. Pure Snow White Light Theme */
+body.light-theme, body.theme-light {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  --bg: #ffffff;
+  --bg2: #ffffff;
+  --card: #ffffff;
   --card-hover: #ffffff;
-  --text: #061220;
-  --muted: #3a526b;
-  --accent: #0066cc;
-  --accent2: #004499;
-  --accent3: #008844;
-  --accent4: #6b21a8;
+  --text: #0f172a;       /* Deep Crisp Slate Black */
+  --muted: #475569;      /* Dark Readable Slate */
+  --accent: #2563eb;      /* Royal Sapphire Blue */
+  --accent2: #1d4ed8;
+  --accent3: #059669;     /* Vibrant Emerald Green */
+  --accent4: #7c3aed;
   --alert: #dc2626;
   --warning: #d97706;
-  --shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
-  --border: 1px solid rgba(0, 102, 204, 0.3);
-  --glow: 0 0 20px rgba(0, 102, 204, 0.25);
-  --glow-g: 0 0 18px rgba(0, 136, 68, 0.2);
-  --crt-opacity: 0.05;
-  --matrix-color: #0066cc;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --border: 1px solid #e2e8f0;
+  --glow: 0 0 15px rgba(37, 99, 235, 0.15);
+  --glow-g: 0 0 15px rgba(5, 150, 105, 0.15);
+  --crt-opacity: 0;
+  --matrix-color: #cbd5e1;
+  --accent-grid: rgba(0, 0, 0, 0.03);
+  --glow-radial1: rgba(37, 99, 235, 0.02);
+  --glow-radial2: rgba(5, 150, 105, 0.02);
 }
+
+/* Pure White Theme Complete Element Overrides */
+body.light-theme header,
+body.light-theme .cyber-hud,
+body.light-theme .intro,
+body.light-theme .project,
+body.light-theme .terminal-window,
+body.light-theme .cyber-box,
+body.light-theme .about-card,
+body.light-theme .about,
+body.light-theme .sys-monitor > div,
+body.light-theme form,
+body.light-theme .palette-box {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .term-bar {
+  background: #f8fafc !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+body.light-theme .hud-btn,
+body.light-theme .matrix-color-select,
+body.light-theme .nav-btn,
+body.light-theme .mobile-nav-btn {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .term-title,
+body.light-theme .term-filename,
+body.light-theme .term-bar span {
+  color: #2563eb !important;
+}
+
+body.light-theme .chip {
+  background: #f1f5f9 !important;
+  color: #1d4ed8 !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+body.light-theme form input,
+body.light-theme form textarea,
+body.light-theme .palette-input {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+/* LIGHT THEME BACKGROUND OVERLAY OVERRIDES (DISABLE DARK VIGNETTE & DARK CANVAS) */
+body.light-theme, body.light-theme html {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+body.light-theme::after {
+  background: none !important;
+  opacity: 0 !important;
+}
+
+body.light-theme #matrix {
+  opacity: 0.12 !important;
+}
+
+body.light-theme #cyber-grid {
+  opacity: 0.04 !important;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px) !important;
+}
+
+body.light-theme .crt-overlay {
+  display: none !important;
+}
+
+/* 3. Electric Blue Theme (Deep Sapphire Cyber) */
+body.theme-blue {
+  --bg: #070c18;
+  --bg2: #0f172a;
+  --card: rgba(15, 23, 42, 0.95);
+  --card-hover: rgba(30, 41, 59, 0.98);
+  --text: #ffffff;       /* Pure Crystal White */
+  --muted: #cbd5e1;      /* Crisp Light Silver Slate */
+  --accent: #38bdf8;      /* Sky Sapphire Blue */
+  --accent2: #2563eb;     /* Electric Royal Blue */
+  --accent3: #34d399;     /* Mint Highlight */
+  --accent4: #c084fc;
+  --alert: #f43f5e;
+  --warning: #fbbf24;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.95);
+  --border: 1px solid rgba(56, 189, 248, 0.35);
+  --glow: 0 0 30px rgba(56, 189, 248, 0.65);
+  --glow-g: 0 0 25px rgba(52, 211, 153, 0.55);
+  --crt-opacity: 0.28;
+  --matrix-color: #38bdf8;
+  --accent-grid: rgba(56, 189, 248, 0.18);
+  --glow-radial1: rgba(56, 189, 248, 0.09);
+  --glow-radial2: rgba(37, 99, 235, 0.09);
+}
+
+/* Blue Theme Component Overrides */
+body.theme-blue header {
+  background: rgba(9, 13, 24, 0.95) !important;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3) !important;
+}
+body.theme-blue .cyber-hud {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25) !important;
+}
+body.theme-blue .project, body.theme-blue .terminal-window, body.theme-blue .cyber-box, body.theme-blue .about-card, body.theme-blue .sys-monitor > div {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border-color: rgba(56, 189, 248, 0.35) !important;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.95), 0 0 25px rgba(56, 189, 248, 0.12) !important;
+}
+body.theme-blue .term-bar {
+  background: rgba(7, 12, 24, 0.8) !important;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2) !important;
+}
+
+/* 4. Matrix Green Theme */
+body.theme-green {
+  --bg: #010a05;
+  --bg2: #03140a;
+  --card: rgba(2, 16, 8, 0.96);
+  --card-hover: rgba(4, 26, 12, 0.98);
+  --text: #ffffff;
+  --muted: #a7f3d0;
+  --accent: #00ff9d;      /* Terminal Green */
+  --accent2: #00cc66;
+  --accent3: #7effc7;
+  --accent4: #38bdf8;
+  --alert: #ff2a6d;
+  --warning: #facc15;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.95);
+  --border: 1px solid rgba(0, 255, 157, 0.45);
+  --glow: 0 0 30px rgba(0, 255, 157, 0.7);
+  --glow-g: 0 0 25px rgba(126, 255, 199, 0.6);
+  --crt-opacity: 0.28;
+  --matrix-color: #00ff9d;
+  --accent-grid: rgba(0, 255, 157, 0.18);
+  --glow-radial1: rgba(0, 255, 157, 0.09);
+  --glow-radial2: rgba(56, 189, 248, 0.07);
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -81,14 +237,13 @@ body {
   position: fixed; inset: 0; z-index: -4;
   opacity: 0.65; pointer-events: none;
 }
-body.light-theme #matrix { opacity: 0.25; }
 /* Grid Line Canvas Overlay */
 #cyber-grid {
   position: fixed; inset: 0; z-index: -3;
-  pointer-events: none; opacity: 0.18;
+  pointer-events: none; opacity: 0.22;
   background-image: 
-    linear-gradient(rgba(0, 240, 255, 0.2) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.2) 1px, transparent 1px);
+    linear-gradient(var(--accent-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--accent-grid) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 /* CRT Screen Scanlines & Flicker */
@@ -106,14 +261,10 @@ body::after {
   content: "";
   position: fixed; inset: 0;
   background: 
-    radial-gradient(ellipse at 50% 10%, transparent 20%, rgba(0,0,0,0.85) 100%),
-    radial-gradient(circle at 10% 40%, rgba(0, 240, 255, 0.06) 0%, transparent 45%),
-    radial-gradient(circle at 90% 60%, rgba(177, 74, 255, 0.06) 0%, transparent 45%),
-    radial-gradient(circle at 50% 90%, rgba(0, 255, 157, 0.05) 0%, transparent 50%);
+    radial-gradient(ellipse at 50% 10%, transparent 20%, rgba(0,0,0,0.88) 100%),
+    radial-gradient(circle at 10% 40%, var(--glow-radial1) 0%, transparent 45%),
+    radial-gradient(circle at 90% 60%, var(--glow-radial2) 0%, transparent 45%);
   z-index: -1; pointer-events: none;
-}
-body.light-theme::after {
-  background: radial-gradient(ellipse at 50% 30%, transparent 40%, rgba(0,0,0,0.06) 100%);
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: var(--font-cyber);
@@ -374,10 +525,43 @@ body.light-theme .intro h2 { color: #051224; }
 }
 .profile-img {
   width: 88%; height: 88%; border-radius: 50%; object-fit: cover;
-  border: 3px solid rgba(0, 240, 255, 0.65);
-  z-index: 2; transition: all 0.5s ease;
-  box-shadow: 0 0 45px rgba(0,0,0,0.7), 0 0 35px rgba(0, 240, 255, 0.3);
+  border: 3px solid var(--accent);
+  z-index: 2; transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 45px rgba(0,0,0,0.7), var(--glow);
   background: var(--card);
+}
+.profile-img.fade-out {
+  opacity: 0;
+  transform: scale(0.88) rotate(-5deg);
+}
+.profile-dots-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+.p-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--muted);
+  opacity: 0.4;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border);
+}
+.p-dot:hover {
+  opacity: 0.8;
+  transform: scale(1.2);
+}
+.p-dot.active {
+  width: 26px;
+  border-radius: 10px;
+  background: var(--accent);
+  opacity: 1;
+  box-shadow: var(--glow);
 }
 .profile-glow {
   position: absolute; inset: -24px; border-radius: 50%;
@@ -622,22 +806,135 @@ footer::before {
   content: "[sec_ops@talha-node ~]$ ";
   color: var(--accent3); opacity: 0.8;
 }
-/* WhatsApp Floating Button */
+/* ================= CENTERED SOCIAL MEDIA BUTTONS WITH BRAND BADGES ================= */
+.social-links-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.social-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px 8px 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--font-cyber);
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.social-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.fb-icon { background: #1877F2; box-shadow: 0 3px 10px rgba(24, 119, 242, 0.4); }
+.ig-icon { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); box-shadow: 0 3px 10px rgba(225, 48, 108, 0.4); }
+.tt-icon { background: #000000; border: 1px solid #00f2fe; box-shadow: 0 3px 10px rgba(0, 242, 254, 0.4); }
+.yt-icon { background: #FF0000; box-shadow: 0 3px 10px rgba(255, 0, 0, 0.4); }
+.gh-icon { background: #24292e; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); }
+.wa-icon { background: #25D366; box-shadow: 0 3px 10px rgba(37, 211, 102, 0.4); }
+
+.social-card-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  color: var(--accent);
+}
+
+.social-card-btn:hover .social-icon-box {
+  transform: rotate(10deg) scale(1.15);
+}
+
+/* Floating WhatsApp Button Styling */
 .whatsapp-btn {
-  position: fixed; bottom: 22px; right: 22px;
-  background: #25D366; color: #fff;
-  width: 54px; height: 54px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px; box-shadow: 0 6px 26px rgba(37,211,102,0.5);
-  transition: all 0.3s; z-index: 95; text-decoration: none;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #ffffff !important;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.55);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 9999;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.4);
 }
+
 .whatsapp-btn i {
-  display: flex; align-items: center; justify-content: center;
-  width: 100%; height: 100%; line-height: 1;
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
+
+.whatsapp-btn::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid #25D366;
+  animation: pulse-ring 2s infinite;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.25); opacity: 0; }
+  100% { transform: scale(0.95); opacity: 0; }
+}
+
 .whatsapp-btn:hover {
-  transform: scale(1.12) translateY(-5px);
-  box-shadow: 0 12px 32px rgba(37,211,102,0.7);
+  transform: scale(1.15) translateY(-5px);
+  box-shadow: 0 14px 40px rgba(37, 211, 102, 0.85);
+  color: #ffffff !important;
+}
+
+.whatsapp-tooltip {
+  position: absolute;
+  right: 70px;
+  background: rgba(5, 12, 24, 0.95);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'Share Tech Mono', monospace;
+  white-space: nowrap;
+  border: 1px solid #25D366;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.whatsapp-btn:hover .whatsapp-tooltip {
+  opacity: 1;
+  transform: translateX(0);
 }
 /* Cyber Glitch Effect */
 .glitch {
@@ -698,6 +995,134 @@ footer::before {
   flex: 1; background: transparent; border: none; outline: none;
   color: #fff; font-family: 'Share Tech Mono', monospace; font-size: 12px;
 }
+/* ================= 1% TOP-GRADE CYBER PORTFOLIO UPGRADES ================= */
+.cyber-toast {
+  position: fixed; top: 75px; right: 24px; z-index: 10005;
+  background: rgba(3, 12, 26, 0.96); border: 1px solid var(--accent);
+  color: var(--accent3); padding: 12px 20px; border-radius: 6px;
+  font-family: 'Share Tech Mono', monospace; font-size: 12px;
+  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.35);
+  display: flex; align-items: center; gap: 10px; opacity: 0;
+  transform: translateY(-20px); transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none; backdrop-filter: blur(12px);
+}
+.cyber-toast.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+body.light-theme .cyber-toast {
+  background: rgba(240, 246, 253, 0.98); border-color: #0066cc; color: #008844;
+}
+
+/* Command Palette Spotlight Modal */
+.palette-modal {
+  position: fixed; inset: 0; background: rgba(2, 6, 13, 0.88);
+  backdrop-filter: blur(20px); z-index: 10002; display: none;
+  align-items: flex-start; justify-content: center; padding-top: 100px;
+}
+.palette-modal.active { display: flex; animation: paletteIn 0.2s ease-out; }
+@keyframes paletteIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+.palette-box {
+  background: rgba(5, 14, 28, 0.98); border: 1px solid var(--accent);
+  border-radius: 10px; width: 90%; max-width: 620px;
+  box-shadow: 0 20px 60px rgba(0, 240, 255, 0.4), var(--glow);
+  overflow: hidden;
+}
+body.light-theme .palette-box {
+  background: rgba(255, 255, 255, 0.98); border-color: #0066cc;
+  box-shadow: 0 20px 60px rgba(0, 82, 204, 0.25);
+}
+.palette-header {
+  display: flex; align-items: center; padding: 16px 20px;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+  gap: 12px; background: rgba(0, 0, 0, 0.4);
+}
+body.light-theme .palette-header { background: rgba(225, 235, 248, 0.9); border-bottom-color: rgba(0, 102, 204, 0.2); }
+.palette-header i { color: var(--accent); font-size: 18px; }
+.palette-input {
+  flex: 1; background: transparent; border: none; outline: none;
+  color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 15px;
+}
+body.light-theme .palette-input { color: #0a192f; }
+.palette-results { max-height: 340px; overflow-y: auto; padding: 10px; }
+.palette-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px; border-radius: 6px; cursor: pointer;
+  transition: all 0.2s; font-family: 'Share Tech Mono', monospace; font-size: 13px;
+  color: var(--text); border: 1px solid transparent; margin-bottom: 4px;
+}
+.palette-item:hover, .palette-item.selected {
+  background: rgba(0, 240, 255, 0.15); border-color: var(--accent);
+  color: #fff; padding-left: 20px;
+}
+body.light-theme .palette-item:hover, body.light-theme .palette-item.selected {
+  background: rgba(0, 102, 204, 0.1); border-color: #0066cc; color: #0066cc;
+}
+.palette-item .item-tag {
+  font-size: 10px; padding: 2px 7px; border-radius: 3px;
+  background: rgba(0, 255, 157, 0.15); color: var(--accent3); border: 1px solid var(--accent3);
+}
+
+/* Category Filter Tabs for Projects */
+.filter-tabs {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; margin-top: 14px;
+}
+.filter-tab {
+  padding: 8px 18px; border-radius: 4px; background: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.25); color: var(--muted);
+  font-size: 11.5px; font-weight: 700; cursor: pointer;
+  transition: all 0.25s; font-family: 'Share Tech Mono', monospace;
+}
+.filter-tab:hover { color: var(--accent); border-color: var(--accent); background: rgba(0, 240, 255, 0.12); }
+.filter-tab.active {
+  background: var(--accent); color: #000; border-color: var(--accent);
+  box-shadow: var(--glow); font-weight: 800;
+}
+body.light-theme .filter-tab { background: #fff; border-color: rgba(0, 102, 204, 0.25); color: #43617d; }
+body.light-theme .filter-tab.active { background: #0066cc; color: #fff; border-color: #0066cc; }
+
+/* Cyber Security Threat Scanner Tool Widget */
+.cyber-scanner-tool {
+  background: var(--card); border: 1px solid var(--accent);
+  border-radius: 8px; padding: 26px; margin-top: 50px; margin-bottom: 40px;
+  box-shadow: var(--shadow), var(--glow); position: relative; overflow: hidden;
+}
+body.light-theme .cyber-scanner-tool {
+  background: #ffffff; border-color: #0066cc; box-shadow: 0 10px 30px rgba(0, 50, 100, 0.08);
+}
+.scanner-title {
+  font-size: 18px; color: var(--accent); font-family: 'Orbitron', sans-serif;
+  display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+}
+body.light-theme .scanner-title { color: #0066cc; }
+.scanner-controls { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+.scanner-input {
+  flex: 1; min-width: 220px; padding: 11px 16px; border-radius: 5px;
+  background: rgba(0,0,0,0.6); border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--accent3); font-family: 'JetBrains Mono', monospace; font-size: 13px; outline: none;
+}
+body.light-theme .scanner-input { background: #f4f8fc; border-color: rgba(0, 102, 204, 0.3); color: #008844; }
+.scanner-btn {
+  padding: 11px 24px; border: none; border-radius: 5px;
+  background: linear-gradient(90deg, #00ff9d, #00b8d9);
+  color: #02040a; font-weight: 800; font-family: 'Orbitron', sans-serif;
+  font-size: 12px; cursor: pointer; box-shadow: 0 4px 18px rgba(0, 255, 157, 0.35);
+  transition: all 0.3s;
+}
+.scanner-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(0, 255, 157, 0.6); }
+.scanner-log {
+  background: rgba(0, 4, 10, 0.95); border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 6px; padding: 14px; height: 160px; overflow-y: auto;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent3);
+  line-height: 1.6;
+}
+body.light-theme .scanner-log { background: #0a192f; color: #00ff9d; }
+
+/* Skill Meter Bars */
+.skill-bar-wrapper { margin-bottom: 16px; }
+.skill-meta { display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 6px; font-family: 'Share Tech Mono', monospace; }
+.skill-track { height: 8px; background: rgba(0, 240, 255, 0.1); border-radius: 4px; overflow: hidden; border: 1px solid rgba(0, 240, 255, 0.2); }
+body.light-theme .skill-track { background: rgba(0, 102, 204, 0.1); border-color: rgba(0, 102, 204, 0.2); }
+.skill-progress { height: 100%; background: linear-gradient(90deg, #00f0ff, #00ff9d); border-radius: 4px; transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+body.light-theme .skill-progress { background: linear-gradient(90deg, #0066cc, #008844); }
+
 /* Responsive Styles */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 32px; }
@@ -716,10 +1141,26 @@ footer::before {
   .cyber-hud { font-size: 9.5px; padding: 4px 10px; }
 }
 </style>
-</head>
-<body class="dark-theme">
+<body class="theme-cyan">
 <!-- CRT Scanline Screen Overlay -->
 <div class="crt-overlay"></div>
+
+<!-- Cyber Toast Notification -->
+<div class="cyber-toast" id="cyber-toast"><i class="fas fa-shield-alt"></i> <span id="toast-msg">Action Completed</span></div>
+
+<!-- Command Palette Spotlight Modal -->
+<div class="palette-modal" id="palette-modal">
+  <div class="palette-box">
+    <div class="palette-header">
+      <i class="fas fa-search"></i>
+      <input type="text" class="palette-input" id="palette-input" placeholder="Type command or search (e.g. projects, cv, scan, theme, chat)..." autocomplete="off">
+    </div>
+    <div class="palette-results" id="palette-results">
+      <!-- Items dynamically populated -->
+    </div>
+  </div>
+</div>
+
 <!-- Cyber HUD Top Bar -->
 <div class="cyber-hud">
   <div class="hud-item">
@@ -736,11 +1177,12 @@ footer::before {
     <span class="hud-value" id="hud-ping">12ms</span>
   </div>
   <div class="hud-actions">
+    <button class="hud-btn" id="palette-toggle" style="color:var(--accent3); font-weight:bold;"><i class="fas fa-terminal"></i> ⌘ PALETTE [Ctrl+K]</button>
     <select class="matrix-color-select" id="matrix-color">
-      <option value="#00f0ff">💙 Cyan Matrix</option>
-      <option value="#00ff9d">💚 Green Matrix</option>
-      <option value="#b14aff">💜 Purple Matrix</option>
-      <option value="#ff0055">🔴 Red Matrix</option>
+      <option value="dark">🌙 Dark Cyber</option>
+      <option value="light">☀️ Light Cyber</option>
+      <option value="blue">💙 Electric Blue</option>
+      <option value="green">💚 Matrix Green</option>
     </select>
     <button class="hud-btn" id="hum-toggle">🔊 AMBIENT: OFF</button>
     <button class="hud-btn" id="sfx-toggle">🔊 SFX: ON</button>
@@ -764,7 +1206,7 @@ footer::before {
     <a class="nav-btn" href="#about">About</a>
     <a class="nav-btn" href="#contact">Contact</a>
     <a class="nav-btn" href="Talha_Afridi_Professional_CV.pdf" download id="cv-btn">Download CV</a>
-    <button class="nav-btn" id="theme-toggle">🌙</button>
+    <button class="nav-btn" id="theme-toggle">🌙 THEME</button>
   </nav>
   <button id="mobile-menu-btn" class="mobile-menu-btn">☰</button>
   <div id="mobile-menu">
@@ -772,7 +1214,7 @@ footer::before {
     <a href="#about" class="mobile-nav-btn">About</a>
     <a href="#contact" class="mobile-nav-btn">Contact</a>
     <a href="Talha_Afridi_Professional_CV.pdf" download class="mobile-nav-btn">Download CV</a>
-    <button id="mobile-theme-toggle" class="mobile-nav-btn">🌙</button>
+    <button id="mobile-theme-toggle" class="mobile-nav-btn">🌙 THEME</button>
   </div>
 </header>
 <main>
@@ -816,9 +1258,14 @@ footer::before {
     </div>
   </div>
   <div class="profile-container">
-    <div class="profile">
+    <div class="profile" title="Click to change photo">
       <div class="profile-glow"></div>
-      <img src="profile.jpeg" alt="Talha Afridi" class="profile-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'250\' height=\'250\' viewBox=\'0 0 250 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23070e18\'/><circle cx=\'125\' cy=\'95\' r=\'45\' fill=\'%2300f0ff\' opacity=\'0.8\'/><path d=\'M 45 210 C 45 155, 205 155, 205 210 Z\' fill=\'%2300f0ff\' opacity=\'0.6\'/><text x=\'50%\' y=\'98\' font-family=\'Orbitron\' font-size=\'32\' fill=\'%23000\' text-anchor=\'middle\' font-weight=\'bold\'>TA</text></svg>';">
+      <img src="profile.jpeg" alt="Talha Afridi" class="profile-img" id="hero-profile-img">
+    </div>
+    <div class="profile-dots-wrapper" title="Photo Selector">
+      <span class="p-dot active" data-idx="0" title="Photo 1"></span>
+      <span class="p-dot" data-idx="1" title="Photo 2"></span>
+      <span class="p-dot" data-idx="2" title="Photo 3"></span>
     </div>
     <h2 class="glitch scramble-text" data-original="Talha Afridi">Talha Afridi</h2>
     <p>Flutter & Python Developer</p>
@@ -857,8 +1304,14 @@ footer::before {
 </div>
 <!-- PROJECTS SECTION -->
 <h2 id="projects" class="section-title scramble-text" data-original="Featured Projects">Featured Projects</h2>
-<div class="projects">
-  <div class="project">
+<div class="filter-tabs" id="project-filters">
+  <button class="filter-tab active" data-filter="all">[ ALL PROJECTS ]</button>
+  <button class="filter-tab" data-filter="flutter">[ FLUTTER APPS ]</button>
+  <button class="filter-tab" data-filter="python">[ PYTHON & BACKEND ]</button>
+  <button class="filter-tab" data-filter="security">[ SECURITY & VAULT ]</button>
+</div>
+<div class="projects" id="projects-grid">
+  <div class="project" data-category="flutter">
     <div class="corner-border corner-tl"></div>
     <div class="corner-border corner-tr"></div>
     <div class="term-bar">
@@ -883,7 +1336,7 @@ footer::before {
       </div>
     </div>
   </div>
-  <div class="project">
+  <div class="project" data-category="flutter">
     <div class="corner-border corner-tl"></div>
     <div class="corner-border corner-tr"></div>
     <div class="term-bar">
@@ -908,7 +1361,7 @@ footer::before {
       </div>
     </div>
   </div>
-  <div class="project">
+  <div class="project" data-category="security">
     <div class="corner-border corner-tl"></div>
     <div class="corner-border corner-tr"></div>
     <div class="term-bar">
@@ -933,7 +1386,7 @@ footer::before {
       </div>
     </div>
   </div>
-  <div class="project">
+  <div class="project" data-category="flutter">
     <div class="corner-border corner-tl"></div>
     <div class="corner-border corner-tr"></div>
     <div class="term-bar">
@@ -958,7 +1411,7 @@ footer::before {
       </div>
     </div>
   </div>
-  <div class="project">
+  <div class="project" data-category="flutter">
     <div class="corner-border corner-tl"></div>
     <div class="corner-border corner-tr"></div>
     <div class="term-bar">
@@ -984,11 +1437,27 @@ footer::before {
     </div>
   </div>
 </div>
+
+<!-- LIVE CYBERSECURITY THREAT & PORT SCANNER TOOL -->
+<div class="cyber-scanner-tool" id="cyber-scanner">
+  <div class="scanner-title"><i class="fas fa-shield-halved"></i> LIVE CYBERSECURITY THREAT & PORT SCANNER</div>
+  <p style="color:var(--muted); font-size:12.5px; margin-bottom:14px;">
+    Test backend endpoint security, port status, TLS handshake, and OWASP vulnerability score in real-time.
+  </p>
+  <div class="scanner-controls">
+    <input type="text" id="scan-target" class="scanner-input" value="127.0.0.1 // talha-sec-ops" placeholder="Enter IP or endpoint target...">
+    <button class="scanner-btn" id="run-scan-btn"><i class="fas fa-terminal"></i> RUN AUDIT SCAN</button>
+  </div>
+  <div class="scanner-log" id="scanner-log">
+    <div>[SYSTEM_READY]: Enter endpoint IP or click "RUN AUDIT SCAN" to launch automated penetration testing simulation.</div>
+  </div>
+</div>
+
 <!-- PYTHON PROJECTS SECTION -->
 <section>
   <h2 class="section-title scramble-text" data-original="Python Projects">Python Projects</h2>
   <div class="projects">
-    <div class="project">
+    <div class="project" data-category="python">
       <div class="term-bar">
         <div class="term-dots">
           <span class="term-dot r"></span>
@@ -1009,7 +1478,7 @@ footer::before {
         </div>
       </div>
     </div>
-    <div class="project">
+    <div class="project" data-category="python">
       <div class="term-bar">
         <div class="term-dots">
           <span class="term-dot r"></span>
@@ -1030,7 +1499,7 @@ footer::before {
         </div>
       </div>
     </div>
-    <div class="project">
+    <div class="project" data-category="security">
       <div class="term-bar">
         <div class="term-dots">
           <span class="term-dot r"></span>
@@ -1051,7 +1520,7 @@ footer::before {
         </div>
       </div>
     </div>
-    <div class="project">
+    <div class="project" data-category="python">
       <div class="term-bar">
         <div class="term-dots">
           <span class="term-dot r"></span>
@@ -1101,12 +1570,34 @@ footer::before {
         <p style="margin-top:8px;"><b>Email:</b> talhashahafridi@gmail.com</p>
         <p><b>Location:</b> Peshawar, Pakistan</p>
       </div>
-      <div class="about-card">
-        <h4>💡 Technical Skills</h4>
-        <p>
-          Flutter, Dart, BLoC, Provider, FastAPI, Firebase, Python, REST APIs,
-          SQLite, Hive, Git, GitHub, Kali Linux
-        </p>
+      <div class="about-card" style="grid-column: 1 / -1;">
+        <h4>💡 Core Technical Skills & Proficiency Gauges</h4>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-top:14px;">
+          <div class="skill-bar-wrapper">
+            <div class="skill-meta"><span>Flutter & Dart (BLoC/Provider)</span><span>95%</span></div>
+            <div class="skill-track"><div class="skill-progress" style="width: 95%;"></div></div>
+          </div>
+          <div class="skill-bar-wrapper">
+            <div class="skill-meta"><span>FastAPI & RESTful APIs</span><span>90%</span></div>
+            <div class="skill-track"><div class="skill-progress" style="width: 90%;"></div></div>
+          </div>
+          <div class="skill-bar-wrapper">
+            <div class="skill-meta"><span>Python (Core & Advanced Automation)</span><span>92%</span></div>
+            <div class="skill-track"><div class="skill-progress" style="width: 92%;"></div></div>
+          </div>
+          <div class="skill-bar-wrapper">
+            <div class="skill-meta"><span>Hive & SQLite Local Encrypted DBs</span><span>95%</span></div>
+            <div class="skill-track"><div class="skill-progress" style="width: 95%;"></div></div>
+          </div>
+          <div class="skill-bar-wrapper">
+            <div class="skill-meta"><span>Cybersecurity & Kali Linux Toolkit</span><span>85%</span></div>
+            <div class="skill-track"><div class="skill-progress" style="width: 85%;"></div></div>
+          </div>
+          <div class="skill-bar-wrapper">
+            <div class="skill-meta"><span>Firebase FCM & Cloud Infrastructure</span><span>88%</span></div>
+            <div class="skill-track"><div class="skill-progress" style="width: 88%;"></div></div>
+          </div>
+        </div>
       </div>
       <div class="about-card">
         <h4>🚀 Experience</h4>
@@ -1125,12 +1616,53 @@ footer::before {
       </div>
     </div>
      
-    <div class="social-links">
-      <a href="https://web.facebook.com/profile.php?id=61580024770723" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com/talha_afridi_56/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@talhashahafridi?_t=ZS-90sHnyPb3Lz&_r=1" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.youtube.com/@codewithtalha-w2h" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-      <a href="https://github.com/q343313" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <div class="social-section-wrapper" style="width: 100%; text-align: center; margin-top: 35px; padding-top: 25px; border-top: 1px solid var(--border);">
+      <h4 style="font-family: var(--font-cyber); color: var(--accent); font-size: 14px; letter-spacing: 1px; margin-bottom: 18px; text-transform: uppercase;">
+        🌐 CONNECT ON SOCIAL MEDIA
+      </h4>
+      <div class="social-links-centered">
+        <a href="https://web.facebook.com/profile.php?id=61580024770723" target="_blank" class="social-card-btn" title="Facebook">
+          <div class="social-icon-box fb-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </div>
+          <span>Facebook</span>
+        </a>
+
+        <a href="https://www.instagram.com/talhashahafridi" target="_blank" class="social-card-btn" title="Instagram">
+          <div class="social-icon-box ig-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <span>Instagram</span>
+        </a>
+
+        <a href="https://www.tiktok.com/@talhashahafridi?_t=ZS-90sHnyPb3Lz&_r=1" target="_blank" class="social-card-btn" title="TikTok">
+          <div class="social-icon-box tt-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.57-1.31 1.56-1.3 2.57.01 1.01.55 1.97 1.38 2.51.84.54 1.93.63 2.85.24.96-.4 1.62-1.31 1.72-2.34.03-3.64.02-7.28.02-10.93z"/></svg>
+          </div>
+          <span>TikTok</span>
+        </a>
+
+        <a href="https://www.youtube.com/@codewithtalha-w2h" target="_blank" class="social-card-btn" title="YouTube">
+          <div class="social-icon-box yt-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <span>YouTube</span>
+        </a>
+
+        <a href="https://github.com/q343313" target="_blank" class="social-card-btn" title="GitHub">
+          <div class="social-icon-box gh-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </div>
+          <span>GitHub</span>
+        </a>
+
+        <a href="https://wa.me/923182586785" target="_blank" class="social-card-btn" title="WhatsApp">
+          <div class="social-icon-box wa-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <span>WhatsApp</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1192,8 +1724,11 @@ footer::before {
 </form>
 <footer>© 2025 Talha Afridi — All rights reserved.</footer>
 <!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://wa.me/923182586785" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
-  <i class="fab fa-whatsapp"></i>
+<a href="https://wa.me/923182586785" target="_blank" class="whatsapp-btn" title="Direct Chat on WhatsApp">
+  <span class="whatsapp-tooltip">Chat on WhatsApp 💬</span>
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
 </a>
 <!-- FLOATING CLI TERMINAL DRAWER -->
 <button class="cli-drawer-toggle" id="cli-toggle" title="Press Ctrl + ~ or click to open terminal">
@@ -1221,8 +1756,8 @@ footer::before {
     tiktok: "https://www.tiktok.com/@talhashahafridi?_t=ZS-90sHnyPb3Lz&_r=1",
     facebook: "https://web.facebook.com/profile.php?id=61580024770723",
     fb: "https://web.facebook.com/profile.php?id=61580024770723",
-    instagram: "https://www.instagram.com/talha_afridi_56/",
-    insta: "https://www.instagram.com/talha_afridi_56/",
+    instagram: "https://www.instagram.com/talhashahafridi",
+    insta: "https://www.instagram.com/talhashahafridi",
     youtube: "https://www.youtube.com/@codewithtalha-w2h",
     yt: "https://www.youtube.com/@codewithtalha-w2h",
     github: "https://github.com/q343313",
@@ -1230,6 +1765,63 @@ footer::before {
     whatsapp: "https://wa.me/923182586785",
     wa: "https://wa.me/923182586785"
   };
+
+  // ================= 3-PHOTO PROFILE ANIMATED SLIDESHOW ENGINE =================
+  const PROFILE_PHOTOS = ['profile.jpeg', 'profile2.jpeg', 'profile3.jpeg'];
+  let currentPhotoIdx = 0;
+  const heroProfileImg = document.getElementById('hero-profile-img');
+  const profileDots = document.querySelectorAll('.p-dot');
+
+  function setProfilePhoto(idx) {
+    if (!heroProfileImg) return;
+    currentPhotoIdx = idx % PROFILE_PHOTOS.length;
+    
+    heroProfileImg.classList.add('fade-out');
+    
+    setTimeout(() => {
+      heroProfileImg.src = PROFILE_PHOTOS[currentPhotoIdx];
+      heroProfileImg.classList.remove('fade-out');
+      
+      profileDots.forEach((dot, dIdx) => {
+        if (dIdx === currentPhotoIdx) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }, 350);
+  }
+
+  // Auto switch photo every 7 seconds
+  let profileInterval = setInterval(() => {
+    setProfilePhoto(currentPhotoIdx + 1);
+  }, 7000);
+
+  // Click on Profile Image to switch to next photo
+  const profileElem = document.querySelector('.profile');
+  if (profileElem) {
+    profileElem.addEventListener('click', () => {
+      clearInterval(profileInterval);
+      setProfilePhoto(currentPhotoIdx + 1);
+      safePlaySound('click');
+      profileInterval = setInterval(() => {
+        setProfilePhoto(currentPhotoIdx + 1);
+      }, 7000);
+    });
+  }
+
+  // Click on dots indicator
+  profileDots.forEach((dot, dIdx) => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearInterval(profileInterval);
+      setProfilePhoto(dIdx);
+      safePlaySound('click');
+      profileInterval = setInterval(() => {
+        setProfilePhoto(currentPhotoIdx + 1);
+      }, 7000);
+    });
+  });
   // ================= WEB AUDIO SYNTHESIZER & AMBIENT DRONE =================
   let sfxEnabled = true;
   let humEnabled = false;
@@ -1404,32 +1996,53 @@ footer::before {
   mobileMenuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('show');
   });
-  document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(btn => {
-    btn.addEventListener('click', () => mobileMenu.classList.remove('show'));
-  });
-  // ================= THEME TOGGLE =================
+  // ================= 4 HACKER CYBER THEMES ENGINE (DARK, LIGHT, BLUE, GREEN) =================
+  const THEMES = ['dark', 'light', 'blue', 'green'];
+  const matrixSelect = document.getElementById('matrix-color');
+
+  function applyTheme(themeKey) {
+    if (!THEMES.includes(themeKey)) themeKey = 'dark';
+    
+    document.body.className = `theme-${themeKey}`;
+    if (themeKey === 'dark') document.body.classList.add('dark-theme');
+    if (themeKey === 'light') document.body.classList.add('light-theme');
+    
+    localStorage.setItem('portfolio-theme', themeKey);
+    
+    if (matrixSelect) matrixSelect.value = themeKey;
+    
+    const themeBtns = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle');
+    themeBtns.forEach(btn => {
+      const labels = { dark: '🌙 DARK', light: '☀️ LIGHT', blue: '💙 BLUE', green: '💚 GREEN' };
+      btn.innerHTML = labels[themeKey] || '🌙 THEME';
+    });
+  }
+
+  function cycleTheme() {
+    const current = localStorage.getItem('portfolio-theme') || 'dark';
+    const currIdx = THEMES.indexOf(current);
+    const nextTheme = THEMES[(currIdx + 1) % THEMES.length];
+    applyTheme(nextTheme);
+    safePlaySound('cmd');
+    safeShowToast(`Theme Activated: ${nextTheme.toUpperCase()}`);
+  }
+
+  if (matrixSelect) {
+    matrixSelect.addEventListener('change', (e) => {
+      applyTheme(e.target.value);
+      safePlaySound('cmd');
+      safeShowToast(`Theme Activated: ${e.target.value.toUpperCase()}`);
+    });
+  }
+
   const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) themeBtn.addEventListener('click', cycleTheme);
+
   const mobileThemeBtn = document.getElementById('mobile-theme-toggle');
-  function toggleTheme() {
-    if (document.body.classList.contains('dark-theme')) {
-      document.body.classList.replace('dark-theme', 'light-theme');
-      themeBtn.textContent = '☀️';
-      mobileThemeBtn.textContent = '☀️';
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.body.classList.replace('light-theme', 'dark-theme');
-      themeBtn.textContent = '🌙';
-      mobileThemeBtn.textContent = '🌙';
-      localStorage.setItem('theme', 'dark');
-    }
-  }
-  themeBtn.addEventListener('click', toggleTheme);
-  mobileThemeBtn.addEventListener('click', toggleTheme);
-  if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.replace('dark-theme', 'light-theme');
-    themeBtn.textContent = '☀️';
-    mobileThemeBtn.textContent = '☀️';
-  }
+  if (mobileThemeBtn) mobileThemeBtn.addEventListener('click', cycleTheme);
+
+  const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+  applyTheme(savedTheme);
   // ================= INTERACTIVE CLI TERMINAL ENGINE WITH COMMAND HISTORY =================
   const cliToggle = document.getElementById('cli-toggle');
   const cliModal = document.getElementById('cli-modal');
@@ -1613,15 +2226,187 @@ footer::before {
       }
     }
   });
+  // ================= SAFELY DEFINED TOAST & AUDIO HELPERS =================
+  function safePlaySound(type = 'cmd') {
+    if (typeof playSound === 'function') {
+      try { playSound(type); } catch (e) {}
+    }
+  }
+
+  function safeShowToast(msg) {
+    if (typeof showToast === 'function') {
+      try { showToast(msg); } catch (e) {}
+    } else {
+      const toast = document.getElementById('cyber-toast');
+      const msgEl = document.getElementById('toast-msg');
+      if (toast && msgEl) {
+        msgEl.textContent = msg;
+        toast.classList.add('show');
+        safePlaySound('cmd');
+        setTimeout(() => toast.classList.remove('show'), 3200);
+      }
+    }
+  }
+
   // Handle Contact Form Submit with Cyber Alert
   document.getElementById('contact-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('contact-name').value;
     const email = document.getElementById('contact-email').value;
     const msg = document.getElementById('contact-msg').value;
-    playSound('cmd');
-    alert(`[ENCRYPTED MESSAGE SENT]: Thank you ${name}! Your message has been safely dispatched to Talha Afridi.`);
+    safePlaySound('cmd');
+    safeShowToast(`[ENCRYPTED MESSAGE SENT]: Thank you ${name}! Message dispatched.`);
     window.location.href = `mailto:talhashahafridi@gmail.com?subject=Portfolio%20Message%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(msg + '\n\nFrom: ' + email)}`;
+  });
+
+  // ================= CYBER TOAST NOTIFICATION ENGINE =================
+  function showToast(msg) {
+    const toast = document.getElementById('cyber-toast');
+    document.getElementById('toast-msg').textContent = msg;
+    toast.classList.add('show');
+    playSound('cmd');
+    setTimeout(() => toast.classList.remove('show'), 3200);
+  }
+
+  // ================= SPOTLIGHT COMMAND PALETTE ENGINE (Ctrl + K) =================
+  const paletteToggle = document.getElementById('palette-toggle');
+  const paletteModal = document.getElementById('palette-modal');
+  const paletteInput = document.getElementById('palette-input');
+  const paletteResults = document.getElementById('palette-results');
+
+  const PALETTE_COMMANDS = [
+    { name: "Explore Featured Projects", icon: "fa-cubes", tag: "NAV", action: () => document.getElementById('projects').scrollIntoView({behavior:'smooth'}) },
+    { name: "Launch Cyber Penetration & Port Scanner", icon: "fa-shield-halved", tag: "TOOL", action: () => document.getElementById('cyber-scanner').scrollIntoView({behavior:'smooth'}) },
+    { name: "Download Professional CV (PDF)", icon: "fa-download", tag: "FILE", action: () => { showToast("Downloading Professional CV..."); document.getElementById('cv-btn').click(); } },
+    { name: "Direct Chat on WhatsApp", icon: "fa-whatsapp", tag: "SOCIAL", action: () => window.open('https://wa.me/923182586785', '_blank') },
+    { name: "Open Instagram Profile (@talhashahafridi)", icon: "fa-instagram", tag: "SOCIAL", action: () => window.open('https://www.instagram.com/talhashahafridi', '_blank') },
+    { name: "Open Smart Expense Manager", icon: "fa-wallet", tag: "PROJECT", action: () => window.location.href='projects/project.html?id=expence' },
+    { name: "Open Local Market E-Commerce", icon: "fa-shopping-cart", tag: "PROJECT", action: () => window.location.href='projects/project.html?id=market' },
+    { name: "Open Password Manager Vault", icon: "fa-key", tag: "PROJECT", action: () => window.location.href='projects/project.html?id=pasman' },
+    { name: "Open AI Chat Application", icon: "fa-robot", tag: "PROJECT", action: () => window.location.href='projects/project.html?id=chat' },
+    { name: "Open Smart TODO App", icon: "fa-tasks", tag: "PROJECT", action: () => window.location.href='projects/project.html?id=ads' },
+    { name: "Switch Hacker Theme (Cyan/Green/Purple/Red)", icon: "fa-palette", tag: "THEME", action: () => cycleTheme() },
+    { name: "Toggle CRT Monitor Scanlines", icon: "fa-desktop", tag: "SYSTEM", action: () => crtBtn.click() },
+    { name: "Toggle Ambient Drone Audio", icon: "fa-volume-high", tag: "AUDIO", action: () => toggleAmbientHum() }
+  ];
+
+  function renderPaletteItems(filterText = "") {
+    paletteResults.innerHTML = "";
+    const filtered = PALETTE_COMMANDS.filter(c => c.name.toLowerCase().includes(filterText.toLowerCase()) || c.tag.toLowerCase().includes(filterText.toLowerCase()));
+    if (filtered.length === 0) {
+      paletteResults.innerHTML = `<div style="padding:16px; text-align:center; color:var(--muted);">No commands found matching "${filterText}"</div>`;
+      return;
+    }
+    filtered.forEach((c, idx) => {
+      const div = document.createElement('div');
+      div.className = `palette-item ${idx === 0 ? 'selected' : ''}`;
+      div.innerHTML = `<div><i class="fas ${c.icon}" style="margin-right:10px; color:var(--accent);"></i> ${c.name}</div><span class="item-tag">${c.tag}</span>`;
+      div.addEventListener('click', () => {
+        paletteModal.classList.remove('active');
+        c.action();
+        playSound('click');
+      });
+      paletteResults.appendChild(div);
+    });
+  }
+
+  function togglePalette() {
+    paletteModal.classList.toggle('active');
+    if (paletteModal.classList.contains('active')) {
+      paletteInput.value = '';
+      renderPaletteItems('');
+      paletteInput.focus();
+      playSound('cmd');
+    }
+  }
+
+  paletteToggle.addEventListener('click', togglePalette);
+  paletteModal.addEventListener('click', (e) => { if (e.target === paletteModal) paletteModal.classList.remove('active'); });
+  paletteInput.addEventListener('input', (e) => renderPaletteItems(e.target.value));
+
+  // Hotkeys listener: Ctrl + K or /
+  window.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey && e.key.toLowerCase() === 'k') || e.key === '/') {
+      if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        togglePalette();
+      }
+    }
+  });
+
+  // ================= PROJECT CATEGORY FILTERING =================
+  const filterTabs = document.querySelectorAll('#project-filters .filter-tab');
+  const projectCards = document.querySelectorAll('.project');
+
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.getAttribute('data-filter');
+      playSound('click');
+
+      projectCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          card.style.display = 'block';
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1)';
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.95)';
+          setTimeout(() => { if (card.style.opacity === '0') card.style.display = 'none'; }, 200);
+        }
+      });
+    });
+  });
+
+  // ================= 3D PARALLAX TILT EFFECT ON PROJECT CARDS =================
+  projectCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      card.style.transform = `perspective(1000px) rotateX(${-y / 22}deg) rotateY(${x / 22}deg) translateY(-6px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+    });
+  });
+
+  // ================= LIVE CYBERSECURITY THREAT & PORT SCANNER ENGINE =================
+  const runScanBtn = document.getElementById('run-scan-btn');
+  const scanTargetInput = document.getElementById('scan-target');
+  const scannerLog = document.getElementById('scanner-log');
+
+  function appendScanLog(msg, color = "var(--accent3)") {
+    const div = document.createElement('div');
+    div.innerHTML = `<span style="color:${color};">${msg}</span>`;
+    scannerLog.appendChild(div);
+    scannerLog.scrollTop = scannerLog.scrollHeight;
+  }
+
+  runScanBtn.addEventListener('click', () => {
+    const target = scanTargetInput.value.trim() || "127.0.0.1";
+    scannerLog.innerHTML = "";
+    playSound('cmd');
+    appendScanLog(`[+] INITIATING AUTOMATED PENETRATION & AUDIT TEST ON TARGET: ${target}...`);
+    
+    let step = 0;
+    const steps = [
+      { msg: "[1/5] RESOLVING TARGET DNS & GATEWAY HANDSHAKE...", delay: 400 },
+      { msg: "[2/5] SCANNING ESSENTIAL PORTS: [22/SSH: SECURE] [80/HTTP: REDIRECT] [443/HTTPS: OK] [8000/API: ACTIVE]", delay: 900 },
+      { msg: "[3/5] VERIFYING TLS 1.3 CIPHER HANDSHAKE & AES-256 GCM SANITY...", delay: 1400 },
+      { msg: "[4/5] CHECKING OWASP TOP 10 PROTECTION (XSS, SQLi, CSRF)... <span style='color:#00ff9d;'>100% PROTECTED</span>", delay: 1900 },
+      { msg: "<span style='color:#00f0ff; font-weight:bold;'>[5/5] AUDIT REPORT PASSED: ZERO THREATS FOUND // AAA+ SECURITY GRADE CERTIFIED! 🛡️</span>", delay: 2400 }
+    ];
+
+    steps.forEach(s => {
+      setTimeout(() => {
+        appendScanLog(s.msg);
+        playSound('hover');
+        if (s === steps[steps.length - 1]) showToast("Security Audit Completed: AAA+ Grade!");
+      }, s.delay);
+    });
   });
 </script>
 </body>
